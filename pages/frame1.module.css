@@ -1,0 +1,327 @@
+.child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--third-color);
+  width: 1440px;
+  height: 652px;
+}
+.inner,
+.item {
+  position: absolute;
+  background-color: var(--prim-color);
+}
+.item {
+  top: 192px;
+  left: 120px;
+  border-radius: var(--br-lg) 0 0 var(--br-lg);
+  width: 149px;
+  height: 157px;
+}
+.inner {
+  top: 0;
+  left: 405px;
+  width: 1035px;
+  height: 652px;
+}
+.div1 {
+  position: relative;
+  line-height: 36px;
+  font-weight: 500;
+}
+.flagOfSaudiArabia1938197Icon {
+  width: 32px;
+  position: relative;
+  height: 21.3px;
+  object-fit: cover;
+}
+.fiRsAngleSmallUpIcon {
+  width: 18px;
+  position: relative;
+  height: 18px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.parent {
+  border-radius: var(--br-xs);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: var(--padding-5xs);
+  gap: var(--gap-xs);
+}
+.arrowDownwardIcon,
+.fiRsSearchIcon {
+  width: 32px;
+  position: relative;
+  height: 32px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.fiRsSearchIcon {
+  width: 30px;
+  height: 30px;
+}
+.fiRsSearchWrapper,
+.frameGroup {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.fiRsSearchWrapper {
+  width: 32px;
+  height: 32px;
+}
+.frameGroup {
+  padding: var(--padding-xs) 0;
+  gap: var(--gap-5xl);
+  text-align: center;
+}
+.b {
+  position: relative;
+}
+.wrapper {
+  border-radius: var(--br-xs);
+  justify-content: center;
+  padding: var(--padding-xl) var(--padding-xs);
+}
+.container,
+.fiRsAngleSmallUpParent,
+.frameWrapper,
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.fiRsAngleSmallUpParent {
+  justify-content: flex-start;
+  gap: var(--gap-9xs);
+}
+.container,
+.frameWrapper {
+  border-radius: var(--br-xs);
+  justify-content: center;
+  padding: var(--padding-xl) var(--padding-xs);
+}
+.frameWrapper {
+  background-color: var(--sec-color);
+  border-bottom: 4px solid var(--white);
+}
+.container {
+  filter: drop-shadow(0 4px 30px rgba(0, 0, 0, 0.2) inset);
+}
+.frameContainer {
+  justify-content: center;
+  gap: var(--gap-5xs);
+  font-size: var(--tajawal-medium-20-size);
+  color: var(--white);
+}
+.frame,
+.frameContainer,
+.frameParent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.frame {
+  justify-content: center;
+  font-size: var(--tajawal-h2-bold-40-size);
+  color: var(--sec-color);
+  font-family: var(--font-andalus);
+}
+.frameParent {
+  position: absolute;
+  top: 60px;
+  left: calc(50% - 600px);
+  width: 1200px;
+  justify-content: space-between;
+  color: var(--prim-color);
+}
+.rectangleIcon {
+  position: absolute;
+  top: 224px;
+  left: 152px;
+  border-radius: var(--br-xs);
+  width: 660px;
+  height: 368px;
+  object-fit: cover;
+}
+.b4,
+.wrapper1 {
+  align-self: stretch;
+}
+.b4 {
+  position: relative;
+  letter-spacing: 0.04em;
+  line-height: 64px;
+}
+.wrapper1 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+.div3 {
+  width: 387px;
+  position: relative;
+  font-size: var(--tajawal-medium-24-size);
+  line-height: 36px;
+  font-weight: 500;
+  color: var(--white);
+  text-align: justify;
+  display: inline-block;
+}
+.frameParent1,
+.wrapper2 {
+  display: flex;
+  justify-content: center;
+}
+.frameParent1 {
+  position: absolute;
+  top: 268px;
+  left: 933px;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--gap-5xl);
+  text-align: right;
+  font-size: var(--tajawal-h1-bold-48-size);
+}
+.wrapper2 {
+  flex-direction: row;
+  align-items: center;
+  font-family: var(--font-andalus);
+}
+.div5 {
+  position: relative;
+  font-size: var(--tajawal-regular-14-size);
+  font-weight: 500;
+  color: var(--grey);
+  white-space: pre-wrap;
+  text-align: center;
+}
+.fiRsAngleSmallUpIcon3 {
+  width: 18px;
+  position: relative;
+  height: 18px;
+  overflow: hidden;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+.div6 {
+  position: relative;
+  line-height: 32px;
+  font-weight: 500;
+}
+.fiRsAngleSmallUpContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-9xs);
+  text-align: left;
+}
+.frameChild {
+  width: 1px;
+  position: relative;
+  border-right: 1px solid var(--prim-color);
+  box-sizing: border-box;
+  height: 26px;
+}
+.frameParent4 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-xs);
+}
+.frameIcon {
+  width: 56px;
+  position: relative;
+  height: 56px;
+}
+.frameParent2,
+.frameParent3 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.frameParent3 {
+  justify-content: flex-start;
+  gap: var(--gap-11xl);
+  text-align: justify;
+  font-size: var(--tajawal-medium-20-size);
+}
+.frameParent2 {
+  position: absolute;
+  top: 3325px;
+  left: 0;
+  background-color: var(--white);
+  width: 1440px;
+  justify-content: space-between;
+  padding: var(--padding-5xl) var(--padding-101xl);
+  box-sizing: border-box;
+}
+.instanceChild,
+.wrapper3 {
+  position: absolute;
+  left: 0;
+  width: 386px;
+}
+.instanceChild {
+  top: 0;
+  height: 473px;
+  object-fit: cover;
+}
+.wrapper3 {
+  top: 383px;
+  background-color: var(--prim-color);
+  height: 90px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: var(--padding-3xs);
+  box-sizing: border-box;
+}
+.rectangleParent {
+  width: 386px;
+  position: relative;
+  box-shadow: var(--drop-shadow);
+  border-radius: var(--br-xs);
+  height: 473px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.instanceParent {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-2xl);
+}
+.frameParent5 {
+  position: absolute;
+  top: 712px;
+  left: calc(50% - 600px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: var(--gap-13xl);
+  text-align: right;
+  font-size: var(--tajawal-medium-20-size);
+  color: var(--white);
+}
+.div {
+  width: 100%;
+  position: relative;
+  background-color: var(--screen-color);
+  height: 3429px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--tajawal-medium-24-size);
+  color: var(--sec-color);
+  font-family: var(--tajawal-medium-36);
+}

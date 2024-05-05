@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Andalus:wght@400&display=swap");
+body {
+  margin: 0;
+  line-height: normal;
+}
+:root {
+  /* fonts */
+  --tajawal-medium-36: Tajawal;
+  --font-andalus: Andalus;
+
+  /* font sizes */
+  --tajawal-medium-36-size: 36px;
+  --tajawal-h1-bold-48-size: 48px;
+  --tajawal-regular-14-size: 14px;
+  --tajawal-medium-24-size: 24px;
+  --tajawal-h2-bold-40-size: 40px;
+  --tajawal-medium-20-size: 20px;
+  --tajawal-h3-bold-32-size: 32px;
+
+  /* Colors */
+  --screen-color: #fbf5ec;
+  --grey: #979797;
+  --prim-color: #013e46;
+  --sec-color: #d69b41;
+  --white: #fff;
+  --third-color: #ffdba6;
+  --black: #000;
+  --teriery-color: #f7ebd9;
+
+  /* Gaps */
+  --gap-5xl: 24px;
+  --gap-xs: 12px;
+  --gap-13xl: 32px;
+  --gap-9xs: 4px;
+  --gap-5xs: 8px;
+  --gap-xl: 20px;
+  --gap-11xl: 30px;
+  --gap-2xl: 21px;
+
+  /* Paddings */
+  --padding-xs: 12px;
+  --padding-9xs: 4px;
+  --padding-5xs: 8px;
+  --padding-13xl: 32px;
+  --padding-5xl: 24px;
+  --padding-101xl: 120px;
+  --padding-3xs: 10px;
+  --padding-xl: 20px;
+
+  /* Border radiuses */
+  --br-xs: 12px;
+  --br-lg: 18px;
+  --br-5xs: 8px;
+
+  /* Effects */
+  --drop-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  --inner-shadow: 0px 4px 30px rgba(0, 0, 0, 0.2) inset;
+}
