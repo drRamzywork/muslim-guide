@@ -1,6 +1,6 @@
 .child {
   position: absolute;
-  top: 1024px;
+  top: 874px;
   left: 861px;
   filter: blur(120px);
   background: linear-gradient(
@@ -30,7 +30,7 @@
 .inner {
   top: 0;
   background-color: var(--third-color);
-  height: 1024px;
+  height: 874px;
 }
 .child1,
 .rectangleDiv {
@@ -38,8 +38,8 @@
   background-color: var(--prim-color);
 }
 .rectangleDiv {
-  top: 218px;
-  left: 120px;
+  top: -20px;
+  left: 0px;
   border-radius: var(--br-lg) 0 0 var(--br-lg);
   width: 149px;
   height: 157px;
@@ -48,7 +48,7 @@
   top: 0;
   left: 405px;
   width: 100%;
-  height: 1024px;
+  height: 874px;
 }
 .div1 {
   position: relative;
@@ -138,6 +138,13 @@
   font-size: var(--tajawal-medium-20-size);
   color: var(--white);
 }
+
+.hero_container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 24px;
+}
 .frame,
 .frameContainer,
 .frameParent {
@@ -160,13 +167,13 @@
   text-align: left;
 }
 .rectangleIcon {
-  position: absolute;
-  top: 268px;
-  left: 170px;
+  position: relative;
+  /* top: 268px; */
+  /* left: 170px; */
   border-radius: var(--br-xs);
   width: 645px;
   height: 537px;
-  object-fit: contain;
+  object-fit: cover;
 }
 .b4,
 .wrapper1 {
@@ -245,9 +252,9 @@
   text-align: left;
 }
 .frameParent1 {
-  position: absolute;
-  top: 373px;
-  left: 875px;
+  position: relative;
+  // top: 373px;
+  // left: 875px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -332,12 +339,20 @@
   max-height: 100%;
   object-fit: contain;
 }
+.rectangleParent0,
 .rectangleParent2 {
   position: absolute;
-  top: 942px;
-  left: 621px;
+  // top: 942px;
+  // left: 621px;
+  top: 20%;
+  left: -10%;
   width: 32px;
   height: 32px;
+  cursor: pointer;
+}
+.rectangleParent0 {
+  right: -10%;
+  transform: scale(-1);
 }
 .frameChild3,
 .groupChild {
@@ -354,11 +369,14 @@
   top: 0;
   left: 0;
 }
+
 .groupChild,
 .groupDiv,
 .groupItem {
   width: 275px;
   height: 177px;
+  transform: scale(1);
+  transition: all 0.3s ease-in-out;
 }
 .groupItem {
   position: absolute;
@@ -368,9 +386,7 @@
   border: 8px solid var(--sec-color);
   box-sizing: border-box;
 }
-.groupDiv {
-  position: relative;
-}
+
 .inner1,
 .rectangleParent3 {
   display: flex;
@@ -382,9 +398,9 @@
   gap: var(--gap-9xs);
 }
 .inner1 {
-  position: absolute;
-  top: 847px;
-  left: 677px;
+  // position: absolute;
+  // top: 847px;
+  // left: 677px;
   align-items: center;
   justify-content: flex-start;
 }
@@ -441,9 +457,9 @@
   color: var(--white);
 }
 .frameParent2 {
-  position: absolute;
-  top: 1144px;
-  left: 864px;
+  // position: absolute;
+  // top: 1144px;
+  // left: 864px;
   width: 456px;
   flex-direction: column;
   align-items: flex-end;
@@ -498,9 +514,6 @@
   color: var(--white);
 }
 .frameParent3 {
-  position: absolute;
-  top: 1144px;
-  left: 120px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -531,17 +544,15 @@
   gap: var(--gap-xs);
 }
 .frameParent6 {
-  top: 1219px;
-  left: 492px;
   flex-direction: column;
   justify-content: flex-start;
   gap: var(--gap-13xl);
   text-align: justify;
   color: var(--sec-color);
+  margin-top: 54px;
 }
 .b13,
-.child2,
-.frameParent6 {
+.child2 {
   position: absolute;
 }
 .b13 {
@@ -554,10 +565,10 @@
   opacity: 0.05;
 }
 .child2 {
-  top: 164px;
-  left: 1150px;
   width: 170px;
   height: 169px;
+  position: relative;
+  object-fit: contain;
 }
 .b14 {
   width: 393px;
@@ -987,6 +998,9 @@
   padding: 0 var(--padding-9xs);
   box-sizing: border-box;
   gap: var(--gap-5xs);
+  overflow-y: scroll;
+  height: 824px;
+  width: 100%;
 }
 .groupInner {
   position: absolute;
@@ -1024,6 +1038,7 @@
   flex-direction: row;
   padding: 0 var(--padding-9xs) var(--padding-9xs) 0;
   font-size: var(--tajawal-h3-bold-32-size);
+  width: 100%;
 }
 .frameParent14 {
   align-self: stretch;
@@ -1136,15 +1151,13 @@
   display: inline-block;
 }
 .frameParent22 {
-  position: absolute;
-  top: 1805px;
-  left: calc(50% - 517px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   gap: var(--gap-5xl);
   font-size: var(--tajawal-h1-bold-48-size);
+  margin-top: 120px;
 }
 .vectorIcon,
 .vectorIcon1 {

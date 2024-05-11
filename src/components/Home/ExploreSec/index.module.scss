@@ -1,0 +1,20 @@
+section.explore {
+  padding-top: 120px;
+  .sec_container {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    .boxes_container {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      gap: var(--gap-5xl);
+    }
+
+    .boxes_container:first-child {
+      margin-top: 24px;
+    }
+  }
+}

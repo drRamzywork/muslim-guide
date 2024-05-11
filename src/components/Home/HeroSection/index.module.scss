@@ -1,0 +1,13 @@
+section.hero {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+
+  .sec_container {
+    margin-top: 30px;
+    width: 700px;
+    position: relative;
+  }
+}

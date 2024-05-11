@@ -58,10 +58,26 @@ body {
   --inner-shadow: 0px 4px 30px rgba(0, 0, 0, 0.2) inset;
 }
 
+* {
+  user-select: none !important;
+}
 /* bootstrap */
 
 .container {
   @media screen and (min-width: 1700px) {
     max-width: 1820px !important;
   }
+}
+/* swiper */
+
+.swiper-slide {
+  margin: 4px;
+}
+
+.swiper-slide.swiper-slide-active {
+  width: 41% !important;
+}
+
+.swiper-button-disabled {
+  opacity: 0;
 }
