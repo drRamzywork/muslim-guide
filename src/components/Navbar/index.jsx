@@ -1,12 +1,15 @@
 import React from 'react'
-import styles from './index.module.scss'
+import styles from './index.module.scss';
+import { IoMenu } from "react-icons/io5";
+
 const Navbar = () => {
   return (
     <>
-      <div className="container pt-4">
+      <div className="container pt-4 ">
         {/* Navbar  */}
         <div className={styles.frameParent}>
           <div className={styles.frameGroup}>
+
             <div className={styles.parent}>
               <div className={styles.div1}>العربية</div>
               <img
@@ -32,7 +35,15 @@ const Navbar = () => {
                 src="/firssearch.svg"
               />
             </div>
+
+
+
           </div>
+
+          <div className={styles.burger_icon}>
+            <IoMenu />
+          </div>
+
           <div className={styles.frameContainer}>
             <div className={styles.wrapper}>
               <b className={styles.b}>من نحن</b>
@@ -61,6 +72,7 @@ const Navbar = () => {
               <b className={styles.b}>الرئيسية</b>
             </div>
           </div>
+
           <div className={styles.frame}>
             <div className={styles.b}>{` دليل المسلم الميسر `}</div>
           </div>
