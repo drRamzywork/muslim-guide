@@ -1,0 +1,26 @@
+section.Introductions {
+  width: 100%;
+  position: relative;
+  margin-top: 60px;
+  .sec_containers {
+  }
+
+  .swiper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--gap-xl);
+    max-width: 80%;
+    @media screen and (min-width: 1700px) {
+      max-width: 61%;
+    }
+  }
+
+  .sec_container2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1 1;
+  }
+}
