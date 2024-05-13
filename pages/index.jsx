@@ -11,6 +11,8 @@ import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import Link from "next/link";
+import { IoArrowBack } from "react-icons/io5";
 
 const Frame = ({ dataPreliminaries, dataAllSections }) => {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -118,8 +120,14 @@ const Frame = ({ dataPreliminaries, dataAllSections }) => {
                       </div>
                     </div>
 
-                  </div>
+                    <Link href='/' className={styles.btn_container}>
+                      <p>استكشف المزيد</p>
+                      <div className={styles.icon_container}>
+                        <IoArrowBack />
+                      </div>
+                    </Link>
 
+                  </div>
                 </div>
               </SwiperSlide>
             ))}
