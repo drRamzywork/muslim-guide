@@ -49,6 +49,8 @@
     height: 40px;
     border-radius: 6.4px 0px 0px 6.4px;
     left: 16px;
+    top: 20px;
+    left: 5px;
   }
 }
 
@@ -156,6 +158,21 @@
   align-items: flex-start;
   justify-content: space-between;
   margin-top: 24px;
+  @media screen and (max-width: 992px) {
+    display: none;
+  }
+}
+
+.hero_container_mobile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24px;
+  flex-direction: row-reverse;
+  gap: 16px;
+  @media screen and (min-width: 992px) {
+    display: none;
+  }
 }
 .frame,
 .frameContainer,
@@ -200,7 +217,7 @@
   letter-spacing: 0.04em;
   line-height: 64px;
   @media screen and (max-width: 992px) {
-    line-height: 34px;
+    line-height: unset;
   }
 }
 .wrapper1 {
@@ -224,7 +241,7 @@
   display: inline-block;
 
   @media screen and (max-width: 992px) {
-    font-size: var(--tajawal-small-8-size);
+    font-size: 14px;
     line-height: unset;
     text-align: right;
     width: 100%;

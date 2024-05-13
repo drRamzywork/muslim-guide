@@ -120,3 +120,25 @@ body {
     opacity: 0;
   }
 }
+
+section#sss {
+  @media screen and (min-width: 992px) {
+    display: none;
+  }
+
+  .swiper-pagination-bullet {
+    background-color: #979797;
+  }
+  .swiper-pagination-bullet-active {
+    background-color: var(--sec-color);
+    width: 12px;
+    height: 4px;
+    border-radius: 4px;
+  }
+  .swiper-horizontal {
+    min-height: 228px;
+  }
+  .swiper-pagination {
+    // bottom: 20px;\
+  }
+}
