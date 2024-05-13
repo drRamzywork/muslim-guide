@@ -53,25 +53,19 @@ const HeroSection = ({ dataPreliminaries, activeSlide
           <Swiper
             spaceBetween={0}
             slidesPerView={4}
-
-
             navigation={{
               nextEl: nextButtonRef.current,
               prevEl: prevButtonRef.current
             }}
             onSwiper={(swiper) => swiperRef.current = swiper}
-            // onSlideChange={(swiper) => setActiveSlide(swiper.activeIndex)}
-
             pagination={{ clickable: true }}
             onSlideChange={handleSlideChange}
-            dir="rtl" // Set direction to RTL
+            dir="rtl"
             modules={[Navigation, Pagination]}
           >
             <div className={styles.inner1}>
               <div className={styles.rectangleParent3}>
-
                 {dataPreliminaries.posts.map((imageUrl, index) => (
-
                   <SwiperSlide key={index} >
                     {activeSlide === index ?
                       <div className={styles.groupDiv}>

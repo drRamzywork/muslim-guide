@@ -508,10 +508,16 @@
   width: 457px;
   position: relative;
   display: inline-block;
+  @media screen and (max-width: 992px) {
+    width: 100%;
+  }
 }
 .b7 {
   letter-spacing: 0.04em;
   line-height: 64px;
+  @media screen and (max-width: 992px) {
+    line-height: unset;
+  }
 }
 .div4 {
   font-size: var(--tajawal-medium-24-size);
@@ -519,6 +525,11 @@
   font-weight: 500;
   color: var(--grey);
   text-align: justify;
+  @media screen and (max-width: 992px) {
+    font-size: var(--tajawal-regular-14-size);
+    line-height: unset;
+    direction: rtl;
+  }
 }
 .group {
   gap: var(--gap-5xl);
@@ -551,6 +562,12 @@
   text-align: left;
   font-size: var(--tajawal-h3-bold-32-size);
   color: var(--white);
+
+  @media screen and (max-width: 992px) {
+    padding: var(--padding-xs);
+    font-size: var(--tajawal-regular-14-size);
+    height: 44px;
+  }
 }
 .frameParent2 {
   // position: absolute;
@@ -561,6 +578,10 @@
   align-items: flex-end;
   gap: var(--gap-13xl);
   font-size: var(--tajawal-h1-bold-48-size);
+  @media screen and (max-width: 992px) {
+    width: 100%;
+    font-size: var(--tajawal-medium-20-size);
+  }
 }
 .frameIcon {
   width: 32px;

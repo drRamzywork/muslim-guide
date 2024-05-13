@@ -1,10 +1,17 @@
 section.explore {
   padding-top: 120px;
+  @media screen and (max-width: 992px) {
+    padding-top: 52px;
+  }
+
   .sec_container {
     width: 100%;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
+    @media screen and (max-width: 992px) {
+      flex-direction: column-reverse;
+    }
 
     .boxes_container {
       width: 100%;
