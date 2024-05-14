@@ -144,3 +144,10 @@ section#sss {
     // bottom: 20px;\
   }
 }
+
+#sections {
+  .swiper-slide {
+    padding: 0; // Make sure there is no padding affecting the size
+    margin: 0; // Ensure margins are zero or adjusted as needed
+  }
+}

@@ -18,9 +18,6 @@ const HeroSection = ({ dataPreliminaries, activeSlide
     setActiveSlide(swiper.activeIndex);
   };
 
-
-
-
   useEffect(() => {
     const swiperInstance = swiperRef.current.swiper;
     if (swiperInstance) {
@@ -43,7 +40,6 @@ const HeroSection = ({ dataPreliminaries, activeSlide
     }
   }, []);
 
-
   return (
     <section id='hero' className={componentStyles.hero} dir='rtl'>
 
@@ -62,6 +58,7 @@ const HeroSection = ({ dataPreliminaries, activeSlide
             onSlideChange={handleSlideChange}
             dir="rtl"
             modules={[Navigation, Pagination]}
+
           >
             <div className={styles.inner1}>
               <div className={styles.rectangleParent3}>

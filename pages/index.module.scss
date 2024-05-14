@@ -124,7 +124,11 @@
 }
 .b {
   position: relative;
-  text-align: center;
+  text-align: right;
+  width: 100%;
+  @media screen and (max-width: 992px) {
+    font-size: 20px;
+  }
 }
 .wrapper {
   border-radius: var(--br-xs);
@@ -533,6 +537,9 @@
 }
 .group {
   gap: var(--gap-5xl);
+  @media screen and (max-width: 992px) {
+    gap: var(--gap-xs);
+  }
 }
 .frameWrapper1,
 .group {
@@ -575,12 +582,13 @@
   // left: 864px;
   width: 456px;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   gap: var(--gap-13xl);
   font-size: var(--tajawal-h1-bold-48-size);
   @media screen and (max-width: 992px) {
     width: 100%;
     font-size: var(--tajawal-medium-20-size);
+    gap: var(--gap-xs);
   }
 }
 .frameIcon {
@@ -595,9 +603,15 @@
   align-items: flex-end;
   justify-content: flex-start;
   gap: var(--gap-xs);
+  @media screen and (max-width: 992px) {
+    flex-direction: row-reverse;
+  }
 }
 .p {
   margin: 0;
+  @media screen and (max-width: 992px) {
+    line-height: 24px;
+  }
 }
 .div5 {
   align-self: stretch;
@@ -609,6 +623,10 @@
   display: inline-block;
   height: 123px;
   flex-shrink: 0;
+  @media screen and (max-width: 992px) {
+    height: auto;
+    font-size: var(--tajawal-h1-bold-16-size);
+  }
 }
 .frameParent4 {
   width: 340px;
@@ -616,11 +634,14 @@
   background-color: var(--prim-color);
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: flex-start;
   padding: var(--padding-5xl) var(--padding-xs);
   box-sizing: border-box;
   gap: var(--gap-xs);
+  @media screen and (max-width: 992px) {
+    width: 100%;
+  }
 }
 .div6 {
   align-self: stretch;
@@ -1073,7 +1094,7 @@
   border-radius: var(--br-xs);
   background-color: var(--screen-color);
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   align-items: flex-start;
   justify-content: flex-end;
   padding: var(--padding-5xs);
@@ -1092,7 +1113,7 @@
 .parent9 {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: flex-start;
   gap: var(--gap-5xs);
 }
@@ -1166,6 +1187,9 @@
   border-radius: var(--br-xs);
   border: 2px solid var(--sec-color);
   flex-direction: column;
+  @media screen and (max-width: 992px) {
+    display: none;
+  }
 }
 .frameChild20 {
   width: 550px;
@@ -1174,6 +1198,10 @@
   height: 468px;
   object-fit: cover;
   opacity: 0.94;
+  @media screen and (max-width: 992px) {
+    width: 100%;
+    height: 280px;
+  }
 }
 .div23 {
   width: 471px;
@@ -1187,6 +1215,9 @@
 .div23 {
   position: relative;
   font-size: var(--tajawal-medium-24-size);
+  @media screen and (max-width: 992px) {
+    font-size: var(--tajawal-regular-14-size);
+  }
 }
 .frameParent13,
 .frameParent21,
@@ -1194,14 +1225,26 @@
   width: 550px;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: flex-start;
   gap: var(--gap-5xl);
+  @media screen and (max-width: 992px) {
+    width: 100%;
+    gap: var(--gap-xs);
+  }
 }
 .frameParent13,
 .rectangleParent6 {
   align-items: flex-start;
   gap: var(--gap-13xl);
+  @media screen and (max-width: 992px) {
+    gap: var(--gap-5xl);
+  }
+}
+.rectangleParent6 {
+  @media screen and (max-width: 992px) {
+    width: 100%;
+  }
 }
 .frameParent13 {
   // position: absolute;
@@ -1212,11 +1255,16 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  flex-direction: row;
+  flex-direction: row-reverse;
   padding: var(--padding-xs) 0 0 var(--padding-9xs);
   box-sizing: border-box;
   gap: var(--gap-5xl);
   font-size: var(--tajawal-h2-bold-40-size);
+  @media screen and (max-width: 992px) {
+    margin-top: 24px;
+    padding-top: 0;
+    font-size: var(--tajawal-h1-bold-16-size);
+  }
 }
 // .div24,
 .groupChild2 {
@@ -1250,13 +1298,22 @@
   position: relative;
   letter-spacing: 0.04em;
   line-height: 64px;
+  @media screen and (max-width: 992px) {
+    line-height: unset;
+    font-size: 32px;
+  }
 }
 .frameChild21 {
   width: 311px;
   position: relative;
   height: 17px;
   object-fit: cover;
+  @media screen and (max-width: 992px) {
+    width: 150px;
+    height: 8px;
+  }
 }
+
 .parent14 {
   display: flex;
   flex-direction: column;
@@ -1265,7 +1322,7 @@
   gap: var(--gap-xs);
 }
 .div26 {
-  width: 1029px;
+  width: 100%;
   position: relative;
   font-size: var(--tajawal-medium-36-size);
   line-height: 48px;
@@ -1273,6 +1330,11 @@
   color: var(--grey);
   text-align: center;
   display: inline-block;
+
+  @media screen and (max-width: 992px) {
+    font-size: var(--tajawal-medium-14-size);
+    line-height: 24px;
+  }
 }
 .frameParent22 {
   display: flex;
@@ -1282,18 +1344,37 @@
   gap: var(--gap-5xl);
   font-size: var(--tajawal-h1-bold-48-size);
   margin-top: 120px;
+
+  @media screen and (max-width: 992px) {
+    font-size: var(--tajawal-medium-20-size);
+    margin-top: 64px;
+  }
 }
 .vectorIcon,
 .vectorIcon1 {
   position: absolute;
-  top: 1657px;
-  left: 1307px;
+  top: 0;
   width: 397px;
   height: 402.1px;
   opacity: 0.8;
+  @media screen and (max-width: 992px) {
+    width: 112.67px;
+    height: 114.12px;
+  }
+}
+.vectorIcon {
+  right: -165px;
+  @media screen and (max-width: 992px) {
+    width: 112.67px;
+    height: 114.12px;
+    right: -60px;
+  }
 }
 .vectorIcon1 {
-  left: -264px;
+  left: -164px;
+  @media screen and (max-width: 992px) {
+    left: -60px;
+  }
 }
 .div {
   width: 100%;
@@ -1305,4 +1386,8 @@
   font-size: var(--tajawal-medium-24-size);
   color: var(--prim-color);
   font-family: var(--tajawal-medium-36);
+
+  @media screen and (max-width: 992px) {
+    font-size: var(--tajawal-medium-20-size);
+  }
 }

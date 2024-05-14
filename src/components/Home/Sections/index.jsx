@@ -1,11 +1,28 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import styles from '../../../../pages/index.module.scss';
-import comStyles from './index.module.scss';
+import compStyles from './index.module.scss';
 import Link from 'next/link';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, FreeMode } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 
 const Sections = ({ dataAllSections }) => {
+  const swiperRef = useRef(null);
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  const handleSlideChange = (swiper) => {
+    setActiveSlide(swiper.activeIndex);
+  };
+  const handleSlideClick = (index) => {
+    swiperRef?.current?.slideTo(index);
+  };
+  console.log(dataAllSections, "dataAllSections")
+
   return (
-    <section id='sections' className={comStyles.sections} dir='ltr'>
+    <section id='sections' className={compStyles.sections} dir='rtl'>
 
       <div className="container">
 
@@ -23,6 +40,42 @@ const Sections = ({ dataAllSections }) => {
             بطريقة سهلة ومبسطة وسريعة تصل بسهولة لجميع الاشخاص
           </div>
         </div>
+      </div>
+
+
+      <div className={compStyles.swiper_mobile_sec}>
+        <Swiper
+          // spaceBetween={8}
+          slidesPerView={2.1}
+          pagination={{ clickable: true }}
+          dir="rtl"
+          modules={[Navigation, FreeMode]}
+          initialSlide={1}
+          onSwiper={(swiper) => swiperRef.current = swiper}
+          onSlideChange={handleSlideChange}
+
+          centeredSlides={true}
+        >
+          {dataAllSections.map((box, index) => (
+            <SwiperSlide key={index} >
+              <div onClick={() => handleSlideClick(index)} className={`${compStyles.box_container} ${activeSlide === index ? compStyles.active : ''}`}>
+                <div className={compStyles.box}>
+                  <div className={compStyles.img_container}>
+                    <img src="/rectangle-22525@2x.png" alt="" />
+                  </div>
+                  <div className={compStyles.title}>
+                    <p>{box.name}</p>
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+
+      </div>
+
+      <div className="container">
 
 
         <div className={styles.frameParent13}>
@@ -59,20 +112,24 @@ const Sections = ({ dataAllSections }) => {
             />
             <div className={styles.frameParent21} >
               <div className={styles.group}>
-                <b className={styles.b}>ايمان المسلم</b>
-                <div className={styles.div23}>
-                  اتفقت جميع رسالات الأنبياء لأقوامهم على عبادة الله وحده لا شريك
-                  له والكفر بما يعبد من دون الله وهذا هو حقيقة معنى لا إله إلا
-                  الله محمد رسول الله، وهي الكلمة التي يدخل بها المرء في دين الله.
+                <b className={styles.b}>{dataAllSections[activeSlide].name}</b>
+                <div className={styles.div4}>
+                  {dataAllSections[activeSlide].description}
                 </div>
               </div>
               <b className={styles.b24}>اقرأ المزيد</b>
             </div>
           </div>
+
+
+
+
+          {/* <Link href='/' className={styles.link}>استكشف المزيد</Link> */}
         </div>
 
-        <Link href='/' className={styles.link}>استكشف المزيد</Link>
       </div>
+      <img className={styles.vectorIcon} alt="" src="/vector.svg" />
+      <img className={styles.vectorIcon1} alt="" src="/vector.svg" />
 
     </section>
 

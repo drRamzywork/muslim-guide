@@ -154,8 +154,6 @@ const Frame = ({ dataPreliminaries, dataAllSections }) => {
 
       <Footer />
 
-      <img className={styles.vectorIcon} alt="" src="/vector.svg" />
-      <img className={styles.vectorIcon1} alt="" src="/vector.svg" />
     </div>
   );
 };
