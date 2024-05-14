@@ -111,6 +111,10 @@ body {
     width: 32px;
     height: 32px;
     cursor: pointer;
+
+    @media screen and (max-width: 992px) {
+      display: none;
+    }
   }
   .custom_arrow1 {
     right: 0%;

@@ -48,7 +48,7 @@ const Introductions = ({ dataPreliminaries }) => {
           <b className={styles.b13}>دليل المسلم الميسر</b>
           <div className={styles.wrapper3}>
             <b className={styles.b14}>
-              <span>{`هيا بنا نستكشف `}</span>
+              <div>{`هيا بنا نستكشف `}</div>
               <span className={styles.span}>المقدمات</span>
             </b>
           </div>
@@ -63,68 +63,131 @@ const Introductions = ({ dataPreliminaries }) => {
 
           <div className={styles.child3} />
 
+          <div className={compStyles.desktop_swiper}>
+            <div className={styles.arrowParent}>
+              <Swiper
+                spaceBetween={15}
+                slidesPerView={3}
+                centeredSlides={true}
+                initialSlide={2}
+                navigation={{
+                  nextEl: nextButtonRef.current,
+                  prevEl: prevButtonRef.current
+                }}
+                onSwiper={(swiper) => swiperRef.current = swiper}
+                // onSlideChange={(swiper) => setActiveSlide(swiper.activeIndex)}
 
-          <div className={styles.arrowParent}>
-            <Swiper
-              spaceBetween={15}
-              slidesPerView={3}
-              centeredSlides={true}
-              initialSlide={2}
-              navigation={{
-                nextEl: nextButtonRef.current,
-                prevEl: prevButtonRef.current
-              }}
-              onSwiper={(swiper) => swiperRef.current = swiper}
-              // onSlideChange={(swiper) => setActiveSlide(swiper.activeIndex)}
+                pagination={{ clickable: true }}
+                className={compStyles.swiper}
+                onSlideChange={handleSlideChange}
+                modules={[Navigation, Pagination]}
+              >
+                <div className={styles.instanceParent}>
 
-              pagination={{ clickable: true }}
-              className={compStyles.swiper}
-              onSlideChange={handleSlideChange}
-              modules={[Navigation, Pagination]}
-            >
-              <div className={styles.instanceParent}>
+                  {dataPreliminaries.posts.map((imageUrl, index) => (
 
-                {dataPreliminaries.posts.map((imageUrl, index) => (
-
-                  <SwiperSlide key={index} >
-                    {activeSlide === index ?
-                      <div className={styles.rectangleParent4}>
+                    <SwiperSlide key={index} >
+                      {activeSlide === index ?
+                        <div className={styles.rectangleParent4}>
+                          <img
+                            className={styles.instanceChild}
+                            alt=""
+                            src={imageUrl.image}
+                          />
+                          <div className={styles.wrapper4}>
+                            <b className={styles.b}>{imageUrl.title}</b>
+                          </div>
+                        </div>
+                        :
                         <img
-                          className={styles.instanceChild}
+                          className={styles.frameChild8}
                           alt=""
                           src={imageUrl.image}
                         />
-                        <div className={styles.wrapper4}>
-                          <b className={styles.b}>{imageUrl.title}</b>
-                        </div>
-                      </div>
-                      :
+                      }
 
-                      <img
-                        className={styles.frameChild8}
-                        alt=""
-                        src={imageUrl.image}
-                      />
-                    }
+                    </SwiperSlide>
+                  ))}
+                </div>
 
-                  </SwiperSlide>
-                ))}
+              </Swiper>
+
+              <div ref={prevButtonRef} className={'custom_arrow'}>
+                <img className={styles.arrowIcon1} alt="" src="/arrow@2x.png" />
               </div>
-
-            </Swiper>
-
-
-            <div ref={prevButtonRef} className={'custom_arrow'}>
-              <img className={styles.arrowIcon1} alt="" src="/arrow@2x.png" />
-            </div>
-            <div ref={nextButtonRef} className={'custom_arrow1'}>
-              <img className={styles.arrowIcon1} alt="" src="/arrow@2x.png" />
+              <div ref={nextButtonRef} className={'custom_arrow1'}>
+                <img className={styles.arrowIcon1} alt="" src="/arrow@2x.png" />
+              </div>
             </div>
           </div>
 
 
         </div>
 
+      </div>
+
+      <div className={compStyles.mobile_swiper}>
+        <div className={styles.arrowParent}>
+          <Swiper
+            spaceBetween={15}
+            slidesPerView={3}
+            centeredSlides={true}
+            initialSlide={2}
+            navigation={{
+              nextEl: nextButtonRef.current,
+              prevEl: prevButtonRef.current
+            }}
+            onSwiper={(swiper) => swiperRef.current = swiper}
+            breakpoints={
+              {
+                450: {
+                  slidesPerView: 2,
+                }
+              }}
+
+            pagination={{ clickable: true }}
+            className={compStyles.swiper}
+            onSlideChange={handleSlideChange}
+            modules={[Navigation, Pagination]}
+          >
+            <div className={styles.instanceParent}>
+
+              {dataPreliminaries.posts.map((imageUrl, index) => (
+
+                <SwiperSlide key={index} >
+                  {activeSlide === index ?
+                    <div className={styles.rectangleParent4}>
+                      <img
+                        className={styles.instanceChild}
+                        alt=""
+                        src={imageUrl.image}
+                      />
+                      <div className={styles.wrapper4}>
+                        <b className={styles.b}>{imageUrl.title}</b>
+                      </div>
+                    </div>
+                    :
+
+                    <img
+                      className={styles.frameChild8}
+                      alt=""
+                      src={imageUrl.image}
+                    />
+                  }
+
+                </SwiperSlide>
+              ))}
+            </div>
+
+          </Swiper>
+
+          <div ref={prevButtonRef} className={'custom_arrow'}>
+            <img className={styles.arrowIcon1} alt="" src="/arrow@2x.png" />
+          </div>
+          <div ref={nextButtonRef} className={'custom_arrow1'}>
+            <img className={styles.arrowIcon1} alt="" src="/arrow@2x.png" />
+          </div>
+        </div>
       </div>
 
       <div className={styles.frame1}>
@@ -170,7 +233,7 @@ const Introductions = ({ dataPreliminaries }) => {
 
       </div>
 
-    </section>
+    </section >
   )
 }
 

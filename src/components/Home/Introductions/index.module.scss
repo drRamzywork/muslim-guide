@@ -15,6 +15,10 @@ section.Introductions {
     @media screen and (min-width: 1700px) {
       max-width: 61%;
     }
+
+    @media screen and (max-width: 992px) {
+      max-width: 100%;
+    }
   }
 
   .sec_container2 {
@@ -22,5 +26,17 @@ section.Introductions {
     align-items: center;
     justify-content: space-between;
     flex: 1 1;
+  }
+
+  .desktop_swiper {
+    @media screen and (max-width: 992px) {
+      display: none;
+    }
+  }
+
+  .mobile_swiper {
+    @media screen and (min-width: 992px) {
+      display: none;
+    }
   }
 }
