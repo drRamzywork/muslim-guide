@@ -26,6 +26,11 @@ section.Introductions {
     align-items: center;
     justify-content: space-between;
     flex: 1 1;
+    @media screen and (max-width: 992px) {
+      align-items: center;
+      padding-top: 26px;
+      padding-bottom: 26px;
+    }
   }
 
   .desktop_swiper {
@@ -36,6 +41,23 @@ section.Introductions {
 
   .mobile_swiper {
     @media screen and (min-width: 992px) {
+      display: none;
+    }
+  }
+
+  .book_container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+
+    @media screen and (min-width: 992px) {
+      display: none;
+    }
+  }
+
+  .book_desktop {
+    @media screen and (max-width: 992px) {
       display: none;
     }
   }

@@ -207,21 +207,34 @@ const Introductions = ({ dataPreliminaries }) => {
                   تم إنتاج هذا الكتاب بأكثر من ١٥ لغة لضمان وصول الرسالة الإسلامية
                   إلى أكبر عدد ممكن من الأشخاص في مختلف أنحاء العالم
                 </div>
-                <div className={styles.wrapper5}>
-                  <b className={styles.b8}>حمل الكتاب الآن</b>
+                <div className={compStyles.book_container}>
+                  <div className={styles.wrapper5}>
+                    <b className={styles.b8}>حمل الكتاب الآن</b>
+
+                  </div>
+                  <div className={styles.ffef10c793a72c5f85a27fa3d17f75Parent}>
+                    <div className={styles.ffef10c793a72c5f85a27fa3d17f75} />
+                    <img
+                      className={styles.ffef10c793a72c5f85a27fa3d17f75Icon}
+                      alt=""
+                      src="/2ffef10c793a72c5f85a27fa3d17f758-1@2x.png"
+                    />
+                  </div>
                 </div>
+
               </div>
 
             </div>
+            <div className={compStyles.book_desktop}>
 
-
-            <div className={styles.ffef10c793a72c5f85a27fa3d17f75Parent}>
-              <div className={styles.ffef10c793a72c5f85a27fa3d17f75} />
-              <img
-                className={styles.ffef10c793a72c5f85a27fa3d17f75Icon}
-                alt=""
-                src="/2ffef10c793a72c5f85a27fa3d17f758-1@2x.png"
-              />
+              <div className={styles.ffef10c793a72c5f85a27fa3d17f75Parent}>
+                <div className={styles.ffef10c793a72c5f85a27fa3d17f75} />
+                <img
+                  className={styles.ffef10c793a72c5f85a27fa3d17f75Icon}
+                  alt=""
+                  src="/2ffef10c793a72c5f85a27fa3d17f758-1@2x.png"
+                />
+              </div>
             </div>
 
           </div>
