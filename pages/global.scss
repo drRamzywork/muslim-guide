@@ -65,6 +65,11 @@ body {
 * {
   user-select: none !important;
 }
+
+html,
+body {
+  scroll-behavior: smooth !important;
+}
 /* bootstrap */
 
 .container {

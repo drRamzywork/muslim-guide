@@ -1067,6 +1067,9 @@
   align-items: center;
   justify-content: center;
   gap: var(--gap-xs);
+  @media screen and (max-width: 992px) {
+    display: none;
+  }
 }
 .frameChild15 {
   width: 56px;
@@ -1086,10 +1089,9 @@
   font-size: var(--tajawal-medium-20-size);
 }
 .frameParent10 {
-  background-color: var(--white);
   width: 100%;
   justify-content: space-between;
-  padding: var(--padding-5xl) var(--padding-101xl);
+  padding: var(--padding-5xl) 0;
   box-sizing: border-box;
   text-align: left;
   color: var(--sec-color);
