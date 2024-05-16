@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 
 const Navbar = () => {
   const router = useRouter();
-  console.log(router.locale, "router.locale")
+  console.log(router.pathname, "router.locale")
 
   return (
     <>
@@ -52,7 +52,7 @@ const Navbar = () => {
             <div className={styles.wrapper}>
               <b className={styles.b}>من نحن</b>
             </div>
-            <div className={styles.wrapper}>
+            <div className={router.pathname === '/sections' ? styles.container : styles.wrapper}>
               <div className={styles.fiRsAngleSmallUpParent}>
                 <img
                   className={styles.fiRsAngleSmallUpIcon}
@@ -72,7 +72,7 @@ const Navbar = () => {
                 <b className={styles.b}>المقدمات</b>
               </div>
             </div>
-            <div className={styles.container}>
+            <div className={router.pathname === '' ? styles.container : styles.wrapper}>
               <b className={styles.b}>الرئيسية</b>
             </div>
           </div>
