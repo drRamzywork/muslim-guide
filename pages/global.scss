@@ -156,7 +156,19 @@ section#sss {
 
 #sections {
   .swiper-slide {
-    padding: 0; // Make sure there is no padding affecting the size
-    margin: 0; // Ensure margins are zero or adjusted as needed
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.mobile {
+  @media screen and (min-width: 992px) {
+    display: none;
+  }
+}
+
+.desktop {
+  @media screen and (max-width: 992px) {
+    display: none;
   }
 }

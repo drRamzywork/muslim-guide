@@ -221,10 +221,17 @@ const Introductions = ({ dataPreliminaries }) => {
                     />
                   </div>
                 </div>
+                <div className={compStyles.book_container_desktop}>
+                  <div className={styles.wrapper5}>
+                    <b className={styles.b8}>حمل الكتاب الآن</b>
 
+                  </div>
+
+                </div>
               </div>
 
             </div>
+
             <div className={compStyles.book_desktop}>
 
               <div className={styles.ffef10c793a72c5f85a27fa3d17f75Parent}>

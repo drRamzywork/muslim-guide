@@ -7,11 +7,14 @@ import { Navigation, FreeMode } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { useRouter } from 'next/router';
 
 
 const Sections = ({ dataAllSections }) => {
+  const router = useRouter();
   const swiperRef = useRef(null);
   const [activeSlide, setActiveSlide] = useState(0);
+  const [activeSection, setActiveSection] = useState(0);
 
   const handleSlideChange = (swiper) => {
     setActiveSlide(swiper.activeIndex);
@@ -19,10 +22,15 @@ const Sections = ({ dataAllSections }) => {
   const handleSlideClick = (index) => {
     swiperRef?.current?.slideTo(index);
   };
-  console.log(dataAllSections, "dataAllSections")
+  const handleSectionClick = (index) => {
+    setActiveSection(index);
+    console.log(index)
+  };
+  console.log(dataAllSections[activeSection], "activeSection")
+
 
   return (
-    <section id='sections' className={compStyles.sections} dir='rtl'>
+    <section id='sections' className={compStyles.sections} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
 
       <div className="container">
 
@@ -84,10 +92,10 @@ const Sections = ({ dataAllSections }) => {
               <b className={styles.b}>باقي الأقسام</b>
               <div className={styles.div18}>{dataAllSections.length} قسم</div>
             </div>
-            <div className={styles.frameParent15}>
+            <div className={styles.frameParent15} >
               <div className={styles.frameParent16}>
                 {dataAllSections.map((sec, index) =>
-                  <div className={styles.frameParent18} key={index} >
+                  <div dir={router.locale === 'ar' ? 'rtl' : 'ltr'} className={`${styles.frameParent18} ${index === activeSection ? styles.active : ''}`} key={index} onClick={() => handleSectionClick(index)}>
                     <div className={styles.parent9}>
                       <b className={styles.b8}>{sec.name}</b>
                       <div className={styles.div22} dir='rtl'>
@@ -97,37 +105,62 @@ const Sections = ({ dataAllSections }) => {
                     <img
                       className={styles.frameChild16}
                       alt=""
-                      src={sec.icon}
+                      src={"/rectangle-22525@2x.png"}
                     />
                   </div>
                 )}
               </div>
             </div>
           </div>
-          <div className={styles.rectangleParent6}>
-            <img
-              className={styles.frameChild20}
-              alt=""
-              src="/rectangle-22525@2x.png"
-            />
-            <div className={styles.frameParent21} >
-              <div className={styles.group}>
-                <b className={styles.b}>{dataAllSections[activeSlide].name}</b>
-                <div className={styles.div4}>
-                  {dataAllSections[activeSlide].description}
+          <div className={'mobile'}>
+            <div className={styles.rectangleParent6}>
+              <img
+                className={styles.frameChild20}
+                alt=""
+                src="/rectangle-22525@2x.png"
+              />
+
+              <div className={styles.frameParent21} >
+                <div className={styles.group}>
+                  <b className={styles.b}>{dataAllSections[activeSlide].name}</b>
+                  <div className={styles.div4}>
+                    {dataAllSections[activeSlide].description}
+                  </div>
                 </div>
+                <b className={styles.b24}>اقرأ المزيد</b>
               </div>
-              <b className={styles.b24}>اقرأ المزيد</b>
+
+
             </div>
           </div>
 
+          <div className={'desktop'}>
+            <div className={styles.rectangleParent6}>
+              <img
+                className={styles.frameChild20}
+                alt=""
+                src="/rectangle-22525@2x.png"
+              />
+
+              <div className={styles.frameParent21} >
+                <div className={styles.group}>
+                  <b className={styles.b}>{dataAllSections[activeSection]?.name}</b>
+                  <div className={styles.div4}>
+                    {dataAllSections[activeSection]?.description}
+                  </div>
+                </div>
+                <b className={styles.b24}>اقرأ المزيد</b>
+              </div>
 
 
+            </div>
+          </div>
 
           {/* <Link href='/' className={styles.link}>استكشف المزيد</Link> */}
         </div>
 
       </div>
+
       <img className={styles.vectorIcon} alt="" src="/vector.svg" />
       <img className={styles.vectorIcon1} alt="" src="/vector.svg" />
 

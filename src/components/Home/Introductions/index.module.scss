@@ -61,4 +61,11 @@ section.Introductions {
       display: none;
     }
   }
+
+  .book_container_desktop {
+    cursor: pointer;
+    @media screen and (max-width: 992px) {
+      display: none;
+    }
+  }
 }

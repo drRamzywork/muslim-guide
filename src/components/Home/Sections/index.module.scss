@@ -100,3 +100,13 @@ section.sections {
     }
   }
 }
+section.sections[dir="rtl"] {
+  * {
+    text-align: right !important;
+  }
+}
+section.sections[dir="ltr"] {
+  * {
+    text-align: left !important;
+  }
+}
