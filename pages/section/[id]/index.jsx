@@ -1,7 +1,8 @@
-import Navbar from "../src/components/Navbar";
-import styles from "./frame1.module.scss";
+import Footer from "../../../src/components/Footer";
+import Navbar from "../../../src/components/Navbar";
+import styles from "./index.module.scss";
 
-const Frame1 = () => {
+const Section = () => {
   return (
     <div className={styles.div}>
       <div className={styles.child} />
@@ -187,8 +188,9 @@ const Frame1 = () => {
           </div>
         </div>
       </div>
+      {/* <Footer /> */}
     </div>
   );
 };
 
-export default Frame1;
+export default Section;
