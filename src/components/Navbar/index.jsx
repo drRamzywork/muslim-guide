@@ -1,13 +1,17 @@
 import React from 'react'
 import styles from './index.module.scss';
 import { IoMenu } from "react-icons/io5";
+import { useRouter } from 'next/router';
 
 const Navbar = () => {
+  const router = useRouter();
+  console.log(router.locale, "router.locale")
+
   return (
     <>
-      <div className="container pt-4 ">
+      <div className="container pt-4" >
         {/* Navbar  */}
-        <div className={styles.frameParent}>
+        <div className={styles.frameParent} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
           <div className={styles.frameGroup}>
 
             <div className={styles.parent}>

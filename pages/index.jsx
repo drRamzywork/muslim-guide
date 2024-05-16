@@ -13,8 +13,9 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import Link from "next/link";
 import { IoArrowBack } from "react-icons/io5";
-
+import { useRouter } from 'next/router';
 const Frame = ({ dataPreliminaries, dataAllSections }) => {
+  const router = useRouter();
   const [activeSlide, setActiveSlide] = useState(0);
   const imageUrls = [
     '/rectangle-157@2x.png',
@@ -37,17 +38,17 @@ const Frame = ({ dataPreliminaries, dataAllSections }) => {
     <div className={styles.div}>
       <div className={styles.child} />
       <div className={styles.item} />
-      <div className={styles.inner} />
-      <div className={styles.child1} />
+      <div className={styles.inner} dir={router.locale === 'ar' ? 'rtl' : 'ltr'} />
+      <div className={styles.child1} dir={router.locale === 'ar' ? 'rtl' : 'ltr'} />
 
       <Navbar />
 
 
 
       <div className="container position-relative" >
-        <div className={styles.rectangleDiv} />
+        <div className={styles.rectangleDiv} dir={router.locale === 'ar' ? 'rtl' : 'ltr'} />
 
-        <div className={styles.hero_container}>
+        <div className={styles.hero_container} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
           <img
             className={styles.rectangleIcon}
             alt=""
@@ -59,12 +60,11 @@ const Frame = ({ dataPreliminaries, dataAllSections }) => {
             <img className={styles.child2} alt="" src="/frame-61.svg" />
 
             <div className={styles.wrapper1}>
-              <b className={styles.b4}>صلاة المسلم</b>
+              <b className={styles.b4}>{dataPreliminaries.posts[activeSlide].title}</b>
             </div>
             <div className={styles.div3}>
-              الصلاة هي عمود الدين وصلة العبد بربه ومولاه , ولذلك كانت أعظم العبادات
-              وأجلها شأنا , وقد أمر الله المسلم بالمحافظة عليها في كل أحواله في
-              الحضر و السفر و الصحة
+              {dataPreliminaries.posts[activeSlide].description}
+              {console.log(dataPreliminaries.posts[activeSlide], "ACTIVE")}
             </div>
             <div className={styles.rectangleParent}>
               <div className={styles.frameChild} />

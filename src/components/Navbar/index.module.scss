@@ -128,17 +128,11 @@
   }
 }
 
-.hero_container {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  margin-top: 24px;
-}
 .frame,
 .frameContainer,
 .frameParent {
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   align-items: center;
   position: relative;
 }
@@ -349,4 +343,9 @@
   position: absolute;
   top: 0;
   left: 0;
+}
+
+// LTR
+.frameParent[dir="ltr"] {
+  flex-direction: row-reverse;
 }
