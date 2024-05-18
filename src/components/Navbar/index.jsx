@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './index.module.scss';
 import { IoMenu } from "react-icons/io5";
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const Navbar = () => {
   const router = useRouter();
@@ -72,9 +73,9 @@ const Navbar = () => {
                 <b className={styles.b}>المقدمات</b>
               </div>
             </div>
-            <div className={router.pathname === '' ? styles.container : styles.wrapper}>
+            <Link href={'/'} className={router.pathname === '/' ? styles.container : styles.wrapper}>
               <b className={styles.b}>الرئيسية</b>
-            </div>
+            </Link>
           </div>
 
           <div className={styles.frame}>

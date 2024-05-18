@@ -98,6 +98,7 @@
   border-radius: var(--br-xs);
   justify-content: center;
   padding: var(--padding-xl) var(--padding-xs);
+  transition: all 0.3s ease-in-out;
 }
 .container,
 .fiRsAngleSmallUpParent,
@@ -105,6 +106,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  transition: all 0.3s ease-in-out;
 }
 .fiRsAngleSmallUpParent {
   justify-content: flex-start;
@@ -127,7 +129,6 @@
     display: none !important;
   }
 }
-
 .frame,
 .frameContainer,
 .frameParent {
@@ -143,16 +144,13 @@
   font-family: var(--font-andalus);
 }
 .frameParent {
-  /* position: absolute;
-  top: 60px;
-  left: calc(50% - 600px); */
   justify-content: space-between;
   text-align: left;
+  position: relative;
+  z-index: 999;
 }
 .rectangleIcon {
   position: relative;
-  /* top: 268px; */
-  /* left: 170px; */
   border-radius: var(--br-xs);
   width: 645px;
   height: 537px;

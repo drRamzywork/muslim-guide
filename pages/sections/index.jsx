@@ -1,18 +1,20 @@
 import Link from "next/link";
-import Footer from "../../src/components/Footer";
 import Navbar from "../../src/components/Navbar";
 import styles from "./index.module.scss";
+import Footer from "../../src/components/Footer";
+import { useRouter } from "next/router";
 
 const Sections = ({ dataAllSections }) => {
+  const router = useRouter();
   return (
     <>
-      <div className={styles.div}>
-        <div className={styles.child} />
+      <section dir={router.locale === 'ar' ? 'rtl' : 'ltr'} className={styles.div}>
+        <Navbar />
+        <div className={styles.header}>
+          <div className={styles.child} />
 
-        <div className="container mb-4">
+          <div className="container flex-column d-flex  justify-content-start align-items-center">
 
-          <Navbar />
-          <div className={styles.header}>
             <div className={styles.wrapper2}>
               <b className={styles.b17}>الأقسام</b>
             </div>
@@ -21,8 +23,11 @@ const Sections = ({ dataAllSections }) => {
               يحتوي الكتاب على مجموعة مختلفة من الاقسام المختلفة لشرح الدين الاسلامي
               بطريقة سهلة ومبسطة وسريعة تصل بسهولة لجميع الاشخاص
             </div>
-
           </div>
+
+        </div>
+
+        <div className="container mb-4">
 
           <div className={styles.frameParent4}>
             <div className={styles.instanceParent}>
@@ -50,8 +55,7 @@ const Sections = ({ dataAllSections }) => {
 
 
         </div>
-
-      </div>
+      </section>
       <Footer />
 
     </>

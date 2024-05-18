@@ -1,196 +1,80 @@
+import Link from "next/link";
+import styles from "./index.module.scss";
 import Footer from "../../../src/components/Footer";
 import Navbar from "../../../src/components/Navbar";
-import styles from "./index.module.scss";
 
-const Section = () => {
+const Sections = ({ dataAllSections }) => {
   return (
-    <div className={styles.div}>
-      <div className={styles.child} />
-      <div className={styles.item} />
-      <div className={styles.inner} />
-      <Navbar />
-      <img
-        className={styles.rectangleIcon}
-        alt=""
-        src="/rectangle-22519@2x.png"
-      />
+    <>
+      <div className={styles.div}>
+        <div className={styles.child} />
 
-      <div className="container">
+        <div className="container mb-4">
 
-        <div className={styles.frameParent1}>
-          <div className={styles.wrapper1}>
-            <b className={styles.b4}>ايمان المسلم</b>
+          <Navbar />
+          <div className={styles.header}>
+            <div className={styles.wrapper2}>
+              <b className={styles.b17}>الأقسام</b>
+            </div>
+
+            <div className={styles.div23}>
+              يحتوي الكتاب على مجموعة مختلفة من الاقسام المختلفة لشرح الدين الاسلامي
+              بطريقة سهلة ومبسطة وسريعة تصل بسهولة لجميع الاشخاص
+            </div>
+
           </div>
-          <div className={styles.div3}>
-            اتفقت جميع رسالات الأنبياء لأقوامهم على عبادة الله وحده لا شريك له
-            والكفر بما يعبد من دون الله وهذا هو حقيقة معنى لا إله إلا الله محمد
-            رسول الله، وهي الكلمة التي يدخل بها المرء في دين الله.
+
+          <div className={styles.frameParent4}>
+            <div className={styles.instanceParent}>
+              {dataAllSections.map((category, idx) =>
+                <Link href={`/section/${category.id}`} className={styles.groupParent} key={idx}>
+                  <img
+                    className={styles.instanceChild}
+                    alt=""
+                    src="/group-1000006284.svg"
+                  />
+                  <div className={styles.group}>
+                    <b className={styles.b4}>{category.name}</b>
+                    <div className={styles.div10}>
+                      {category.description}
+                    </div>
+                  </div>
+                </Link>
+
+              )}
+
+
+            </div>
+
           </div>
-        </div>
 
-
-        <div className="sec_container">
 
         </div>
 
       </div>
+      <Footer />
 
-
-      <div className={styles.frameParent5}>
-        <div className={styles.instanceParent}>
-          <div className={styles.rectangleParent}>
-            <img
-              className={styles.instanceChild}
-              alt=""
-              src="/rectangle-22541@2x.png"
-            />
-            <div className={styles.wrapper3}>
-              <b className={styles.b}>ما حقيقة العبادة</b>
-            </div>
-          </div>
-          <div className={styles.rectangleParent}>
-            <img
-              className={styles.instanceChild}
-              alt=""
-              src="/rectangle-22541@2x.png"
-            />
-            <div className={styles.wrapper3}>
-              <b className={styles.b}>الايمان بالله</b>
-            </div>
-          </div>
-          <div className={styles.rectangleParent}>
-            <img
-              className={styles.instanceChild}
-              alt=""
-              src="/rectangle-22541@2x.png"
-            />
-            <div className={styles.wrapper3}>
-              <b className={styles.b}>الشهاداتان معناهما ومقتضاهما</b>
-            </div>
-          </div>
-        </div>
-        <div className={styles.instanceParent}>
-          <div className={styles.rectangleParent}>
-            <img
-              className={styles.instanceChild}
-              alt=""
-              src="/rectangle-22541@2x.png"
-            />
-            <div className={styles.wrapper3}>
-              <b className={styles.b}>الايمان بالملائكة</b>
-            </div>
-          </div>
-          <div className={styles.rectangleParent}>
-            <img
-              className={styles.instanceChild}
-              alt=""
-              src="/rectangle-22541@2x.png"
-            />
-            <div className={styles.wrapper3}>
-              <b className={styles.b}>الايمان بأسماء الله وصفاته</b>
-            </div>
-          </div>
-          <div className={styles.rectangleParent}>
-            <img
-              className={styles.instanceChild}
-              alt=""
-              src="/rectangle-22541@2x.png"
-            />
-            <div className={styles.wrapper3}>
-              <b className={styles.b}>الشرك</b>
-            </div>
-          </div>
-        </div>
-        <div className={styles.instanceParent}>
-          <div className={styles.rectangleParent}>
-            <img
-              className={styles.instanceChild}
-              alt=""
-              src="/rectangle-22541@2x.png"
-            />
-            <div className={styles.wrapper3}>
-              <b className={styles.b}>عقيدة المسلم في عيسى عليه السلام</b>
-            </div>
-          </div>
-          <div className={styles.rectangleParent}>
-            <img
-              className={styles.instanceChild}
-              alt=""
-              src="/rectangle-22541@2x.png"
-            />
-            <div className={styles.wrapper3}>
-              <b className={styles.b}>الايمان بالرسل</b>
-            </div>
-          </div>
-          <div className={styles.rectangleParent}>
-            <img
-              className={styles.instanceChild}
-              alt=""
-              src="/rectangle-22541@2x.png"
-            />
-            <div className={styles.wrapper3}>
-              <b className={styles.b}>الايمان بالكتب</b>
-            </div>
-          </div>
-        </div>
-        <div className={styles.instanceParent}>
-          <div className={styles.rectangleParent}>
-            <img
-              className={styles.instanceChild}
-              alt=""
-              src="/rectangle-22541@2x.png"
-            />
-            <div className={styles.wrapper3}>
-              <b className={styles.b}>الايمان باليوم الآخر</b>
-            </div>
-          </div>
-          <div className={styles.rectangleParent}>
-            <img
-              className={styles.instanceChild}
-              alt=""
-              src="/rectangle-22541@2x.png"
-            />
-            <div className={styles.wrapper3}>
-              <b className={styles.b}>صحابة رسول الله وآل بيته الكرام</b>
-            </div>
-          </div>
-          <div className={styles.rectangleParent}>
-            <img
-              className={styles.instanceChild}
-              alt=""
-              src="/rectangle-22541@2x.png"
-            />
-            <div className={styles.wrapper3}>
-              <b className={styles.b}>الايمان بمحمد نبيا ورسولا</b>
-            </div>
-          </div>
-        </div>
-        <div className={styles.instanceParent}>
-          <div className={styles.rectangleParent}>
-            <img
-              className={styles.instanceChild}
-              alt=""
-              src="/rectangle-22541@2x.png"
-            />
-            <div className={styles.wrapper3}>
-              <b className={styles.b}>الاسلام والفرق الضالة</b>
-            </div>
-          </div>
-          <div className={styles.rectangleParent}>
-            <img
-              className={styles.instanceChild}
-              alt=""
-              src="/rectangle-22541@2x.png"
-            />
-            <div className={styles.wrapper3}>
-              <b className={styles.b}>الايمان بالقدر</b>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* <Footer /> */}
-    </div>
+    </>
   );
 };
 
-export default Section;
+export default Sections;
+
+export async function getStaticProps({ locale }) {
+
+  const resAllSections = await fetch('https://iiacademy.net/api/categories', {
+    headers: {
+      'locale': locale
+    }
+  })
+  const dataAllSections = await resAllSections.json();
+
+  return {
+    props: {
+      dataAllSections: dataAllSections.data
+
+    },
+
+  };
+
+}

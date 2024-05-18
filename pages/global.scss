@@ -18,6 +18,7 @@ body {
   --tajawal-h2-bold-40-size: 40px;
   --tajawal-medium-20-size: 20px;
   --tajawal-small-8-size: 8px;
+  --tajawal-small-12-size: 12px;
   --tajawal-xsmall-5-size: 5.48px;
   --tajawal-h3-bold-32-size: 32px;
 
@@ -70,6 +71,11 @@ html,
 body {
   scroll-behavior: smooth !important;
 }
+a {
+  color: unset !important;
+  text-decoration: none !important;
+}
+
 /* bootstrap */
 
 .container {
