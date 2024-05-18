@@ -78,9 +78,9 @@ const Navbar = () => {
             </Link>
           </div>
 
-          <div className={styles.frame}>
+          <Link href={'/'} className={styles.frame}>
             <div className={styles.b}>{` دليل المسلم الميسر `}</div>
-          </div>
+          </Link>
         </div>
       </div></>
   )

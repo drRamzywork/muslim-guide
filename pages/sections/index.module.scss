@@ -6,7 +6,8 @@
   width: 100%;
   height: 100%;
   z-index: -122;
-  top: -160px;
+  // top: -160px;
+  top: -105px;
 
   @media screen and (max-width: 992px) {
     top: -60px;
@@ -15,7 +16,7 @@
 }
 .header {
   width: 100%;
-  height: 605px;
+  height: 407px;
   position: relative;
   z-index: 3;
   display: flex;
@@ -303,6 +304,7 @@
   gap: var(--gap-xl);
   flex-wrap: wrap;
   align-items: flex-start;
+  justify-content: flex-start;
 }
 .frameParent4 {
   margin-top: 24px;
@@ -314,6 +316,9 @@
   text-align: justify;
   font-size: var(--tajawal-h3-bold-32-size);
   color: var(--black);
+  @media screen and (min-width: 992px) {
+    margin-top: -50px;
+  }
 }
 .b17 {
   position: relative;
