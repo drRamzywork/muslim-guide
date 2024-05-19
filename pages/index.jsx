@@ -17,22 +17,9 @@ import { useRouter } from 'next/router';
 const Frame = ({ dataPreliminaries, dataAllSections }) => {
   const router = useRouter();
   const [activeSlide, setActiveSlide] = useState(0);
-  const imageUrls = [
-    '/rectangle-157@2x.png',
-    '/rectangle-158@2x.png',
-    '/rectangle-156@2x.png',
-    '/rectangle-157@2x.png',
-    '/rectangle-158@2x.png',
-    '/rectangle-156@2x.png',
-    '/rectangle-157@2x.png',
-    '/rectangle-158@2x.png',
-    '/rectangle-156@2x.png',
-    '/rectangle-157@2x.png',
-    '/rectangle-158@2x.png',
-    '/rectangle-156@2x.png',
-  ]
 
 
+  console.log(dataAllSections, "dataAllSections")
 
   return (
     <div className={styles.div}>
@@ -52,7 +39,6 @@ const Frame = ({ dataPreliminaries, dataAllSections }) => {
           <img
             className={styles.rectangleIcon}
             alt=""
-            // src="/rectangle-22519@2x.png"
             src={dataPreliminaries.posts[activeSlide].image}
           />
 
@@ -60,15 +46,17 @@ const Frame = ({ dataPreliminaries, dataAllSections }) => {
             <img className={styles.child2} alt="" src="/frame-61.svg" />
 
             <div className={styles.wrapper1}>
-              <b className={styles.b4}>{dataPreliminaries.posts[activeSlide].title}</b>
+              <b className={styles.b4}>{dataAllSections[activeSlide].name}</b>
             </div>
             <div className={styles.div3}>
-              {dataPreliminaries.posts[activeSlide].description}
-              {console.log(dataPreliminaries.posts[activeSlide], "ACTIVE")}
+              {dataAllSections[activeSlide].description}
             </div>
             <div className={styles.rectangleParent}>
               <div className={styles.frameChild} />
-              <b className={styles.b5}>{`استكشف المزيد `}</b>
+              <Link href={`/sections`}>
+                <b className={styles.b5}>{`استكشف المزيد `}</b>
+              </Link>
+
               <div className={styles.rectangleGroup}>
                 <div className={styles.frameItem} />
                 <img className={styles.arrowSmIcon} alt="" src="/arrowsm@2x.png" />
@@ -141,7 +129,6 @@ const Frame = ({ dataPreliminaries, dataAllSections }) => {
       <HeroSection
         activeSlide={activeSlide}
         setActiveSlide={setActiveSlide}
-        imageUrls={imageUrls}
         dataPreliminaries={dataPreliminaries}
       />
 
@@ -172,6 +159,13 @@ export async function getStaticProps({ locale }) {
   })
   const dataPreliminaries = await resPreliminaries.json();
 
+  const resCategory = await fetch('https://iiacademy.net/api/preliminaries', {
+    headers: {
+      'locale': locale
+    }
+  })
+  const dataCategory = await resCategory.json();
+
   const resAllSections = await fetch('https://iiacademy.net/api/categories', {
     headers: {
       'locale': locale
@@ -182,7 +176,8 @@ export async function getStaticProps({ locale }) {
   return {
     props: {
       dataPreliminaries: dataPreliminaries.data[0],
-      dataAllSections: dataAllSections.data
+      dataAllSections: dataAllSections.data,
+      dataCategory,
     },
 
   };

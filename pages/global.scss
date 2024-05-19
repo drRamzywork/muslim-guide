@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Andalus:wght@400&display=swap");
+@import url("/fonts/Andalus.ttf");
 body {
   margin: 0;
   line-height: normal;
@@ -85,15 +85,28 @@ a {
 }
 /* swiper */
 #hero {
-  .swiper-pagination {
-    display: none;
-  }
-  .swiper-slide {
-    margin: 4px;
-  }
+  // .swiper-pagination {
+  //   display: none;
+  // }
+  // .swiper-slide {
+  //   margin: 4px;
+  // }
 
   .swiper-slide.swiper-slide-active {
     width: 41% !important;
+  }
+
+  .swiper {
+    height: 183px;
+    display: flex;
+    align-items: center;
+  }
+
+  .swiper-wrapper {
+    height: unset !important;
+  }
+  .swiper-slide {
+    width: fit-content;
   }
 
   .swiper-button-disabled {

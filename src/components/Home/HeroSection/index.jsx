@@ -9,7 +9,7 @@ import styles from '../../../../pages/index.module.scss';
 import componentStyles from './index.module.scss'
 
 const HeroSection = ({ dataPreliminaries, activeSlide
-  , setActiveSlide, imageUrls }) => {
+  , setActiveSlide, }) => {
   const swiperRef = useRef(null);
   const nextButtonRef = useRef(null);
   const prevButtonRef = useRef(null);
@@ -47,41 +47,25 @@ const HeroSection = ({ dataPreliminaries, activeSlide
 
         <div className={componentStyles.sec_container}>
           <Swiper
-            spaceBetween={0}
-            slidesPerView={4}
+            spaceBetween={8}
+            slidesPerView={3}
             navigation={{
               nextEl: nextButtonRef.current,
               prevEl: prevButtonRef.current
             }}
             onSwiper={(swiper) => swiperRef.current = swiper}
-            pagination={{ clickable: true }}
             onSlideChange={handleSlideChange}
             dir="rtl"
             modules={[Navigation, Pagination]}
-
+            centeredSlides={true}
           >
             <div className={styles.inner1}>
               <div className={styles.rectangleParent3}>
                 {dataPreliminaries.posts.map((imageUrl, index) => (
                   <SwiperSlide key={index} >
-                    {activeSlide === index ?
-                      <div className={styles.groupDiv}>
-                        <img
-                          className={styles.groupChild}
-                          alt=""
-                          src={imageUrl.image}
-                        />
-                        <div className={styles.groupItem} />
-                      </div>
-                      :
-
-                      <img
-                        className={styles.frameChild3}
-                        alt=""
-                        src={imageUrl.image}
-                      />
-                    }
-
+                    <div className={`${componentStyles.box} ${activeSlide === index && componentStyles.active}`}>
+                      <img src={imageUrl.image} alt="" />
+                    </div>
                   </SwiperSlide>
                 ))}
               </div>

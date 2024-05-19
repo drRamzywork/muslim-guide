@@ -8,10 +8,37 @@ section.hero {
   .sec_container {
     margin-top: 30px;
     width: 700px;
+    // width: 100%;
+
     position: relative;
 
     @media screen and (max-width: 992px) {
       display: none;
+    }
+  }
+
+  .box {
+    border-radius: var(--br-xs);
+    position: relative;
+    height: 120px;
+    width: 180px;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+    border: 4px solid transparent;
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .box.active {
+    border: 4px solid var(--sec-color);
+    transform: scale(1.4);
+
+    img {
+      // transform: scale(1.4);
     }
   }
 }

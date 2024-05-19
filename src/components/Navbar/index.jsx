@@ -16,7 +16,7 @@ const Navbar = () => {
           <div className={styles.frameGroup}>
 
             <div className={styles.parent}>
-              <div className={styles.div1}>العربية</div>
+              <div className={styles.div1} style={{ color: router.pathname !== '/' && 'var(--white)' }}>العربية</div>
               <img
                 className={styles.flagOfSaudiArabia1938197Icon}
                 alt=""
@@ -25,19 +25,19 @@ const Navbar = () => {
               <img
                 className={styles.fiRsAngleSmallUpIcon}
                 alt=""
-                src="/firsanglesmallup.svg"
+                src={router.pathname === '/' ? "/firsanglesmallup.svg" : "/firsanglesmallup1.svg"}
               />
             </div>
             <img
               className={styles.arrowDownwardIcon}
               alt=""
-              src="/arrow-downward.svg"
+              src={router.pathname === '/' ? '/arrow-downward.svg' : '/arrow-downward1.svg'}
             />
             <div className={styles.fiRsSearchWrapper}>
               <img
                 className={styles.fiRsSearchIcon}
                 alt=""
-                src="/firssearch.svg"
+                src={router.pathname === '/' ? "/firssearch.svg" : "/firssearch1.svg"}
               />
             </div>
 
@@ -53,7 +53,7 @@ const Navbar = () => {
             <div className={styles.wrapper}>
               <b className={styles.b}>من نحن</b>
             </div>
-            <div className={router.pathname === '/sections' ? styles.container : styles.wrapper}>
+            <div className={router.pathname === '/sections' || router.pathname.includes('section') ? styles.container : styles.wrapper}>
               <div className={styles.fiRsAngleSmallUpParent}>
                 <img
                   className={styles.fiRsAngleSmallUpIcon}
@@ -82,7 +82,9 @@ const Navbar = () => {
             <div className={styles.b}>{` دليل المسلم الميسر `}</div>
           </Link>
         </div>
-      </div></>
+      </div>
+
+    </>
   )
 }
 

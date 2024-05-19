@@ -292,6 +292,7 @@
   background-color: var(--sec-color);
   width: 100%;
   height: 100%;
+  cursor: pointer;
 }
 .b5,
 .frameItem {
@@ -300,10 +301,12 @@
   left: 92px;
 }
 .b5 {
+  color: var(--white);
   @media screen and (max-width: 992px) {
     font-size: var(--tajawal-xsmall-5-size);
   }
 }
+
 .frameItem {
   top: 0;
   left: 0;
