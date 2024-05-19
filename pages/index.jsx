@@ -19,7 +19,6 @@ const Frame = ({ dataPreliminaries, dataAllSections }) => {
   const [activeSlide, setActiveSlide] = useState(0);
 
 
-  console.log(dataAllSections, "dataAllSections")
 
   return (
     <div className={styles.div}>
@@ -36,11 +35,6 @@ const Frame = ({ dataPreliminaries, dataAllSections }) => {
         <div className={styles.rectangleDiv} dir={router.locale === 'ar' ? 'rtl' : 'ltr'} />
 
         <div className={styles.hero_container} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
-          <img
-            className={styles.rectangleIcon}
-            alt=""
-            src={dataPreliminaries.posts[activeSlide].image}
-          />
 
           <div className={styles.frameParent1}>
             <img className={styles.child2} alt="" src="/frame-61.svg" />
@@ -63,7 +57,6 @@ const Frame = ({ dataPreliminaries, dataAllSections }) => {
               </div>
             </div>
           </div>
-
 
 
         </div>
@@ -175,9 +168,7 @@ export async function getStaticProps({ locale }) {
 
   return {
     props: {
-      dataPreliminaries: dataPreliminaries.data[0],
       dataAllSections: dataAllSections.data,
-      dataCategory,
     },
 
   };

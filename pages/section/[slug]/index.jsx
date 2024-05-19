@@ -1,13 +1,12 @@
 import { useRouter } from "next/router";
-import Footer from "../../../src/components/Footer";
 import Navbar from "../../../src/components/Navbar";
 import styles from "./index.module.scss";
 import Link from "next/link";
+import Footer from "../../../src/components/Footer";
 
 const Section = ({ dataAllSections }) => {
   const router = useRouter();
 
-  console.log(dataAllSections, "dataAllSections")
   return (
     <>
       <section dir={router.locale === 'ar' ? 'rtl' : 'ltr'} className={styles.div}>
@@ -60,6 +59,7 @@ const Section = ({ dataAllSections }) => {
             </div>
 
           </div>
+
         </div>
 
 
