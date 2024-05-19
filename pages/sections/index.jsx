@@ -32,7 +32,7 @@ const Sections = ({ dataAllSections }) => {
           <div className={styles.frameParent4}>
             <div className={styles.instanceParent}>
               {dataAllSections.map((category, idx) =>
-                <Link href={`/section/${category.id}`} className={styles.groupParent} key={idx}>
+                <Link href={`/section/${category.slug}`} className={styles.groupParent} key={idx}>
                   <img
                     className={styles.instanceChild}
                     alt=""
