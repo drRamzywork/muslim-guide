@@ -261,7 +261,7 @@
     width: 100%;
     font-weight: 400;
     font-size: var(--tajawal-small-12-size);
-    line-height: 12.4px;
+    line-height: 14.4px;
   }
 }
 .group,
@@ -305,6 +305,10 @@
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: flex-start;
+  @media screen and (max-width: 992px) {
+    justify-content: center;
+    gap: 9px;
+  }
 }
 .frameParent4 {
   margin-top: 24px;
