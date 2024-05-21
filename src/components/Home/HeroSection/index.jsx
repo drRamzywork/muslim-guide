@@ -61,7 +61,7 @@ const HeroSection = ({ dataPreliminaries, activeSlide
           >
             <div className={styles.inner1}>
               <div className={styles.rectangleParent3}>
-                {dataPreliminaries.posts.map((imageUrl, index) => (
+                {dataPreliminaries?.posts?.map((imageUrl, index) => (
                   <SwiperSlide key={index} >
                     <div className={`${componentStyles.box} ${activeSlide === index && componentStyles.active}`}>
                       <img src={imageUrl.image} alt="" />

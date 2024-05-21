@@ -84,7 +84,7 @@ const Introductions = ({ dataPreliminaries }) => {
               >
                 <div className={styles.instanceParent}>
 
-                  {dataPreliminaries.posts.map((imageUrl, index) => (
+                  {dataPreliminaries?.posts?.map((imageUrl, index) => (
 
                     <SwiperSlide key={index} >
                       {activeSlide === index ?
@@ -152,7 +152,7 @@ const Introductions = ({ dataPreliminaries }) => {
           >
             <div className={styles.instanceParent}>
 
-              {dataPreliminaries.posts.map((imageUrl, index) => (
+              {dataPreliminaries?.posts?.map((imageUrl, index) => (
 
                 <SwiperSlide key={index} >
                   {activeSlide === index ?

@@ -10,7 +10,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className={router.pathname !== '/' && styles.greenBG}>
+      <nav className={styles.greenBG}>
 
 
         <div className="container pt-4" >

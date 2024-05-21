@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import HeroSection from "../src/components/Home/HeroSection";
 import Navbar from "../src/components/Navbar";
 import styles from "./index.module.scss";
@@ -18,112 +18,203 @@ const Frame = ({ dataPreliminaries, dataAllSections }) => {
   const router = useRouter();
   const [activeSlide, setActiveSlide] = useState(0);
 
+  console.log(dataPreliminaries?.posts[activeSlide], "dataPreliminaries")
+  const swiperRef = useRef(null);
+  const nextButtonRef = useRef(null);
+  const prevButtonRef = useRef(null);
+
+  const handleSlideChange = (swiper) => {
+    setActiveSlide(swiper.activeIndex);
+  };
 
 
   return (
     <div className={styles.div}>
-      <div className={styles.child} />
-      <div className={styles.item} />
-      <div className={styles.inner} dir={router.locale === 'ar' ? 'rtl' : 'ltr'} />
-      <div className={styles.child1} dir={router.locale === 'ar' ? 'rtl' : 'ltr'} />
+      <div className="desktop">
+
+        <div className={styles.child} />
+        <div className={styles.item} />
+        <div className={styles.inner} dir={router.locale === 'ar' ? 'rtl' : 'ltr'} />
+        <div className={styles.child1} dir={router.locale === 'ar' ? 'rtl' : 'ltr'} />
+      </div>
 
       <Navbar />
 
 
 
-      <div className="container position-relative" >
-        <div className={styles.rectangleDiv} dir={router.locale === 'ar' ? 'rtl' : 'ltr'} />
+      <div className="desktop">
 
-        <div className={styles.hero_container} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
 
-          <div className={styles.frameParent1}>
-            <img className={styles.child2} alt="" src="/frame-61.svg" />
+        <div className="container position-relative" >
+          <div className={styles.rectangleDiv} dir={router.locale === 'ar' ? 'rtl' : 'ltr'} />
 
-            <div className={styles.wrapper1}>
-              <b className={styles.b4}>{dataAllSections[activeSlide].name}</b>
-            </div>
-            <div className={styles.div3}>
-              {dataAllSections[activeSlide].description}
-            </div>
-            <div className={styles.rectangleParent}>
-              <div className={styles.frameChild} />
-              <Link href={`/sections`}>
-                <b className={styles.b5}>{`استكشف المزيد `}</b>
-              </Link>
+          <div className={styles.hero_container} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
+            <img class="index_rectangleIcon__d516r" alt={dataPreliminaries?.posts[activeSlide].title} src={dataPreliminaries?.posts[activeSlide].image} />
+            <div className={styles.frameParent1}>
+              <img className={styles.child2} alt="" src="/frame-61.svg" />
 
-              <div className={styles.rectangleGroup}>
-                <div className={styles.frameItem} />
-                <img className={styles.arrowSmIcon} alt="" src="/arrowsm@2x.png" />
+              <div className={styles.wrapper1}>
+                <b className={styles.b4}>{dataPreliminaries?.posts[activeSlide].title}</b>
+              </div>
+              <div className={styles.div3}>
+                {dataPreliminaries?.posts[activeSlide].description}
+              </div>
+              <div className={styles.rectangleParent}>
+                <div className={styles.frameChild} />
+                <Link href={`/sections`}>
+                  <b className={styles.b5}>{`استكشف المزيد `}</b>
+                </Link>
+
+                <div className={styles.rectangleGroup}>
+                  <div className={styles.frameItem} />
+                  <img className={styles.arrowSmIcon} alt="" src="/arrowsm@2x.png" />
+                </div>
               </div>
             </div>
+
+
           </div>
+
+          <section id="sss">
+            <Swiper
+              spaceBetween={0}
+              slidesPerView={1}
+              navigation={false}
+              pagination={{ clickable: true }}
+              dir="rtl"
+              modules={[Navigation, Pagination]}
+            >
+              {dataPreliminaries?.posts?.map((imageUrl, index) => (
+                <SwiperSlide key={index} >
+                  <div className={styles.hero_container_mobile} >
+
+                    <img
+                      className={styles.rectangleIcon}
+                      alt=""
+                      src={imageUrl.image}
+                    />
+                    <div className={styles.frameParent1}>
+                      <img className={styles.child2} alt="" src="/frame-61.svg" />
+
+                      <div className={styles.wrapper1}>
+                        <b className={styles.b4}>{imageUrl.title}</b>
+                      </div>
+
+                      <div className={styles.div3}>
+                        الصلاة هي عمود الدين وصلة العبد بربه ومولاه , ولذلك كانت أعظم العبادات
+                        وأجلها شأنا , وقد أمر الله المسلم بالمحافظة عليها في كل أحواله في
+                        الحضر و السفر و الصحة
+                      </div>
+
+                      <div className={styles.rectangleParent}>
+                        <div className={styles.frameChild} />
+                        <b className={styles.b5}>{`استكشف المزيد `}</b>
+                        <div className={styles.rectangleGroup}>
+                          <div className={styles.frameItem} />
+                          <img className={styles.arrowSmIcon} alt="" src="/arrowsm@2x.png" />
+                        </div>
+                      </div>
+
+                      <Link href='/' className={styles.btn_container}>
+                        <p>استكشف المزيد</p>
+                        <div className={styles.icon_container}>
+                          <IoArrowBack />
+                        </div>
+                      </Link>
+
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+
+            </Swiper>
+          </section>
 
 
         </div>
 
-        <section id="sss">
-          <Swiper
-            spaceBetween={0}
-            slidesPerView={1}
-            navigation={false}
-            pagination={{ clickable: true }}
-            dir="rtl"
-            modules={[Navigation, Pagination]}
-          >
-            {dataPreliminaries.posts.map((imageUrl, index) => (
-              <SwiperSlide key={index} >
-                <div className={styles.hero_container_mobile} >
-
-                  <img
-                    className={styles.rectangleIcon}
-                    alt=""
-                    src={imageUrl.image}
-                  />
-                  <div className={styles.frameParent1}>
-                    <img className={styles.child2} alt="" src="/frame-61.svg" />
-
-                    <div className={styles.wrapper1}>
-                      <b className={styles.b4}>{imageUrl.title}</b>
-                    </div>
-
-                    <div className={styles.div3}>
-                      الصلاة هي عمود الدين وصلة العبد بربه ومولاه , ولذلك كانت أعظم العبادات
-                      وأجلها شأنا , وقد أمر الله المسلم بالمحافظة عليها في كل أحواله في
-                      الحضر و السفر و الصحة
-                    </div>
-
-                    <div className={styles.rectangleParent}>
-                      <div className={styles.frameChild} />
-                      <b className={styles.b5}>{`استكشف المزيد `}</b>
-                      <div className={styles.rectangleGroup}>
-                        <div className={styles.frameItem} />
-                        <img className={styles.arrowSmIcon} alt="" src="/arrowsm@2x.png" />
-                      </div>
-                    </div>
-
-                    <Link href='/' className={styles.btn_container}>
-                      <p>استكشف المزيد</p>
-                      <div className={styles.icon_container}>
-                        <IoArrowBack />
-                      </div>
-                    </Link>
-
-                  </div>
-                </div>
-              </SwiperSlide>
-            ))}
-
-          </Swiper>
-        </section>
-
-
+        <HeroSection
+          activeSlide={activeSlide}
+          setActiveSlide={setActiveSlide}
+          dataPreliminaries={dataPreliminaries}
+        />
       </div>
 
-      <HeroSection
-        activeSlide={activeSlide}
-        setActiveSlide={setActiveSlide}
-        dataPreliminaries={dataPreliminaries}
-      />
+
+      <div className="mobile">
+        <div className={styles.header_mobile}>
+          <img className={styles.vectorIcon} alt="" src="/vector.svg" />
+          <img className={styles.vectorIcon1} alt="" src="/vector.svg" />
+
+          <div className={styles.sec_container}>
+            <div className="container">
+
+              <div className={styles.text_container}>
+                <div className={styles.title}>
+                  <h1>
+                    {dataPreliminaries?.posts[activeSlide].title}
+                  </h1>
+                </div>
+                <div className={styles.desc}>
+                  <p>
+                    {dataPreliminaries?.posts[activeSlide].description}
+                    الصلاة هي عمود الدين وصلة العبد بربه ومولاه , ولذلك كانت أعظم العبادات وأجلها شأنا , وقد أمر الله المسلم بالمحافظة عليها
+                  </p>
+                </div>
+                <div className={styles.btn_container2}>
+                  <Link href={`/details${dataPreliminaries?.posts[activeSlide].slug}`}>
+                    <p>استكشف المزيد </p>
+                    <div className={styles.arro_container}>
+                      <img src={'/arrow.png'} alt="" />
+                    </div>
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.swiperHeader}>
+              <div className={styles.active_image_container}>
+                <div className={styles.main_image}>
+                  <img src={dataPreliminaries?.posts[activeSlide].image} alt={dataPreliminaries?.posts[activeSlide].title} />
+                </div>
+
+
+
+                <div className={styles.swiper_coninert}>
+                  <Swiper
+                    spaceBetween={0}
+                    slidesPerView={3}
+                    navigation={false}
+                    dir="rtl"
+                    modules={[Navigation, Pagination]}
+                    centeredSlides={true}
+                    onSlideChange={handleSlideChange}
+                    className={styles.theSwiper}
+                    id="mobileSwiper"
+                  >
+                    {dataPreliminaries?.posts?.map((imageUrl, index) => (
+                      <SwiperSlide key={index} >
+                        <div className={`${styles.hero_container_mobile}  ${index === activeSlide && styles.active}`} >
+
+                          <img
+                            className={styles.rectangleIcon}
+                            alt=""
+                            src={imageUrl.image}
+                          />
+
+                        </div>
+                      </SwiperSlide>
+                    ))}
+
+                  </Swiper>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
 
       <ExploreSec />
 
@@ -169,6 +260,8 @@ export async function getStaticProps({ locale }) {
   return {
     props: {
       dataAllSections: dataAllSections.data,
+      dataPreliminaries: dataPreliminaries.data[0],
+      dataCategory
     },
 
   };
