@@ -1,8 +1,8 @@
 import { Fragment } from "react";
 import Head from "next/head";
-import "./global.scss";
+import "../styles/globals.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import "tinymce/skins/ui/oxide/skin.min.css";
 function MyApp({ Component, pageProps }) {
   return (
     <Fragment>

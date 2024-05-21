@@ -1,11 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap");
 @import url("/fonts/Andalus.ttf");
+
 body {
   margin: 0;
   line-height: normal;
 }
 :root {
   /* fonts */
+  --main_color: #7591c2;
+  --h_color: #8facd7;
+
   --tajawal-medium-36: Tajawal;
   --font-andalus: Andalus;
 
@@ -191,3 +195,11 @@ section#sss {
     display: none;
   }
 }
+
+// Tw
+.flex {
+  display: flex;
+}
+
+@import "tinymcee.css";
+@import "tinymcee2.css";

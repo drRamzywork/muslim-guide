@@ -3,7 +3,9 @@
   position: absolute;
   background-color: var(--prim-color);
 }
-
+nav.greenBG {
+  background: linear-gradient(0deg, #013e46, #091b1d);
+}
 .rectangleDiv {
   top: 218px;
   left: 120px;
