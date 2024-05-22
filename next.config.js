@@ -17,9 +17,7 @@ try {
 
 const nextConfig = {
   reactStrictMode: true,
-  sassOptions: {
-    includePaths: [path.join(), "styles"],
-  },
+
   i18n: {
     defaultLocale: "ar",
     locales,
