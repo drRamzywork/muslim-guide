@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Footer from "../../../src/components/Footer";
-import Navbar from "../../../src/components/Navbar";
 import styles from "./index.module.scss";
 
 const Details = ({ sectionData, dataAllSections, dataAllLangs
@@ -25,7 +24,6 @@ const Details = ({ sectionData, dataAllSections, dataAllLangs
   return (
     <>
 
-      <Navbar dataAllSections={dataAllSections} dataAllLangs={dataAllLangs} dataPreliminaries={dataPreliminaries} />
 
 
 

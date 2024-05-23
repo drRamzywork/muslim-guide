@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Navbar from "../../src/components/Navbar";
 import styles from "./index.module.scss";
 import Footer from "../../src/components/Footer";
 import { useRouter } from "next/router";
@@ -10,7 +9,7 @@ const Sections = ({ dataAllSections, dataAllLangs, dataPreliminaries }) => {
   return (
     <>
       <section dir={router.locale === 'ar' ? 'rtl' : 'ltr'} className={styles.div}>
-        <Navbar dataAllLangs={dataAllLangs} dataAllSections={dataAllSections} dataPreliminaries={dataPreliminaries} />
+
         <div className={styles.header}>
           <div className={styles.child} />
 

@@ -33,8 +33,9 @@ const Frame = ({ dataPreliminaries, dataAllSections, dataAllLangs }) => {
         <div className={styles.inner} dir={router.locale === 'ar' ? 'rtl' : 'ltr'} />
         <div className={styles.child1} dir={router.locale === 'ar' ? 'rtl' : 'ltr'} />
       </div>
-
-      <Navbar dataAllSections={dataAllSections} dataPreliminaries={dataPreliminaries.posts} dataAllLangs={dataAllLangs} />
+      {router.pathname === '/' &&
+        <Navbar dataAllSections={dataAllSections} dataPreliminaries={dataPreliminaries.posts} dataAllLangs={dataAllLangs} />
+      }
 
 
 

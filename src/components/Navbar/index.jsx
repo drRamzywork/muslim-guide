@@ -76,20 +76,10 @@ const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs }) => {
   }, [langs]);
 
 
-  const { asPath, locale } = router;
 
 
-  const currentLangData = Object.entries(dataAllLangs)?.find(([code, language]) => code === router.locale);
+  const currentLangData = dataAllLangs ? Object?.entries(dataAllLangs)?.find(([code, language]) => code === router.locale) : []
 
-  const buildLocaleSwitchUrl = (targetLocale) => {
-    const segments = asPath.split('/');
-    if (segments[1] === locale) {
-      segments[1] = targetLocale;
-    } else {
-      segments.unshift(targetLocale);
-    }
-    return segments.join('/');
-  };
 
   return (
     <>
@@ -118,11 +108,11 @@ const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs }) => {
                     onClick={() => setLangs((prev) => !prev)}
                   >
 
-                    <div className={styles.div1} style={{ color: router.pathname !== '/' && 'var(--white)' }}>{currentLangData[1].native}</div>
+                    <div className={styles.div1} style={{ color: router.pathname !== '/' && 'var(--white)' }}>{currentLangData[1]?.native}</div>
                     <img
                       className={styles.flagOfSaudiArabia1938197Icon}
                       alt=""
-                      src={currentLangData[1].icon_url}
+                      src={currentLangData[1]?.icon_url}
                     />
                     <img
                       className={`${styles.fiRsAngleSmallUpIcon} ${langs && styles.active}`}
@@ -142,7 +132,7 @@ const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs }) => {
                           <li key={code}>
 
                             <a
-                              href={`/${code}${router.asPath}`}                            >
+                              href={`/${code}${router.asPath}`}>
                               <img src={language.icon_url} alt="" />
                               <p>{language.native}</p>
 
@@ -257,7 +247,7 @@ const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs }) => {
                   <ul>
                     {dataAllSections?.map((sec, idx) =>
                       <li key={idx}>
-                        <Link href={`/section-details/${sec.slug}`}>
+                        <Link href={`/section/${sec.slug}`}>
                           <p>{sec.name}</p>
                           <IoIosArrowBack />
                         </Link>
