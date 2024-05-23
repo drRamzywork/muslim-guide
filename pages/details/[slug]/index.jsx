@@ -3,7 +3,8 @@ import Footer from "../../../src/components/Footer";
 import Navbar from "../../../src/components/Navbar";
 import styles from "./index.module.scss";
 
-const Details = ({ sectionData, dataAllSections }) => {
+const Details = ({ sectionData, dataAllSections, dataAllLangs
+  , dataPreliminaries }) => {
   const [content, setContent] = useState('');
 
   useEffect(() => {
@@ -23,7 +24,7 @@ const Details = ({ sectionData, dataAllSections }) => {
   }, []);
   return (
     <>
-      <Navbar dataAllSections={dataAllSections} />
+      <Navbar dataAllSections={dataAllSections} dataAllLangs={dataAllLangs} dataPreliminaries={dataPreliminaries} />
 
 
 
@@ -299,11 +300,33 @@ export async function getServerSideProps({ params, locale }) {
     }
   })
   const dataAllSections = await resAllSections.json();
+
+
+
+  const resAllLangs = await fetch('https://iiacademy.net/api/languages', {
+    headers: {
+      'locale': locale
+    }
+  })
+  const dataAllLangs = await resAllLangs.json();
+
+  const resPreliminaries = await fetch('https://iiacademy.net/api/preliminaries', {
+    headers: {
+      'locale': locale
+    }
+  })
+  const dataPreliminaries = await resPreliminaries.json();
+
+
+
+
   return {
     props: {
       dataAllSections: dataAllSections.data,
+      sectionData: data.data,
+      dataAllLangs: dataAllLangs.data,
+      dataPreliminaries: dataPreliminaries.data[0].posts,
 
-      sectionData: data.data
     },
   };
 }

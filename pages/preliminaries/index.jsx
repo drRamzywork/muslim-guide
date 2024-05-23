@@ -6,13 +6,13 @@ import Footer from "../../src/components/Footer";
 import { useRouter } from "next/router";
 
 
-const Preliminaries = ({ dataAllSections }) => {
+const Preliminaries = ({ dataAllSections, dataAllLangs, dataPreliminaries, dataCategories }) => {
   const router = useRouter();
   return (
     <>
 
       <section dir={router.locale === 'ar' ? 'rtl' : 'ltr'} className={styles.div}>
-        {/* <Navbar dataAllSections={dataAllSections} /> */}
+        <Navbar dataAllSections={dataCategories} dataAllLangs={dataAllLangs} dataPreliminaries={dataPreliminaries} />
         <div className={styles.header}>
           <div className={styles.child} />
 
@@ -74,9 +74,37 @@ export async function getStaticProps({ locale }) {
   })
   const dataAllSections = await resAllSections.json();
 
+
+  const resAllLangs = await fetch('https://iiacademy.net/api/languages', {
+    headers: {
+      'locale': locale
+    }
+  })
+  const dataAllLangs = await resAllLangs.json();
+
+  const resPreliminaries = await fetch('https://iiacademy.net/api/preliminaries', {
+    headers: {
+      'locale': locale
+    }
+  })
+  const dataPreliminaries = await resPreliminaries.json();
+
+
+  const resCategories = await fetch('https://iiacademy.net/api/categories', {
+    headers: {
+      'locale': locale
+    }
+  })
+  const dataCategories = await resCategories.json();
+
+
+
   return {
     props: {
       dataAllSections: dataAllSections.data[0],
+      dataAllLangs: dataAllLangs.data,
+      dataPreliminaries: dataPreliminaries.data[0].posts,
+      dataCategories: dataCategories.data
     },
 
   };
