@@ -67,46 +67,40 @@ export default Preliminaries;
 
 
 export async function getStaticProps({ locale }) {
-  const resAllSections = await fetch('https://iiacademy.net/api/preliminaries', {
-    headers: {
-      'locale': locale
+  const apiUrl = 'https://iiacademy.net/api';
+
+  const fetchData = async (url, locale) => {
+    try {
+      const response = await fetch(`${apiUrl}/${url}`, {
+        headers: { 'locale': locale }
+      });
+      if (!response.ok) {
+        console.error(`Failed to fetch ${url}: ${response.status}`);
+        return null;
+      }
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        console.error(`Invalid content type for ${url}: ${contentType}`);
+        return null;
+      }
+      return await response.json();
+    } catch (error) {
+      console.error(`Error fetching ${url}: ${error.message}`);
+      return null;
     }
-  })
-  const dataAllSections = await resAllSections.json();
+  };
 
-
-  const resAllLangs = await fetch('https://iiacademy.net/api/languages', {
-    headers: {
-      'locale': locale
-    }
-  })
-  const dataAllLangs = await resAllLangs.json();
-
-  const resPreliminaries = await fetch('https://iiacademy.net/api/preliminaries', {
-    headers: {
-      'locale': locale
-    }
-  })
-  const dataPreliminaries = await resPreliminaries.json();
-
-
-  const resCategories = await fetch('https://iiacademy.net/api/categories', {
-    headers: {
-      'locale': locale
-    }
-  })
-  const dataCategories = await resCategories.json();
-
+  const dataAllSections = await fetchData('preliminaries', locale);
+  const dataAllLangs = await fetchData('languages', locale);
+  const dataPreliminaries = await fetchData('preliminaries', locale);
+  const dataCategories = await fetchData('categories', locale);
 
   return {
     props: {
-      dataAllSections: dataAllSections?.data[0] || [],
+      dataAllSections: dataAllSections?.data[0] || {},
       dataAllLangs: dataAllLangs?.data || [],
       dataPreliminaries: dataPreliminaries?.data[0]?.posts || [],
       dataCategories: dataCategories?.data || []
     },
-
   };
-
 }
-
