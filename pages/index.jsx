@@ -229,8 +229,6 @@ export default Frame;
 
 
 export async function getStaticProps({ locale }) {
-  const langIdEnvKey = `LANG_ID_${locale?.toUpperCase()}`;
-  const langId = process.env[langIdEnvKey];
 
   const resPreliminaries = await fetch('https://iiacademy.net/api/preliminaries', {
     headers: {
