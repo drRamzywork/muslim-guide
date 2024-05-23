@@ -1,10 +1,14 @@
-// scripts/fetchLocales.js
 const fs = require("fs");
 const path = require("path");
 const https = require("https");
 
 const apiURL = "https://iiacademy.net/api/languages";
-const outputPath = path.join(process.cwd(), "public/locales/allLanguages.json");
+const outputDir = path.join(process.cwd(), "public/locales");
+const outputPath = path.join(outputDir, "allLanguages.json");
+
+if (!fs.existsSync(outputDir)) {
+  fs.mkdirSync(outputDir, { recursive: true });
+}
 
 https
   .get(apiURL, (resp) => {
@@ -15,13 +19,17 @@ https
     });
 
     resp.on("end", () => {
-      const languages = JSON.parse(data);
-      const locales = Object.entries(languages.data).map(
-        ([code, language]) => code
-      );
+      try {
+        const languages = JSON.parse(data);
+        const locales = Object.entries(languages.data).map(
+          ([code, language]) => code
+        );
 
-      fs.writeFileSync(outputPath, JSON.stringify(locales), "utf-8");
-      console.log("Locales have been updated.");
+        fs.writeFileSync(outputPath, JSON.stringify(locales), "utf-8");
+        console.log("Locales have been updated.");
+      } catch (error) {
+        console.error("Error parsing JSON:", error);
+      }
     });
   })
   .on("error", (err) => {
