@@ -922,6 +922,7 @@
   @media screen and (max-width: 992px) {
     top: unset;
     bottom: -176px;
+    transform: scale(4.7);
   }
 }
 .frameChild10 {
@@ -1007,7 +1008,7 @@
 }
 .ffef10c793a72c5f85a27fa3d17f75 {
   position: absolute;
-  top: 24px;
+  top: 0px;
   left: 0;
   border-radius: 11.98px;
   background-color: var(--sec-color);
@@ -1016,13 +1017,17 @@
   @media screen and (max-width: 992px) {
     width: 115.26px;
     height: 153.21px;
-    position: relative;
+    // position: relative;
+    top: 15px;
+    left: -8px;
   }
 }
 .ffef10c793a72c5f85a27fa3d17f75Icon {
-  position: absolute;
-  top: 31.8px;
-  left: 31.4px;
+  // position: absolute;
+  // top: 31.8px;
+  // left: 31.4px;
+  position: relative;
+  margin-top: 20px;
   border-radius: 12.35px;
   width: 341.8px;
   height: 442.5px;
