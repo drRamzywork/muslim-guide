@@ -3,6 +3,18 @@ import Head from "next/head";
 import "../styles/globals.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "tinymce/skins/ui/oxide/skin.min.css";
+import localFont from "next/font/local";
+
+const Andalus = localFont({
+  src: [
+    {
+      path: "../public/fonts/Andalus.ttf",
+      style: "bold",
+      weight: "500",
+    },
+  ],
+});
+
 function MyApp({ Component, pageProps }) {
   return (
     <Fragment>

@@ -19,9 +19,6 @@ const Frame = ({ dataPreliminaries, dataAllSections }) => {
   const [activeSlide, setActiveSlide] = useState(0);
 
   console.log(dataPreliminaries?.posts[activeSlide], "dataPreliminaries")
-  const swiperRef = useRef(null);
-  const nextButtonRef = useRef(null);
-  const prevButtonRef = useRef(null);
 
   const handleSlideChange = (swiper) => {
     setActiveSlide(swiper.activeIndex);
@@ -38,7 +35,7 @@ const Frame = ({ dataPreliminaries, dataAllSections }) => {
         <div className={styles.child1} dir={router.locale === 'ar' ? 'rtl' : 'ltr'} />
       </div>
 
-      <Navbar />
+      <Navbar dataAllSections={dataAllSections} dataPreliminaries={dataPreliminaries.posts} />
 
 
 
@@ -243,12 +240,7 @@ export async function getStaticProps({ locale }) {
   })
   const dataPreliminaries = await resPreliminaries.json();
 
-  const resCategory = await fetch('https://iiacademy.net/api/preliminaries', {
-    headers: {
-      'locale': locale
-    }
-  })
-  const dataCategory = await resCategory.json();
+
 
   const resAllSections = await fetch('https://iiacademy.net/api/categories', {
     headers: {
@@ -261,7 +253,6 @@ export async function getStaticProps({ locale }) {
     props: {
       dataAllSections: dataAllSections.data,
       dataPreliminaries: dataPreliminaries.data[0],
-      dataCategory
     },
 
   };

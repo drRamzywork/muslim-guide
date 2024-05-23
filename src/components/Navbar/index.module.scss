@@ -36,6 +36,11 @@ nav.greenBG {
   height: 18px;
   overflow: hidden;
   flex-shrink: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.fiRsAngleSmallUpIcon.active {
+  transform: rotate(180deg);
 }
 .parent {
   border-radius: var(--br-xs);
@@ -102,6 +107,42 @@ nav.greenBG {
   padding: var(--padding-xl) var(--padding-xs);
   transition: all 0.3s ease-in-out;
   color: var(--white);
+  // position: relative;
+  cursor: pointer;
+
+  .sections_menu_container {
+    width: 250px;
+    height: 300px;
+    overflow-y: scroll;
+    // background-color: red;
+    position: absolute;
+    background-color: #fbf5ec;
+    border-radius: 5px;
+
+    ul {
+      padding: 0;
+      li {
+        a {
+          display: flex;
+          justify-content: space-between;
+        }
+        border-bottom: 1px solid #013e46;
+        padding: 12px;
+        svg {
+          color: #013e46;
+        }
+        p {
+          text-align: right;
+          margin: 0;
+          color: #013e46;
+
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
 }
 .container,
 .fiRsAngleSmallUpParent,
@@ -123,6 +164,7 @@ nav.greenBG {
   justify-content: center;
   padding: var(--padding-xl) var(--padding-xs);
   color: var(--white);
+  position: relative;
 }
 .frameContainer {
   justify-content: center;

@@ -11,6 +11,7 @@ const Details = ({ sectionData, dataAllSections }) => {
       setContent(sectionData.body);
     }
   }, [sectionData]);
+  console.log(dataAllSections, "dataAllSections")
 
   useEffect(() => {
     const handler = (e) => {
@@ -32,7 +33,7 @@ const Details = ({ sectionData, dataAllSections }) => {
         <div className={styles.header}>
           <div className={styles.child} />
           <div className={styles.wrapper2}>
-            <b className={styles.b4}>{sectionData?.title}</b>
+            <b className={styles.b4}>{dataAllSections?.title}</b>
           </div>
 
         </div>
@@ -221,7 +222,7 @@ const Details = ({ sectionData, dataAllSections }) => {
 
       <Footer />
       <div className="container">
-        <div dangerouslySetInnerHTML={{ __html: dataAllSections?.body }} />
+        <div dangerouslySetInnerHTML={{ __html: sectionData?.body }} />
       </div>
 
     </>
@@ -270,7 +271,7 @@ export default Details;
 export async function getServerSideProps({ params, locale }) {
   const { slug } = params;
 
-  const res = await fetch(`https://iiacademy.net/api/post/${slug}`, {
+  const res = await fetch(`https://iiacademy.net/api/category/${slug}`, {
     headers: {
       'locale': locale
     }
@@ -292,18 +293,17 @@ export async function getServerSideProps({ params, locale }) {
   }
 
   const data = await res.json();
-
   const resAllSections = await fetch('https://iiacademy.net/api/categories', {
     headers: {
       'locale': locale
     }
   })
   const dataAllSections = await resAllSections.json();
+
   return {
     props: {
-      dataAllSections: dataAllSections.data,
-
-      sectionData: data.data
+      sectionData: data.data,
+      dataAllSections: dataAllSections.data.data || [],
     },
   };
 }

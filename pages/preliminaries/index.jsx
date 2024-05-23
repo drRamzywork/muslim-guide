@@ -8,19 +8,19 @@ import { useRouter } from "next/router";
 
 const Preliminaries = ({ dataAllSections }) => {
   const router = useRouter();
-
+  console.log(dataAllSections, "preliminaries")
   return (
     <>
 
       <section dir={router.locale === 'ar' ? 'rtl' : 'ltr'} className={styles.div}>
-        <Navbar />
+        {/* <Navbar dataAllSections={dataAllSections} /> */}
         <div className={styles.header}>
           <div className={styles.child} />
 
           <div className="container flex-column d-flex  justify-content-start align-items-center">
 
             <div className={styles.wrapper2}>
-              <b className={styles.b17}>المقدمات</b>
+              <b className={styles.b17}>{dataAllSections.name}</b>
             </div>
 
             <div className={styles.div23}>
@@ -34,15 +34,15 @@ const Preliminaries = ({ dataAllSections }) => {
 
           <div className={DetailsStyles.frameParent5}>
             <div className={DetailsStyles.instanceParent}>
-              {dataAllSections.map((post, idx) =>
+              {dataAllSections.posts.map((post, idx) =>
                 <Link href={`/details/${post.slug}`} keyt={idx} className={DetailsStyles.rectangleParent}>
                   <img
                     className={DetailsStyles.instanceChild}
                     alt=""
-                    src="/rectangle-22541@2x.png"
+                    src={post.image}
                   />
                   <div className={DetailsStyles.wrapper3}>
-                    <b className={DetailsStyles.b}>{post.name}</b>
+                    <b className={DetailsStyles.b}>{post.title}</b>
                   </div>
                 </Link>
               )}
@@ -68,16 +68,16 @@ export default Preliminaries;
 
 
 export async function getStaticProps({ locale }) {
-  const resAllSections = await fetch('https://iiacademy.net/api/categories', {
+  const resAllSections = await fetch('https://iiacademy.net/api/preliminaries', {
     headers: {
       'locale': locale
     }
   })
   const dataAllSections = await resAllSections.json();
-  console.log(dataAllSections, 'dataAllSectionslogy')
+
   return {
     props: {
-      dataAllSections: dataAllSections.data,
+      dataAllSections: dataAllSections.data[0],
     },
 
   };

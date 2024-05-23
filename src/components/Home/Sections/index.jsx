@@ -26,7 +26,6 @@ const Sections = ({ dataAllSections }) => {
     setActiveSection(index);
     console.log(index)
   };
-  console.log(dataAllSections[activeSection], "activeSection")
 
 
   return (

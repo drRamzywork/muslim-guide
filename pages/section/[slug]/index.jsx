@@ -4,16 +4,17 @@ import styles from "./index.module.scss";
 import Link from "next/link";
 import Footer from "../../../src/components/Footer";
 
-const Section = ({ dataAllSections }) => {
+const Section = ({ dataSections, dataAllSections }) => {
   const router = useRouter();
 
+  console.log(dataAllSections, "dataSections")
   return (
     <>
       <section dir={router.locale === 'ar' ? 'rtl' : 'ltr'} className={styles.div}>
         <div className={styles.child} />
         <div className={styles.item} />
         <div className={styles.inner} />
-        <Navbar />
+        <Navbar dataAllSections={dataAllSections} />
 
 
         <div className="container">
@@ -22,18 +23,18 @@ const Section = ({ dataAllSections }) => {
             <div className={styles.img_container}>
               <img
                 className={styles.rectangleIcon}
-                alt={dataAllSections.name}
-                src={dataAllSections.cover}
+                alt={dataSections.name}
+                src={dataSections.cover}
               />
             </div>
 
             <div className={styles.text_container}>
               <div className={styles.frameParent1}>
                 <div className={styles.wrapper1}>
-                  <b className={styles.b4}>{dataAllSections.name}</b>
+                  <b className={styles.b4}>{dataSections.name}</b>
                 </div>
                 <div className={styles.div3}>
-                  {dataAllSections.seo_description}
+                  {dataSections.seo_description}
                 </div>
               </div>
             </div>
@@ -42,12 +43,12 @@ const Section = ({ dataAllSections }) => {
 
           <div className={styles.frameParent5}>
             <div className={styles.instanceParent}>
-              {dataAllSections.posts.map((post, idx) =>
+              {dataSections.posts.map((post, idx) =>
                 <Link href={`/details/${post.slug}`} keyt={idx} className={styles.rectangleParent}>
                   <img
                     className={styles.instanceChild}
                     alt=""
-                    src="/rectangle-22541@2x.png"
+                    src={post.icon}
                   />
                   <div className={styles.wrapper3}>
                     <b className={styles.b}>{post.title}</b>
@@ -107,9 +108,16 @@ export async function getStaticProps({ params, locale }) {
 
   const data = await res.json();
 
+  const resAllSections = await fetch('https://iiacademy.net/api/categories', {
+    headers: {
+      'locale': locale
+    }
+  })
+  const dataAllSections = await resAllSections.json();
   return {
     props: {
-      dataAllSections: data.data
+      dataSections: data.data,
+      dataAllSections: dataAllSections.data
     },
   };
 }
