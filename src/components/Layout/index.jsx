@@ -36,7 +36,7 @@ export default function Layout({ children, dataAllSections, dataAllLangs, dataPr
 
       <main className={`${Andalus.className}`}>
 
-        {router.pathname !== '/' &&
+        {router.pathname !== '/' && router.pathname !== '/section/[slug]' &&
           <Navbar
             dataAllSections={dataAllSections}
             dataAllLangs={dataAllLangs}
@@ -46,7 +46,6 @@ export default function Layout({ children, dataAllSections, dataAllLangs, dataPr
 
         {children}
       </main>
-      <Footer />
     </>
   )
 }

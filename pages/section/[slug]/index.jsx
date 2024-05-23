@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import Navbar from "../../../src/components/Navbar";
 import styles from "./index.module.scss";
 import Link from "next/link";
 import Footer from "../../../src/components/Footer";
@@ -14,7 +15,7 @@ const Section = ({ dataSections, dataAllSections,
         <div className={styles.child} />
         <div className={styles.item} />
         <div className={styles.inner} />
-
+        <Navbar dataAllSections={dataAllSections} dataPreliminaries={dataPreliminaries} dataAllLangs={dataAllLangs} />
 
 
         <div className="container">
