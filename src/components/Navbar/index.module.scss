@@ -23,6 +23,10 @@ nav.greenBG {
   position: relative;
   line-height: 36px;
   font-weight: 500;
+
+  @media screen and (max-width: 992px) {
+    font-size: 14px;
+  }
 }
 .flagOfSaudiArabia1938197Icon {
   width: 32px;
@@ -60,6 +64,11 @@ nav.greenBG {
   height: 32px;
   overflow: hidden;
   flex-shrink: 0;
+
+  @media screen and (max-width: 992px) {
+    width: 18px;
+    height: 18px;
+  }
 }
 .fiRsSearchIcon {
   width: 30px;
