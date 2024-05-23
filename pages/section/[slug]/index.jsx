@@ -15,7 +15,7 @@ const Section = ({ dataSections, dataAllSections,
         <div className={styles.child} />
         <div className={styles.item} />
         <div className={styles.inner} />
-        {/* <Navbar dataAllSections={dataAllSections} dataPreliminaries={dataPreliminaries} dataAllLangs={dataAllLangs} /> */}
+        <Navbar dataAllSections={dataAllSections} dataPreliminaries={dataPreliminaries} dataAllLangs={dataAllLangs} />
 
 
         <div className="container">
