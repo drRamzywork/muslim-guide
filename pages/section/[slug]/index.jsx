@@ -117,14 +117,18 @@ export async function getStaticProps({ params, locale }) {
   })
   const dataPreliminaries = await resPreliminaries.json();
 
+  console.log(dataSections)
+  console.log(dataAllSections)
+  console.log(dataAllLangs)
+  console.log(dataPreliminaries)
 
 
   return {
     props: {
-      dataSections: data.data,
-      dataAllSections: dataAllSections.data,
-      dataAllLangs: dataAllLangs.data,
-      dataPreliminaries: dataPreliminaries.data[0].posts,
+      dataSections: data?.data,
+      dataAllSections: dataAllSections?.data,
+      dataAllLangs: dataAllLangs?.data,
+      dataPreliminaries: dataPreliminaries?.data[0]?.posts,
 
     },
   };
