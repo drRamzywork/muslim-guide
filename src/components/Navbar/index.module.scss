@@ -56,6 +56,10 @@ nav.greenBG {
   padding: var(--padding-5xs);
   gap: var(--gap-xs);
   position: relative;
+  @media screen and (max-width: 992px) {
+    padding: 0;
+    gap: 8px;
+  }
 }
 .arrowDownwardIcon,
 .fiRsSearchIcon {
