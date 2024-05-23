@@ -92,20 +92,6 @@ export async function getStaticProps({ params, locale }) {
     }
   });
 
-  if (!res.ok) {
-    console.error('Failed to fetch section:', res.statusText);
-    return {
-      notFound: true,
-    };
-  }
-
-  const contentType = res.headers.get('content-type');
-  if (!contentType || !contentType.includes('application/json')) {
-    console.error('Invalid content type:', contentType);
-    return {
-      notFound: true,
-    };
-  }
 
   const data = await res.json();
 

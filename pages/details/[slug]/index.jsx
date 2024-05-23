@@ -232,42 +232,6 @@ const Details = ({ sectionData, dataAllSections, dataAllLangs
 };
 
 export default Details;
-// import { useState, useEffect } from 'react';
-// import dynamic from 'next/dynamic';
-// import Footer from "../../../src/components/Footer";
-// import Navbar from "../../../src/components/Navbar";
-// import styles from "./index.module.scss";
-
-
-// // Dynamically import the TinyMCEEditor component to avoid SSR issues
-// const TinyMCEEditor = dynamic(() => import('../../../src/components/TinyMCEEditor'), {
-//   ssr: false
-// });
-
-
-
-// const Details = ({ dataAllSections }) => {
-//   const [content, setContent] = useState('');
-
-
-//   useEffect(() => {
-//     if (dataAllSections) {
-//       setContent(dataAllSections.body);
-//     }
-//   }, [dataAllSections]);
-//   return (
-//     <>
-//       <div className="container">
-//         <div>
-//           <h2>Rendered Content</h2>
-//           <div dangerouslySetInnerHTML={{ __html: content }} />
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default Details;
 
 export async function getServerSideProps({ params, locale }) {
   const { slug } = params;
@@ -278,20 +242,7 @@ export async function getServerSideProps({ params, locale }) {
     }
   });
 
-  if (!res.ok) {
-    console.error('Failed to fetch section:', res.statusText);
-    return {
-      notFound: true,
-    };
-  }
 
-  const contentType = res.headers.get('content-type');
-  if (!contentType || !contentType.includes('application/json')) {
-    console.error('Invalid content type:', contentType);
-    return {
-      notFound: true,
-    };
-  }
 
   const data = await res.json();
 
