@@ -12,7 +12,7 @@ const Preliminaries = ({ dataAllSections, dataAllLangs, dataPreliminaries, dataC
     <>
 
       <section dir={router.locale === 'ar' ? 'rtl' : 'ltr'} className={styles.div}>
-        <Navbar dataAllSections={dataCategories} dataAllLangs={dataAllLangs} dataPreliminaries={dataPreliminaries} />
+        {/* <Navbar dataAllSections={dataCategories} dataAllLangs={dataAllLangs} dataPreliminaries={dataPreliminaries} /> */}
         <div className={styles.header}>
           <div className={styles.child} />
 
