@@ -15,15 +15,7 @@ const Andalus = localFont({
   ],
 });
 
-const Tajwal = localFont({
-  src: [
-    {
-      path: "../../../public/fonts/Tajwal/Tajawal-Black.ttf",
-      style: "bold",
-      weight: "500",
-    },
-  ],
-});
+
 
 
 
