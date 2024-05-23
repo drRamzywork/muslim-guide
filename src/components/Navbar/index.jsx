@@ -6,10 +6,11 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { IoIosArrowBack } from "react-icons/io";
 
-const Navbar = ({ dataAllSections, dataPreliminaries }) => {
+const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs }) => {
   const router = useRouter();
   const [sections, setSections] = useState(false);
   const [preliminaries, setPreliminaries] = useState(false);
+  const [langs, setLangs] = useState(false);
 
   const variants = {
     open: { opacity: 1, y: 180 },
@@ -17,8 +18,8 @@ const Navbar = ({ dataAllSections, dataPreliminaries }) => {
   };
   const sectionsMenuRef = useRef(null);
   const preliminariesMenuRef = useRef(null);
+  const langsMenuRef = useRef(null);
 
-  console.log(dataPreliminaries, "dataPreliminaries")
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -56,6 +57,42 @@ const Navbar = ({ dataAllSections, dataPreliminaries }) => {
     };
   }, [preliminaries]);
 
+  useEffect(() => {
+    function handleClickOutside(event) {
+      // Check if the click is outside of the navMenuRef and the menu is open
+      if (langsMenuRef.current && !langsMenuRef.current.contains(event.target)) {
+
+        setLangs(false); // Close the nav menu
+      }
+    }
+
+    // Add the event listener to the document
+    document.addEventListener("mousedown", handleClickOutside);
+
+    // Cleanup function to remove the event listener
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [langs]);
+
+
+  console.log(dataAllLangs, 'dataAllLangs')
+  const { asPath, locale } = router;
+
+
+  const currentLangData = Object.entries(dataAllLangs)?.find(([code, language]) => code === router.locale);
+
+  console.log(currentLangData)
+  const buildLocaleSwitchUrl = (targetLocale) => {
+    const segments = asPath.split('/');
+    if (segments[1] === locale) {
+      segments[1] = targetLocale;
+    } else {
+      segments.unshift(targetLocale);
+    }
+    return segments.join('/');
+  };
+
 
   return (
     <>
@@ -65,39 +102,136 @@ const Navbar = ({ dataAllSections, dataPreliminaries }) => {
           <div className={styles.frameParent} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
             <div className={styles.frameGroup}>
 
-              <div className={styles.parent}>
-                <div className={styles.div1} style={{ color: router.pathname !== '/' && 'var(--white)' }}>العربية</div>
-                <img
-                  className={styles.flagOfSaudiArabia1938197Icon}
-                  alt=""
-                  src="/flag-of-saudi-arabia-19381973-1@2x.png"
-                />
-                <img
-                  className={styles.fiRsAngleSmallUpIcon}
-                  alt=""
-                  src={router.pathname === '/' ? "/firsanglesmallup.svg" : "/firsanglesmallup1.svg"}
-                />
-              </div>
-              <img
-                className={styles.arrowDownwardIcon}
-                alt=""
-                src={router.pathname === '/' ? '/arrow-downward.svg' : '/arrow-downward1.svg'}
-              />
-              <div className={styles.fiRsSearchWrapper}>
-                <img
-                  className={styles.fiRsSearchIcon}
-                  alt=""
-                  src={router.pathname === '/' ? "/firssearch.svg" : "/firssearch1.svg"}
-                />
+              <div className="desktop">
+                <div className={styles.parent}>
+
+                  <img
+                    className={styles.arrowDownwardIcon}
+                    alt=""
+                    src={router.pathname === '/' ? '/arrow-downward.svg' : '/arrow-downward1.svg'}
+                  />
+
+
+
+
+
+
+                  <div className={styles.currentLang}
+                    ref={sectionsMenuRef}
+                    onClick={() => setLangs((prev) => !prev)}
+                  >
+
+                    <div className={styles.div1} style={{ color: router.pathname !== '/' && 'var(--white)' }}>العربية</div>
+                    <img
+                      className={styles.flagOfSaudiArabia1938197Icon}
+                      alt=""
+                      src="/flag-of-saudi-arabia-19381973-1@2x.png"
+                    />
+                    <img
+                      className={`${styles.fiRsAngleSmallUpIcon} ${langs && styles.active}`}
+                      alt=""
+                      src={router.pathname === '/' ? "/firsanglesmallup.svg" : "/firsanglesmallup1.svg"}
+                    />
+
+                    <motion.div
+                      initial="closed"
+                      animate={langs ? "open" : "closed"}
+                      variants={variants}
+                      transition={{ duration: 0.5, type: "tween" }}
+                      className={styles.langs_menu_container}
+                    >
+                      <ul>
+                        {Object.entries(dataAllLangs).map(([code, language]) => (
+                          <li key={code}>
+
+                            {console.log(code, language)}
+                            <a
+                              href={buildLocaleSwitchUrl(code)}
+                            >
+                              <img src={language.icon_url} alt="" />
+                              <p>{language.native}</p>
+
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+
+                    </motion.div>
+
+
+                  </div>
+                </div>
+
               </div>
 
+
+              <div className="mobile">
+                <div className={styles.parent}>
+
+                  <div className={styles.currentLang}
+                    ref={sectionsMenuRef}
+                    onClick={() => setLangs((prev) => !prev)}
+                  >
+
+                    <div className={styles.div1} style={{ color: 'var(--white)' }}>العربية</div>
+                    <img
+                      className={styles.flagOfSaudiArabia1938197Icon}
+                      alt=""
+                      src="/flag-of-saudi-arabia-19381973-1@2x.png"
+                    />
+                    <img
+                      className={`${styles.fiRsAngleSmallUpIcon} ${langs && styles.active}`}
+                      alt=""
+                      src={"/firsanglesmallup1.svg"}
+                    />
+
+                    <motion.div
+                      initial="closed"
+                      animate={langs ? "open" : "closed"}
+                      variants={variants}
+                      transition={{ duration: 0.5, type: "tween" }}
+                      className={styles.langs_menu_container}
+                    >
+                      <ul>
+                        {Object.entries(dataAllLangs).map(([code, language]) => (
+                          <li key={code}>
+
+                            {console.log(code, language)}
+                            <Link
+                              href={buildLocaleSwitchUrl(code)}
+                            >
+                              <img src={language.icon_url} alt="" />
+                              <p>{language.name}</p>
+
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+
+                    </motion.div>
+
+
+                  </div>
+
+
+                  <img
+                    className={styles.arrowDownwardIcon}
+                    alt=""
+                    src={'/arrow-downward1.svg'}
+                  />
+
+
+
+
+
+
+                </div>
+              </div>
 
 
             </div>
 
-            <div className={styles.burger_icon}>
-              <IoMenu />
-            </div>
+
 
             <div className={styles.frameContainer}>
               <div className={styles.wrapper}>
@@ -189,9 +323,16 @@ const Navbar = ({ dataAllSections, dataPreliminaries }) => {
               </Link>
             </div>
 
-            <Link href={'/'} className={styles.frame}>
-              <div className={styles.b}>{` دليل المسلم الميسر `}</div>
-            </Link>
+
+            <div className={styles.frame_container}>
+              <div className={styles.burger_icon}>
+                <IoMenu />
+              </div>
+
+              <Link href={'/'} className={styles.frame}>
+                <div className={styles.title}>{` دليل المسلم الميسر `}</div>
+              </Link>
+            </div>
           </div>
         </div>
       </nav>

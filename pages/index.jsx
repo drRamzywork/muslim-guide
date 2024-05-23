@@ -14,7 +14,7 @@ import 'swiper/css/pagination';
 import Link from "next/link";
 import { IoArrowBack } from "react-icons/io5";
 import { useRouter } from 'next/router';
-const Frame = ({ dataPreliminaries, dataAllSections }) => {
+const Frame = ({ dataPreliminaries, dataAllSections, dataAllLangs }) => {
   const router = useRouter();
   const [activeSlide, setActiveSlide] = useState(0);
 
@@ -35,7 +35,7 @@ const Frame = ({ dataPreliminaries, dataAllSections }) => {
         <div className={styles.child1} dir={router.locale === 'ar' ? 'rtl' : 'ltr'} />
       </div>
 
-      <Navbar dataAllSections={dataAllSections} dataPreliminaries={dataPreliminaries.posts} />
+      <Navbar dataAllSections={dataAllSections} dataPreliminaries={dataPreliminaries.posts} dataAllLangs={dataAllLangs} />
 
 
 
@@ -249,12 +249,19 @@ export async function getStaticProps({ locale }) {
   })
   const dataAllSections = await resAllSections.json();
 
+  const resAllLangs = await fetch('https://iiacademy.net/api/languages', {
+    headers: {
+      'locale': locale
+    }
+  })
+  const dataAllLangs = await resAllLangs.json();
+
   return {
     props: {
       dataAllSections: dataAllSections.data,
       dataPreliminaries: dataPreliminaries.data[0],
+      dataAllLangs: dataAllLangs.data
     },
-
   };
 
 }

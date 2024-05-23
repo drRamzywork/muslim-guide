@@ -42,6 +42,7 @@ nav.greenBG {
 .fiRsAngleSmallUpIcon.active {
   transform: rotate(180deg);
 }
+.currentLang,
 .parent {
   border-radius: var(--br-xs);
   display: flex;
@@ -50,6 +51,7 @@ nav.greenBG {
   justify-content: center;
   padding: var(--padding-5xs);
   gap: var(--gap-xs);
+  position: relative;
 }
 .arrowDownwardIcon,
 .fiRsSearchIcon {
@@ -79,7 +81,7 @@ nav.greenBG {
   gap: var(--gap-5xl);
   text-align: center;
   @media screen and (max-width: 992px) {
-    display: none;
+    // display: none;
   }
   .content_container {
   }
@@ -101,6 +103,15 @@ nav.greenBG {
   position: relative;
   font-size: var(--tajawal-medium-24-size);
 }
+
+.title {
+  font-size: 40px;
+  font-family: var(--font-andalus) !important;
+
+  @media screen and (max-width: 992px) {
+    font-size: 24px;
+  }
+}
 .wrapper {
   border-radius: var(--br-xs);
   justify-content: center;
@@ -109,39 +120,54 @@ nav.greenBG {
   color: var(--white);
   // position: relative;
   cursor: pointer;
+}
 
-  .sections_menu_container {
-    width: 250px;
-    height: 300px;
-    overflow-y: scroll;
-    // background-color: red;
-    position: absolute;
-    background-color: #fbf5ec;
-    border-radius: 5px;
+.langs_menu_container,
+.sections_menu_container {
+  width: 250px;
+  height: 300px;
+  overflow-y: scroll;
+  // background-color: red;
+  position: absolute;
+  background-color: #fbf5ec;
+  border-radius: 5px;
+  z-index: 999;
+  ul {
+    padding: 0;
+    li {
+      a {
+        display: flex;
+        justify-content: space-between;
+      }
+      border-bottom: 1px solid #013e46;
+      padding: 12px;
+      svg {
+        color: #013e46;
+      }
 
-    ul {
-      padding: 0;
-      li {
-        a {
-          display: flex;
-          justify-content: space-between;
-        }
-        border-bottom: 1px solid #013e46;
-        padding: 12px;
-        svg {
-          color: #013e46;
-        }
-        p {
-          text-align: right;
-          margin: 0;
-          color: #013e46;
+      img {
+        width: 28px;
+        height: 18px;
+        object-fit: cover;
+      }
+      p {
+        text-align: right;
+        margin: 0;
+        color: #013e46;
 
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
+  }
+}
+
+.langs_menu_container {
+  a {
+    align-items: center;
+    justify-content: flex-start !important;
+    gap: 5px;
   }
 }
 .container,
@@ -188,6 +214,13 @@ nav.greenBG {
   font-size: var(--tajawal-h2-bold-40-size);
   color: var(--sec-color);
   font-family: var(--font-andalus);
+}
+
+.frame_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 .frameParent {
   justify-content: space-between;
