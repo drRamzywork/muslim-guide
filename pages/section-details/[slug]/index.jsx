@@ -297,12 +297,11 @@ export async function getServerSideProps({ params, locale }) {
   })
   const dataAllSections = await resAllSections.json();
 
-  console.log(sectionData)
-  console.log(dataAllSections)
+
 
   return {
     props: {
-      sectionData: data?.data,
+      sectionData: data?.data || [],
       dataAllSections: dataAllSections?.data?.data || [],
     },
   };

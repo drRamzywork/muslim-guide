@@ -270,17 +270,13 @@ export async function getServerSideProps({ params, locale }) {
   const dataPreliminaries = await resPreliminaries.json();
 
 
-  console.log(dataAllSections)
-  console.log(sectionData)
-  console.log(dataAllLangs)
-  console.log(dataPreliminaries)
 
   return {
     props: {
-      dataAllSections: dataAllSections?.data,
-      sectionData: data?.data,
-      dataAllLangs: dataAllLangs?.data,
-      dataPreliminaries: dataPreliminaries?.data[0]?.posts,
+      dataAllSections: dataAllSections?.data || [],
+      sectionData: data?.data || [],
+      dataAllLangs: dataAllLangs?.data || [],
+      dataPreliminaries: dataPreliminaries?.data[0]?.posts || [],
 
     },
   };

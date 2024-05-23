@@ -252,9 +252,7 @@ export async function getStaticProps({ locale }) {
     }
   })
   const dataAllLangs = await resAllLangs.json();
-  console.log(dataAllSections)
-  console.log(dataPreliminaries)
-  console.log(dataAllLangs)
+
 
   return {
     props: {
