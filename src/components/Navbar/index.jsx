@@ -76,13 +76,11 @@ const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs }) => {
   }, [langs]);
 
 
-  console.log(dataAllLangs, 'dataAllLangs')
   const { asPath, locale } = router;
 
 
   const currentLangData = Object.entries(dataAllLangs)?.find(([code, language]) => code === router.locale);
 
-  console.log(currentLangData)
   const buildLocaleSwitchUrl = (targetLocale) => {
     const segments = asPath.split('/');
     if (segments[1] === locale) {
@@ -92,7 +90,7 @@ const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs }) => {
     }
     return segments.join('/');
   };
-
+  console.log(currentLangData[1], "currentLangData")
 
   return (
     <>
@@ -121,11 +119,11 @@ const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs }) => {
                     onClick={() => setLangs((prev) => !prev)}
                   >
 
-                    <div className={styles.div1} style={{ color: router.pathname !== '/' && 'var(--white)' }}>العربية</div>
+                    <div className={styles.div1} style={{ color: router.pathname !== '/' && 'var(--white)' }}>{currentLangData[1].native}</div>
                     <img
                       className={styles.flagOfSaudiArabia1938197Icon}
                       alt=""
-                      src="/flag-of-saudi-arabia-19381973-1@2x.png"
+                      src={currentLangData[1].icon_url}
                     />
                     <img
                       className={`${styles.fiRsAngleSmallUpIcon} ${langs && styles.active}`}
@@ -144,10 +142,8 @@ const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs }) => {
                         {Object.entries(dataAllLangs).map(([code, language]) => (
                           <li key={code}>
 
-                            {console.log(code, language)}
                             <a
-                              href={buildLocaleSwitchUrl(code)}
-                            >
+                              href={`/${code}${router.asPath}`}                            >
                               <img src={language.icon_url} alt="" />
                               <p>{language.native}</p>
 
@@ -195,15 +191,12 @@ const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs }) => {
                       <ul>
                         {Object.entries(dataAllLangs).map(([code, language]) => (
                           <li key={code}>
-
-                            {console.log(code, language)}
-                            <Link
-                              href={buildLocaleSwitchUrl(code)}
-                            >
+                            <a
+                              href={`/${code}${router.asPath}`}                            >
                               <img src={language.icon_url} alt="" />
                               <p>{language.name}</p>
 
-                            </Link>
+                            </a>
                           </li>
                         ))}
                       </ul>

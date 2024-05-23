@@ -40,7 +40,6 @@ const Introductions = ({ dataPreliminaries }) => {
       };
     }
   }, []);
-  console.log(dataPreliminaries, "dataPreliminaries")
   return (
     <section id='introductions' className={compStyles.Introductions} dir={'rtl'}>
       <div className="container">

@@ -18,7 +18,6 @@ const Frame = ({ dataPreliminaries, dataAllSections, dataAllLangs }) => {
   const router = useRouter();
   const [activeSlide, setActiveSlide] = useState(0);
 
-  console.log(dataPreliminaries?.posts[activeSlide], "dataPreliminaries")
 
   const handleSlideChange = (swiper) => {
     setActiveSlide(swiper.activeIndex);

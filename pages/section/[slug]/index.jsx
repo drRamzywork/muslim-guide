@@ -7,7 +7,6 @@ import Footer from "../../../src/components/Footer";
 const Section = ({ dataSections, dataAllSections }) => {
   const router = useRouter();
 
-  console.log(dataAllSections, "dataSections")
   return (
     <>
       <section dir={router.locale === 'ar' ? 'rtl' : 'ltr'} className={styles.div}>

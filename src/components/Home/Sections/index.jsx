@@ -24,7 +24,6 @@ const Sections = ({ dataAllSections }) => {
   };
   const handleSectionClick = (index) => {
     setActiveSection(index);
-    console.log(index)
   };
 
 

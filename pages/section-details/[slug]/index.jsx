@@ -11,7 +11,6 @@ const Details = ({ sectionData, dataAllSections }) => {
       setContent(sectionData.body);
     }
   }, [sectionData]);
-  console.log(dataAllSections, "dataAllSections")
 
   useEffect(() => {
     const handler = (e) => {

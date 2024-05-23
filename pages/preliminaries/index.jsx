@@ -8,7 +8,6 @@ import { useRouter } from "next/router";
 
 const Preliminaries = ({ dataAllSections }) => {
   const router = useRouter();
-  console.log(dataAllSections, "preliminaries")
   return (
     <>
 
