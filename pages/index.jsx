@@ -229,7 +229,7 @@ const Frame = ({ dataPreliminaries, dataAllSections, dataAllLangs }) => {
 export default Frame;
 
 
-export async function getStaticProps({ locale }) {
+export async function getServerSideProps({ locale }) {
 
   const resPreliminaries = await fetch('https://iiacademy.net/api/preliminaries', {
     headers: {

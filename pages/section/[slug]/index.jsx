@@ -83,7 +83,7 @@ export default Section;
 
 // pages/sections/[slug].js
 
-export async function getStaticProps({ params, locale }) {
+export async function getServerSideProps({ params, locale }) {
   const { slug } = params;
 
   const res = await fetch(`https://iiacademy.net/api/category/${slug}`, {
@@ -131,39 +131,39 @@ export async function getStaticProps({ params, locale }) {
   };
 }
 
-export async function getStaticPaths() {
-  const res = await fetch('https://iiacademy.net/api/categories', {
-    headers: {
-      'locale': 'en' // Default locale
-    }
-  });
+// export async function getStaticPaths() {
+//   const res = await fetch('https://iiacademy.net/api/categories', {
+//     headers: {
+//       'locale': 'en' // Default locale
+//     }
+//   });
 
-  if (!res.ok) {
-    console.error('Failed to fetch sections:', res.statusText);
-    return {
-      paths: [],
-      fallback: 'blocking',
-    };
-  }
+//   if (!res.ok) {
+//     console.error('Failed to fetch sections:', res.statusText);
+//     return {
+//       paths: [],
+//       fallback: 'blocking',
+//     };
+//   }
 
-  const contentType = res.headers.get('content-type');
-  if (!contentType || !contentType.includes('application/json')) {
-    console.error('Invalid content type:', contentType);
-    return {
-      paths: [],
-      fallback: 'blocking',
-    };
-  }
+//   const contentType = res.headers.get('content-type');
+//   if (!contentType || !contentType.includes('application/json')) {
+//     console.error('Invalid content type:', contentType);
+//     return {
+//       paths: [],
+//       fallback: 'blocking',
+//     };
+//   }
 
-  const data = await res.json();
+//   const data = await res.json();
 
-  const paths = data.data.map(section => ({
-    params: { slug: section.slug }
-  }));
+//   const paths = data.data.map(section => ({
+//     params: { slug: section.slug }
+//   }));
 
-  return {
-    paths,
-    fallback: 'blocking',
-  };
-}
+//   return {
+//     paths,
+//     fallback: 'blocking',
+//   };
+// }
 

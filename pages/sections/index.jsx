@@ -64,7 +64,7 @@ const Sections = ({ dataAllSections, dataAllLangs, dataPreliminaries }) => {
 
 export default Sections;
 
-export async function getStaticProps({ locale }) {
+export async function getServerSideProps({ locale }) {
 
   const resAllSections = await fetch('https://iiacademy.net/api/categories', {
     headers: {

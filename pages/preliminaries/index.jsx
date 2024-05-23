@@ -65,7 +65,7 @@ export default Preliminaries;
 
 
 
-export async function getStaticProps({ locale }) {
+export async function getServerSideProps({ locale }) {
   const apiUrl = 'https://iiacademy.net/api';
 
   const fetchData = async (url, locale) => {
