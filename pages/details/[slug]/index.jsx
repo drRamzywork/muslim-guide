@@ -24,6 +24,7 @@ const Details = ({ sectionData, dataAllSections, dataAllLangs
   }, []);
   return (
     <>
+
       <Navbar dataAllSections={dataAllSections} dataAllLangs={dataAllLangs} dataPreliminaries={dataPreliminaries} />
 
 

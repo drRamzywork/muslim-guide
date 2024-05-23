@@ -90,7 +90,6 @@ const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs }) => {
     }
     return segments.join('/');
   };
-  console.log(currentLangData[1], "currentLangData")
 
   return (
     <>

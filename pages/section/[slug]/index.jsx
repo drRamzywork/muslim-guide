@@ -9,7 +9,6 @@ const Section = ({ dataSections, dataAllSections,
   dataPreliminaries
 }) => {
   const router = useRouter();
-
   return (
     <>
       <section dir={router.locale === 'ar' ? 'rtl' : 'ltr'} className={styles.div}>
