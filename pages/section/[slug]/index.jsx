@@ -117,7 +117,7 @@ export async function getStaticProps({ params, locale }) {
   })
   const dataPreliminaries = await resPreliminaries.json();
 
-  console.log(dataSections)
+  console.log(data?.data)
   console.log(dataAllSections)
   console.log(dataAllLangs)
   console.log(dataPreliminaries)
