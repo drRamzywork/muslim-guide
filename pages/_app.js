@@ -15,6 +15,16 @@ const Andalus = localFont({
   ],
 });
 
+const Tajwal = localFont({
+  src: [
+    {
+      path: "../public/fonts/Tajwal/Tajawal-Black.ttf",
+      style: "bold",
+      weight: "500",
+    },
+  ],
+});
+
 function MyApp({ Component, pageProps }) {
   return (
     <Fragment>
@@ -24,8 +34,15 @@ function MyApp({ Component, pageProps }) {
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
+
+        <link
+          href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap"
+          rel="stylesheet"
+        />
       </Head>
-      <Component {...pageProps} />
+      <main className={`${Andalus.className}`}>
+        <Component {...pageProps} />
+      </main>
     </Fragment>
   );
 }
