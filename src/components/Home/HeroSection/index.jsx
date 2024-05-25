@@ -1,14 +1,16 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import 'swiper/css/autoplay';
+import 'swiper/css/effect-fade';
 import styles from '../../../../pages/index.module.scss';
 import componentStyles from './index.module.scss'
 
-const HeroSection = ({ dataPreliminaries, activeSlide
+const HeroSection = ({ dataSlider, activeSlide
   , setActiveSlide, }) => {
   const swiperRef = useRef(null);
   const nextButtonRef = useRef(null);
@@ -47,7 +49,7 @@ const HeroSection = ({ dataPreliminaries, activeSlide
 
         <div className={componentStyles.sec_container}>
           <Swiper
-            spaceBetween={8}
+            // spaceBetween={8}
             slidesPerView={3}
             navigation={{
               nextEl: nextButtonRef.current,
@@ -56,12 +58,15 @@ const HeroSection = ({ dataPreliminaries, activeSlide
             onSwiper={(swiper) => swiperRef.current = swiper}
             onSlideChange={handleSlideChange}
             dir="rtl"
-            modules={[Navigation, Pagination]}
+            modules={[Navigation, Pagination, Autoplay,]}
             centeredSlides={true}
+            autoplay={{ delay: 3000, }}
+          // effect="fade"
+
           >
             <div className={styles.inner1}>
               <div className={styles.rectangleParent3}>
-                {dataPreliminaries?.posts?.map((imageUrl, index) => (
+                {dataSlider?.map((imageUrl, index) => (
                   <SwiperSlide key={index} >
                     <div className={`${componentStyles.box} ${activeSlide === index && componentStyles.active}`}>
                       <img src={imageUrl.image} alt="" />

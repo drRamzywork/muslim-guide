@@ -7,17 +7,26 @@ import Sections from "../src/components/Home/Sections";
 import Footer from "../src/components/Footer";
 import Introductions from "../src/components/Home/Introductions";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import Link from "next/link";
 import { IoArrowBack } from "react-icons/io5";
 import { useRouter } from 'next/router';
-const Frame = ({ dataPreliminaries, dataAllSections, dataAllLangs }) => {
+import { motion } from "framer-motion";
+
+
+import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
+
+import 'swiper/css/autoplay';
+import 'swiper/css/effect-fade';
+
+
+
+
+const Frame = ({ dataPreliminaries, dataAllSections, dataAllLangs, dataAllSettings, dataSlider }) => {
   const router = useRouter();
   const [activeSlide, setActiveSlide] = useState(0);
-
 
   const handleSlideChange = (swiper) => {
     setActiveSlide(swiper.activeIndex);
@@ -26,6 +35,8 @@ const Frame = ({ dataPreliminaries, dataAllSections, dataAllLangs }) => {
 
   return (
     <div className={styles.div}>
+
+
       <div className="desktop">
 
         <div className={styles.child} />
@@ -34,7 +45,7 @@ const Frame = ({ dataPreliminaries, dataAllSections, dataAllLangs }) => {
         <div className={styles.child1} dir={router.locale === 'ar' ? 'rtl' : 'ltr'} />
       </div>
       {router.pathname === '/' &&
-        <Navbar dataAllSections={dataAllSections} dataPreliminaries={dataPreliminaries.posts} dataAllLangs={dataAllLangs} />
+        <Navbar dataAllSections={dataAllSections} dataPreliminaries={dataPreliminaries.posts} dataAllLangs={dataAllLangs} dataAllSettings={dataAllSettings} />
       }
 
 
@@ -44,17 +55,24 @@ const Frame = ({ dataPreliminaries, dataAllSections, dataAllLangs }) => {
 
         <div className="container position-relative" >
           <div className={styles.rectangleDiv} dir={router.locale === 'ar' ? 'rtl' : 'ltr'} />
-
-          <div className={styles.hero_container} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
-            <img class="index_rectangleIcon__d516r" alt={dataPreliminaries?.posts[activeSlide].title} src={dataPreliminaries?.posts[activeSlide].image} />
+          <motion.div
+            key={activeSlide}
+            className={styles.hero_container}
+            dir={router.locale === 'ar' ? 'rtl' : 'ltr'}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <img class="index_rectangleIcon__d516r" alt={dataSlider[activeSlide]?.title} src={dataSlider[activeSlide]?.image} />
             <div className={styles.frameParent1}>
               <img className={styles.child2} alt="" src="/frame-61.svg" />
 
               <div className={styles.wrapper1}>
-                <b className={styles.b4}>{dataPreliminaries?.posts[activeSlide].title}</b>
+                <b className={styles.b4}>{dataSlider[activeSlide]?.title}</b>
               </div>
               <div className={styles.div3}>
-                {dataPreliminaries?.posts[activeSlide].description}
+                {dataSlider[activeSlide]?.description}
               </div>
               <div className={styles.rectangleParent}>
                 <div className={styles.frameChild} />
@@ -70,8 +88,7 @@ const Frame = ({ dataPreliminaries, dataAllSections, dataAllLangs }) => {
             </div>
 
 
-          </div>
-
+          </motion.div>
           <section id="sss">
             <Swiper
               spaceBetween={0}
@@ -81,7 +98,7 @@ const Frame = ({ dataPreliminaries, dataAllSections, dataAllLangs }) => {
               dir="rtl"
               modules={[Navigation, Pagination]}
             >
-              {dataPreliminaries?.posts?.map((imageUrl, index) => (
+              {dataSlider?.map((imageUrl, index) => (
                 <SwiperSlide key={index} >
                   <div className={styles.hero_container_mobile} >
 
@@ -133,7 +150,7 @@ const Frame = ({ dataPreliminaries, dataAllSections, dataAllLangs }) => {
         <HeroSection
           activeSlide={activeSlide}
           setActiveSlide={setActiveSlide}
-          dataPreliminaries={dataPreliminaries}
+          dataSlider={dataSlider}
         />
       </div>
 
@@ -144,22 +161,29 @@ const Frame = ({ dataPreliminaries, dataAllSections, dataAllLangs }) => {
           <img className={styles.vectorIcon1} alt="" src="/vector.svg" />
 
           <div className={styles.sec_container}>
-            <div className="container">
+
+            <motion.div
+              key={activeSlide}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+              className="container">
 
               <div className={styles.text_container}>
                 <div className={styles.title}>
                   <h1>
-                    {dataPreliminaries?.posts[activeSlide].title}
+                    {dataSlider[activeSlide]?.title}
                   </h1>
                 </div>
                 <div className={styles.desc}>
                   <p>
-                    {dataPreliminaries?.posts[activeSlide].description}
+                    {dataSlider[activeSlide]?.description}
                     الصلاة هي عمود الدين وصلة العبد بربه ومولاه , ولذلك كانت أعظم العبادات وأجلها شأنا , وقد أمر الله المسلم بالمحافظة عليها
                   </p>
                 </div>
                 <div className={styles.btn_container2}>
-                  <Link href={`/details${dataPreliminaries?.posts[activeSlide].slug}`}>
+                  <Link href={`/sections`}>
                     <p>استكشف المزيد </p>
                     <div className={styles.arro_container}>
                       <img src={'/arrow.png'} alt="" />
@@ -167,13 +191,19 @@ const Frame = ({ dataPreliminaries, dataAllSections, dataAllLangs }) => {
                   </Link>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             <div className={styles.swiperHeader}>
               <div className={styles.active_image_container}>
-                <div className={styles.main_image}>
-                  <img src={dataPreliminaries?.posts[activeSlide].image} alt={dataPreliminaries?.posts[activeSlide].title} />
-                </div>
+
+                <motion.div
+                  key={activeSlide}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5 }} className={styles.main_image}>
+                  <img src={dataSlider[activeSlide]?.image} alt={dataSlider[activeSlide]?.title} />
+                </motion.div>
 
 
 
@@ -183,13 +213,14 @@ const Frame = ({ dataPreliminaries, dataAllSections, dataAllLangs }) => {
                     slidesPerView={3}
                     navigation={false}
                     dir="rtl"
-                    modules={[Navigation, Pagination]}
                     centeredSlides={true}
                     onSlideChange={handleSlideChange}
                     className={styles.theSwiper}
                     id="mobileSwiper"
+                    modules={[Navigation, Pagination, Autoplay,]}
+                    autoplay={{ delay: 3000, }}
                   >
-                    {dataPreliminaries?.posts?.map((imageUrl, index) => (
+                    {dataSlider?.map((imageUrl, index) => (
                       <SwiperSlide key={index} >
                         <div className={`${styles.hero_container_mobile}  ${index === activeSlide && styles.active}`} >
 
@@ -217,8 +248,9 @@ const Frame = ({ dataPreliminaries, dataAllSections, dataAllLangs }) => {
 
 
 
+
       <Sections dataAllSections={dataAllSections} />
-      <Introductions dataPreliminaries={dataPreliminaries} />
+      <Introductions dataPreliminaries={dataPreliminaries} dataAllSettings={dataAllSettings} />
 
       <Footer />
 
@@ -255,11 +287,29 @@ export async function getServerSideProps({ locale }) {
   const dataAllLangs = await resAllLangs.json();
 
 
+  const resAllSettings = await fetch('https://iiacademy.net/api/settings', {
+    headers: {
+      'locale': locale
+    }
+  })
+  const dataAllSettings = await resAllSettings.json();
+
+  const resSlider = await fetch('https://iiacademy.net/api/f-section', {
+    headers: {
+      'locale': locale
+    }
+  })
+  const dataSlider = await resSlider.json();
+
+
   return {
     props: {
       dataAllSections: dataAllSections?.data,
       dataPreliminaries: dataPreliminaries?.data[0],
-      dataAllLangs: dataAllLangs?.data
+      dataAllLangs: dataAllLangs?.data,
+      dataAllSettings: dataAllSettings.data,
+      dataSlider: dataSlider.data
+
     },
   };
 

@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { IoIosArrowBack } from "react-icons/io";
 
-const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs }) => {
+const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs, dataAllSettings }) => {
   const router = useRouter();
   const [sections, setSections] = useState(false);
   const [preliminaries, setPreliminaries] = useState(false);
@@ -19,6 +19,7 @@ const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs }) => {
   const sectionsMenuRef = useRef(null);
   const preliminariesMenuRef = useRef(null);
   const langsMenuRef = useRef(null);
+
 
 
   useEffect(() => {
@@ -74,7 +75,6 @@ const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs }) => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [langs]);
-
 
 
 
@@ -181,7 +181,7 @@ const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs }) => {
                         {Object.entries(dataAllLangs).map(([code, language]) => (
                           <li key={code}>
                             <a
-                              href={`/${code}${router.asPath}`}                            >
+                              href={`/${code}${router.asPath}`}>
                               <img src={language.icon_url} alt="" />
                               <p>{language.name}</p>
 
@@ -191,7 +191,6 @@ const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs }) => {
                       </ul>
 
                     </motion.div>
-
 
                   </div>
 
@@ -216,25 +215,15 @@ const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs }) => {
 
 
             <div className={styles.frameContainer}>
-              <div className={styles.wrapper}>
+              {/* <div className={styles.wrapper}>
                 <b className={styles.b}>من نحن</b>
-              </div>
-              <div
-                ref={sectionsMenuRef}
-
-                onClick={() => setSections((prev) => !prev)}
-                className={styles.wrapper}>
+              </div> */}
+              <div className={router.pathname.includes('section') ? styles.container : styles.wrapper}>
                 {/* router.pathname === '/sections' || router.pathname.includes('section') ? styles.container : */}
-                <div className={styles.fiRsAngleSmallUpParent}>
-                  <img
-                    className={`${styles.fiRsAngleSmallUpIcon} ${sections && styles.active}`}
-                    alt=""
-                    src="/firsanglesmallup1.svg"
-                  />
-                  <b className={styles.b}>الأقسام</b>
-                </div>
-
-
+                <Link href={'/sections'}
+                  Link className={styles.fiRsAngleSmallUpParent}>
+                  <b className={styles.b}>{dataAllSettings.sections}</b>
+                </Link>
 
                 <motion.div
                   initial="closed"
@@ -254,29 +243,19 @@ const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs }) => {
                       </li>
                     )}
                   </ul>
-
                 </motion.div>
-
-
               </div>
 
-              <div
-                ref={preliminariesMenuRef}
-                onClick={() => setPreliminaries((prev) => !prev)}
+              <div className={router.pathname.includes('preliminaries') ? styles.container : styles.wrapper}>
 
-                className={router.pathname.includes('preliminaries') ? styles.container : styles.wrapper}>
-                <div className={styles.fiRsAngleSmallUpParent}>
-                  <img
-                    className={`${styles.fiRsAngleSmallUpIcon} ${preliminaries && styles.active}`}
-                    alt=""
-                    src="/firsanglesmallup1.svg"
-                  />
-                  <b className={styles.b}>المقدمات</b>
-                </div>
+                <Link href={'/preliminaries'} className={styles.fiRsAngleSmallUpParent}>
+
+                  <b className={styles.b}>{dataAllSettings.preliminaries}</b>
+                </Link>
 
 
 
-                <motion.div
+                {/* <motion.div
                   initial="closed"
                   animate={preliminaries ? "open" : "closed"}
                   variants={variants}
@@ -296,6 +275,7 @@ const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs }) => {
                   </ul>
 
                 </motion.div>
+                 */}
               </div>
 
 

@@ -10,12 +10,14 @@ function MyApp({
   dataAllSections,
   dataAllLangs,
   dataPreliminaries,
+  dataAllSettings,
 }) {
   return (
     <Layout
       dataAllSections={dataAllSections}
       dataAllLangs={dataAllLangs}
       dataPreliminaries={dataPreliminaries[0].posts}
+      dataAllSettings={dataAllSettings}
     >
       <Component {...pageProps} />
     </Layout>

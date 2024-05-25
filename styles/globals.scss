@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap");
 @import url("/public/fonts/Andalus.ttf");
 @font-face {
@@ -18,7 +22,7 @@ body {
   --h_color: #8facd7;
 
   --tajawal-medium-36: Tajawal;
-  --font-andalus: Andalus;
+  --font-andalus: "__Andalus_4df8e8", "__Andalus_Fallback_4df8e8";
 
   /* font sizes */
   --tajawal-medium-36-size: 36px;
@@ -91,9 +95,13 @@ a {
 
 .container {
   @media screen and (min-width: 1700px) {
-    max-width: 1820px !important;
+    max-width: 1564px !important;
+  }
+  @media (min-width: 1536px) {
+    max-width: 1336px !important;
   }
 }
+
 /* swiper */
 #hero {
   // .swiper-pagination {
@@ -104,7 +112,7 @@ a {
   // }
 
   .swiper-slide.swiper-slide-active {
-    width: 41% !important;
+    // width: 41% !important;
   }
 
   .swiper {
@@ -117,7 +125,7 @@ a {
     height: unset !important;
   }
   .swiper-slide {
-    width: fit-content;
+    // width: fit-content;
   }
 
   .swiper-button-disabled {
@@ -208,5 +216,6 @@ section#sss {
   display: flex;
 }
 
-@import "tinymcee.css";
-@import "tinymcee2.css";
+@import "all.css";
+// @import "tinymcee.css";
+// @import "tinymcee2.css";

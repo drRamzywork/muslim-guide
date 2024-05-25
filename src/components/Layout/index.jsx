@@ -19,20 +19,18 @@ const Andalus = localFont({
 
 
 
-export default function Layout({ children, dataAllSections, dataAllLangs, dataPreliminaries }) {
+export default function Layout({ children, dataAllSections, dataAllLangs, dataPreliminaries, dataAllSettings }) {
   const router = useRouter();
-
-
+  console.log(dataAllSettings, "dataAllSettingsdataAllSettings")
   return (
     <>
-
       <main className={`${Andalus.className}`}>
-
         {router.pathname !== '/' && router.pathname !== '/section/[slug]' &&
           <Navbar
             dataAllSections={dataAllSections}
             dataAllLangs={dataAllLangs}
             dataPreliminaries={dataPreliminaries}
+            dataAllSettings={dataAllSettings}
           />
         }
 

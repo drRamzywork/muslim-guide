@@ -24,6 +24,7 @@ const withData = (WrappedComponent) => {
       const dataAllSections = await fetchData("categories", locale);
       const dataAllLangs = await fetchData("languages", locale);
       const dataPreliminaries = await fetchData("preliminaries", locale);
+      const dataAllSettings = await fetchData("settings", locale);
 
       const pageProps = WrappedComponent.getInitialProps
         ? await WrappedComponent.getInitialProps(ctx)
@@ -34,6 +35,7 @@ const withData = (WrappedComponent) => {
         dataAllSections: dataAllSections?.data || [],
         dataAllLangs: dataAllLangs?.data || [],
         dataPreliminaries: dataPreliminaries?.data || [],
+        dataAllSettings: dataAllSettings?.data || [],
       };
     }
 

@@ -6,15 +6,15 @@ import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import Link from 'next/link';
 
 // Arrow   <img className={styles.arrowIcon1} alt="" src="/arrow@2x.png" />
 
-const Introductions = ({ dataPreliminaries }) => {
+const Introductions = ({ dataPreliminaries, dataAllSettings }) => {
   const swiperRef = useRef();
   const nextButtonRef = useRef(null);
   const prevButtonRef = useRef(null);
   const [activeSlide, setActiveSlide] = useState(2);
-
   const handleSlideChange = (swiper) => {
     setActiveSlide(swiper.activeIndex);
   };
@@ -46,17 +46,14 @@ const Introductions = ({ dataPreliminaries }) => {
         <div className={compStyles.sec_container}>
           <b className={styles.b13}>دليل المسلم الميسر</b>
           <div className={styles.wrapper3}>
-            <b className={styles.b14}>
+            <Link href={'/preliminaries'} className={styles.b14}>
               <div>{`هيا بنا نستكشف `}</div>
               <span className={styles.span}>المقدمات</span>
-            </b>
+            </Link>
           </div>
           <div className={styles.div9}>
             <p>
-              أعظمُ مقاماتِ الإنسانِ عبوديتهُ لله وطاعتهُ لأوامره، فيها صلاح الدنيا
-              والآخرة، فالدين يُسرٌ كله، وخيرٌ كله، وصلاحٌ كله. وهذه العبودية التي
-              تشمل جميع جوانب الحياة، يجب أن تكون على علمٍ وبصيرة، ليكتمل بها الأجر
-              وينجو بها من الزلل والزيغ
+              {dataAllSettings.word_publisher}
             </p>
           </div>
 

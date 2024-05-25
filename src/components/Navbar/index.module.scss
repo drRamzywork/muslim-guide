@@ -6,6 +6,13 @@
 nav.greenBG {
   background: linear-gradient(0deg, #013e46, #091b1d);
 }
+
+nav.greenBG * {
+  &:not(.title) {
+    font-family: var(--tajawal-medium-36) !important;
+  }
+}
+
 .rectangleDiv {
   top: 218px;
   left: 120px;
