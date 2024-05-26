@@ -4,7 +4,7 @@ import styles from "./index.module.scss";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 
-const Details = ({ sectionData, dataAllSections, }) => {
+const Details = ({ sectionData, dataAllSections, dataAllSettings }) => {
   const router = useRouter();
 
   const [content, setContent] = useState('');
@@ -46,7 +46,7 @@ const Details = ({ sectionData, dataAllSections, }) => {
 
 
 
-      <div className={styles.div} dir={router.locale === 'ar' ? 'rtl' : 'ltr'} >
+      <div className={styles.div} dir={dataAllSettings.dir} >
         <div className={styles.header}>
           <div className={styles.child} />
 
@@ -129,12 +129,22 @@ export async function getServerSideProps({ params, locale }) {
 
 
 
+  const resAllSettings = await fetch('https://iiacademy.net/api/settings', {
+    headers: {
+      'locale': locale
+    }
+  })
+  const dataAllSettings = await resAllSettings.json();
+
+
+
   return {
     props: {
       dataAllSections: dataAllSections?.data || [],
       sectionData: data?.data || [],
       dataAllLangs: dataAllLangs?.data || [],
       dataPreliminaries: dataPreliminaries?.data[0]?.posts || [],
+      dataAllSettings: dataAllSettings?.data || [],
 
     },
   };

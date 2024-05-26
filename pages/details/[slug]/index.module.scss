@@ -504,3 +504,9 @@
     height: 200px;
   }
 }
+
+.div[dir="ltr"] {
+  * {
+    text-align: left;
+  }
+}
