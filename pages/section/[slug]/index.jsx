@@ -4,6 +4,7 @@ import styles from "./index.module.scss";
 import Link from "next/link";
 import Footer from "../../../src/components/Footer";
 import { motion } from "framer-motion";
+
 const Section = ({ dataSections, dataAllSections,
   dataAllLangs,
   dataPreliminaries,
@@ -57,13 +58,13 @@ const Section = ({ dataSections, dataAllSections,
                   transition={{ duration: 1.5, type: "tween" }}
                   className={styles.rectangleParent}
                 >
-
                   <Link href={`/details/${post.slug}`} >
                     <img
                       className={styles.instanceChild}
                       alt=""
                       src={post.icon}
                     />
+
                     <div className={styles.wrapper3}>
                       <b className={styles.b}>{post.title}</b>
                     </div>
@@ -139,7 +140,14 @@ export async function getServerSideProps({ params, locale }) {
   })
   const dataAllSettings = await resAllSettings.json();
 
-
+  if (slug === 'preliminaries') {
+    return {
+      redirect: {
+        destination: '/sections',
+        permanent: true,
+      },
+    };
+  }
 
   return {
     props: {

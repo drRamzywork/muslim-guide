@@ -16,14 +16,31 @@ const Sections = ({ dataAllSections, dataAllSettings }) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const [activeSection, setActiveSection] = useState(0);
 
+  // const handleSlideChange = (swiper) => {
+  //   setActiveSlide(swiper.activeIndex);
+  // };
+  // const handleSlideClick = (index) => {
+  //   swiperRef?.current?.slideTo(index);
+  // };
+  // const handleSectionClick = (index) => {
+  //   setActiveSection(index);
+  // };
+
   const handleSlideChange = (swiper) => {
     setActiveSlide(swiper.activeIndex);
   };
+
   const handleSlideClick = (index) => {
     swiperRef?.current?.slideTo(index);
+    setActiveSlide(index); // Update activeSlide when a slide is clicked
   };
+
   const handleSectionClick = (index) => {
     setActiveSection(index);
+    setActiveSlide(index); // Update activeSlide when a section is clicked
+    if (swiperRef.current) {
+      swiperRef.current.slideTo(index);
+    }
   };
 
 
@@ -71,7 +88,7 @@ const Sections = ({ dataAllSections, dataAllSettings }) => {
               <div onClick={() => handleSlideClick(index)} className={`${compStyles.box_container} ${activeSlide === index ? compStyles.active : ''}`}>
                 <div className={compStyles.box}>
                   <div className={compStyles.img_container}>
-                    <img src="/rectangle-22525@2x.png" alt="" />
+                    <img src={box.cover} alt="" />
                   </div>
                   <div className={compStyles.title}>
                     <p>{box.name}</p>
@@ -109,7 +126,7 @@ const Sections = ({ dataAllSections, dataAllSettings }) => {
                     <img
                       className={styles.frameChild16}
                       alt=""
-                      src={"/rectangle-22525@2x.png"}
+                      src={sec.cover}
                     />
                   </div>
                 )}
@@ -122,7 +139,7 @@ const Sections = ({ dataAllSections, dataAllSettings }) => {
               <img
                 className={styles.frameChild20}
                 alt=""
-                src="/rectangle-22525@2x.png"
+                src={dataAllSections[activeSlide].cover}
               />
 
               <div className={styles.frameParent21} >
@@ -134,7 +151,6 @@ const Sections = ({ dataAllSections, dataAllSettings }) => {
                 </div>
                 <b className={styles.b24}>{dataAllSettings.show_more}</b>
               </div>
-
 
             </div>
           </div>
@@ -153,8 +169,7 @@ const Sections = ({ dataAllSections, dataAllSettings }) => {
               <img
                 className={styles.frameChild20}
                 alt=""
-                src="/rectangle-22525@2x.png"
-              />
+                src={dataAllSections[activeSlide].cover} />
 
               <div className={styles.frameParent21} >
                 <div className={styles.group}>

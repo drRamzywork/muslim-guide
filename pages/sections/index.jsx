@@ -2,6 +2,8 @@ import Link from "next/link";
 import styles from "./index.module.scss";
 import Footer from "../../src/components/Footer";
 import { useRouter } from "next/router";
+import { IoArrowBack } from "react-icons/io5";
+import Sajadah from "../../public/sajadah";
 
 const Sections = ({ dataAllSections, dataAllSettings }) => {
   const router = useRouter();
@@ -33,11 +35,24 @@ const Sections = ({ dataAllSections, dataAllSettings }) => {
             <div className={styles.instanceParent}>
               {dataAllSections.map((category, idx) =>
                 <Link href={`/section/${category.slug}`} className={styles.groupParent} key={idx}>
-                  <img
-                    className={styles.instanceChild}
-                    alt=""
-                    src="/group-1000006284.svg"
-                  />
+
+                  <div className={styles.img_container}>
+
+                    <div className={styles.arrow_container}>
+                      <IoArrowBack />
+                    </div >
+
+                    <img
+                      className={styles.instanceChild}
+                      alt=""
+                      src={category.cover}
+                    />
+
+                    <div className={styles.icon_container}>
+                      <Sajadah />
+                    </div>
+                  </div>
+
                   <div className={styles.group}>
                     <b className={styles.b4}>{category.name}</b>
                     <div className={styles.div10}>
@@ -55,7 +70,7 @@ const Sections = ({ dataAllSections, dataAllSettings }) => {
 
 
         </div>
-      </section>
+      </section >
       <Footer />
 
     </>

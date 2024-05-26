@@ -138,6 +138,7 @@ export async function getServerSideProps({ params, locale }) {
 
 
 
+
   return {
     props: {
       dataAllSections: dataAllSections?.data || [],
