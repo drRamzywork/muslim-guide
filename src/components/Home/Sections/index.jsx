@@ -149,7 +149,7 @@ const Sections = ({ dataAllSections, dataAllSettings }) => {
                     {dataAllSections[activeSlide].description}
                   </div>
                 </div>
-                <b className={styles.b24}>{dataAllSettings.show_more}</b>
+                <Link href={`/section/${dataAllSections[activeSection]?.slug}`} className={styles.b24}>{dataAllSettings.show_more}</Link>
               </div>
 
             </div>

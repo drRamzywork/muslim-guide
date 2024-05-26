@@ -33,6 +33,7 @@ section {
 }
 :root {
   /* fonts */
+  --tw-gradient-from: initial !important;
   --main_color: #013e46;
   --h_color: #d69b41;
   --tajawal-medium-36: Tajawal;
@@ -44,7 +45,7 @@ section {
   --tajawal-h1-bold-48-size: 48px;
   --tajawal-regular-14-size: 14px;
   --tajawal-medium-24-size: 24px;
-  --tajawal-h2-bold-40-size: 40px;
+  --tajawal-h2-bold-40-size: 40px#;
   --tajawal-medium-20-size: 20px;
   --tajawal-small-8-size: 8px;
   --tajawal-small-12-size: 12px;

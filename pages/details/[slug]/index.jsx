@@ -94,7 +94,7 @@ export default Details;
 export async function getServerSideProps({ params, locale }) {
   const { slug } = params;
 
-  const res = await fetch(`https://iiacademy.net/api/post/${slug}`, {
+  const res = await fetch(`https://iiacademy.net/api/post/${slug}?removeClass=1`, {
     headers: {
       'locale': locale
     }

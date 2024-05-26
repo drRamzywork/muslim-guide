@@ -72,3 +72,7 @@ section.Introductions {
     }
   }
 }
+
+section.Introductions[dir="ltr"] {
+  text-align: left !important;
+}

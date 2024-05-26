@@ -143,17 +143,42 @@ const Introductions = ({ dataPreliminaries, dataAllSettings }) => {
               prevEl: prevButtonRef.current
             }}
             onSwiper={(swiper) => swiperRef.current = swiper}
-            breakpoints={
-              {
-                450: {
-                  slidesPerView: 2,
-                }
-              }}
-
+            // breakpoints={
+            //   {
+            //     450: {
+            //       slidesPerView: 2,
+            //       spaceBetween: 8,
+            //       centeredSlides: false
+            //     }
+            //   }}
             pagination={{ clickable: true }}
             className={compStyles.swiper}
             onSlideChange={handleSlideChange}
             modules={[Navigation, Pagination]}
+
+            dir={`rtl`}
+
+
+            breakpoints={{
+              0: {
+                slidesPerView: 3,
+                spaceBetween: 5,
+              },
+              450: {
+                slidesPerView: 3,
+                spaceBetween: 5,
+              },
+              640: {
+                slidesPerView: 3,
+                spaceBetween: 15,
+                centeredSlides: true,
+              },
+            }}
+          // pagination={{ clickable: true }}
+          // className={compStyles.swiper}
+          // onSlideChange={handleSlideChange}
+          // modules={[Navigation, Pagination]}
+
           >
             <div className={styles.instanceParent}>
 

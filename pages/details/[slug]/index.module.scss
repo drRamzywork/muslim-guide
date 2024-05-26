@@ -190,6 +190,11 @@
   position: relative;
   letter-spacing: 0.04em;
   line-height: 64px;
+
+  @media screen and (max-width: 992px) {
+    font-size: 24px;
+    line-height: 34px;
+  }
 }
 .wrapper2 {
   // position: absolute;
