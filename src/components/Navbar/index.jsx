@@ -4,38 +4,79 @@ import { IoMenu } from "react-icons/io5";
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { IoIosArrowBack } from "react-icons/io";
 
-const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs, dataAllSettings }) => {
+const Navbar = ({ dataAllLangs, dataAllSettings }) => {
   const router = useRouter();
   const [langs, setLangs] = useState(false);
+  const [menu, setMenu] = useState(false);
 
   const variants = {
     open: { opacity: 1, y: 180 },
     closed: { opacity: 0, y: "-150%" },
   };
+
+  const variants2 = {
+    open: { opacity: 1, y: 50 },
+    closed: { opacity: 0, y: "-150%" },
+  };
+  const menuRef = useRef(null);
   const langsMenuRef = useRef(null);
 
 
 
 
+  // useEffect(() => {
+  //   function handleClickOutside(event) {
+  //     // Check if the click is outside of the navMenuRef and the menu is open
+  //     if (langsMenuRef.current && !langsMenuRef.current.contains(event.target)) {
+
+  //       setLangs(false); // Close the nav menu
+  //     }
+  //   }
+
+  //   // Add the event listener to the document
+  //   document.addEventListener("mousedown", handleClickOutside);
+
+  //   // Cleanup function to remove the event listener
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   };
+  // }, [langs]);
+
+  // useEffect(() => {
+  //   function handleClickOutside(event) {
+  //     // Check if the click is outside of the navMenuRef and the menu is open
+  //     if (menuRef.current && !menuRef.current.contains(event.target)) {
+  //       setMenu(false);
+  //     }
+  //   }
+
+  //   // Add the event listener to the document
+  //   document.addEventListener("mousedown", handleClickOutside);
+
+  //   // Cleanup function to remove the event listener
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   };
+  // }, [menu]);
+
+
   useEffect(() => {
     function handleClickOutside(event) {
-      // Check if the click is outside of the navMenuRef and the menu is open
       if (langsMenuRef.current && !langsMenuRef.current.contains(event.target)) {
-
-        setLangs(false); // Close the nav menu
+        setLangs(false);
+      }
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setMenu(false);
       }
     }
 
-    // Add the event listener to the document
     document.addEventListener("mousedown", handleClickOutside);
 
-    // Cleanup function to remove the event listener
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [langs]);
+  }, []);
 
 
 
@@ -50,7 +91,7 @@ const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs, dataAllSetti
             <div className={styles.frameGroup}>
 
               <div className="desktop">
-                <div className={styles.parent}>
+                <div className={styles.parent} ref={langsMenuRef}>
                   <a href='https://iiacademy.net/media/files/PDFBooks/دليل المسلم الميسر (The Simplified Muslim Guide_AR).pdf' target='_blank'>
 
                     <img
@@ -60,7 +101,10 @@ const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs, dataAllSetti
                     />
                   </a>
 
-                  <div className={styles.currentLang}
+                  <div
+
+
+                    className={styles.currentLang}
                     onClick={() => setLangs((prev) => !prev)}
                   >
 
@@ -116,11 +160,11 @@ const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs, dataAllSetti
                     onClick={() => setLangs((prev) => !prev)}
                   >
 
-                    <div className={styles.div1} style={{ color: 'var(--white)' }}>العربية</div>
+                    <div className={styles.div1} style={{ color: 'var(--white)' }}>{currentLangData[1]?.native}</div>
                     <img
                       className={styles.flagOfSaudiArabia1938197Icon}
                       alt=""
-                      src="/flag-of-saudi-arabia-19381973-1@2x.png"
+                      src={currentLangData[1]?.icon_url}
                     />
                     <img
                       className={`${styles.fiRsAngleSmallUpIcon} ${langs && styles.active}`}
@@ -218,10 +262,35 @@ const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs, dataAllSetti
             </div>
 
 
-            <div className={styles.frame_container}>
-              <div className={styles.burger_icon}>
+            <div className={styles.frame_container} ref={menuRef}>
+              <div className={styles.burger_icon} onClick={() => setMenu(prev => !prev)}>
                 <IoMenu />
               </div>
+
+
+              <motion.div
+                initial="closed"
+                animate={menu ? "open" : "closed"}
+                variants={variants2}
+                transition={{ duration: 0.5, type: "tween" }}
+                className={styles.menu_container}
+              >
+                <ul>
+                  <li >
+                    <a
+                      href={`/sections`}>
+                      <p>{dataAllSettings.sections}</p>
+                    </a>
+                  </li>
+                  <li >
+                    <a
+                      href={`/preliminaries`}>
+                      <p>{dataAllSettings.preliminaries}</p>
+                    </a>
+                  </li>
+                </ul>
+
+              </motion.div>
 
               <Link href={'/'} className={styles.frame}>
                 <div className={styles.title}>{` دليل المسلم الميسر `}</div>

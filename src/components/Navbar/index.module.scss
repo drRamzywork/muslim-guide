@@ -63,6 +63,7 @@ nav.greenBG * {
   padding: var(--padding-5xs);
   gap: var(--gap-xs);
   position: relative;
+  cursor: pointer;
   @media screen and (max-width: 992px) {
     padding: 0;
     gap: 8px;
@@ -141,7 +142,7 @@ nav.greenBG * {
   // position: relative;
   cursor: pointer;
 }
-
+.menu_container,
 .langs_menu_container,
 .sections_menu_container {
   width: 250px;
@@ -152,6 +153,9 @@ nav.greenBG * {
   background-color: #fbf5ec;
   border-radius: 5px;
   z-index: 999;
+  @media screen and (max-width: 992px) {
+    left: 0;
+  }
   ul {
     padding: 0;
     li {
@@ -182,12 +186,34 @@ nav.greenBG * {
     }
   }
 }
-
+.menu_container,
 .langs_menu_container {
   a {
     align-items: center;
     justify-content: flex-start !important;
     gap: 5px;
+  }
+}
+
+.menu_container {
+  top: 0;
+  left: 16px;
+  height: auto;
+
+  ul {
+    li {
+      border-bottom: 1px solid #013e46;
+
+      @media screen and (max-width: 992px) {
+        padding: 6px;
+      }
+
+      p {
+        @media screen and (max-width: 992px) {
+          font-size: 18px;
+        }
+      }
+    }
   }
 }
 .container,
