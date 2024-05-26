@@ -3,7 +3,7 @@ import styles from "../preliminaries/index.module.scss";
 import DetailsStyles from "../section/[slug]/index.module.scss";
 import Footer from "../../src/components/Footer";
 import { useRouter } from "next/router";
-
+import { motion } from "framer-motion";
 
 const Preliminaries = ({ dataAllSections, dataAllLangs, dataPreliminaries, dataCategories }) => {
   const router = useRouter();
@@ -17,13 +17,17 @@ const Preliminaries = ({ dataAllSections, dataAllLangs, dataPreliminaries, dataC
 
           <div className="container flex-column d-flex  justify-content-start align-items-center">
 
-            <div className={styles.wrapper2}>
+            <motion.div initial={{ opacity: 0, y: -50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.5, type: "tween" }} className={styles.wrapper2}>
               <b className={styles.b17}>{dataAllSections.name}</b>
-            </div>
+            </motion.div >
 
-            <div className={styles.div23}>
+            <motion.div initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.5, type: "tween" }} className={styles.div23}>
               أعظمُ مقاماتِ الإنسانِ عبوديتهُ لله وطاعتهُ لأوامره، فيها صلاح الدنيا والآخرة، فالدين يُسرٌ كله، وخيرٌ كله، وصلاحٌ كله. وهذه العبودية التي تشمل جميع جوانب الحياة، يجب أن تكون على علمٍ وبصيرة، ليكتمل بها الأجر وينجو بها من الزلل والزيغ
-            </div>
+            </motion.div >
           </div>
 
         </div>
@@ -33,16 +37,26 @@ const Preliminaries = ({ dataAllSections, dataAllLangs, dataPreliminaries, dataC
           <div className={DetailsStyles.frameParent5}>
             <div className={DetailsStyles.instanceParent}>
               {dataAllSections.posts.map((post, idx) =>
-                <Link href={`/details/${post.slug}`} keyt={idx} className={DetailsStyles.rectangleParent}>
-                  <img
-                    className={DetailsStyles.instanceChild}
-                    alt=""
-                    src={post.image}
-                  />
-                  <div className={DetailsStyles.wrapper3}>
-                    <b className={DetailsStyles.b}>{post.title}</b>
-                  </div>
-                </Link>
+
+                <motion.div initial={{ opacity: 0, y: 2 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1.5, type: "tween" }}
+                  key={idx}
+                  className={DetailsStyles.rectangleParent}
+                >
+
+                  <Link href={`/details/${post.slug}`} >
+                    <img
+                      className={DetailsStyles.instanceChild}
+                      alt=""
+                      src={post.image}
+                    />
+                    <div className={DetailsStyles.wrapper3}>
+                      <b className={DetailsStyles.b}>{post.title}</b>
+                    </div>
+                  </Link>
+                </motion.div>
+
               )}
 
 

@@ -366,3 +366,11 @@
   color: var(--white);
   font-family: var(--tajawal-medium-36);
 }
+
+// LTR
+
+section.div[dir="ltr"] {
+  * {
+    text-align: left;
+  }
+}

@@ -1,16 +1,3 @@
-.child {
-  position: absolute;
-  top: 874px;
-  left: 861px;
-  filter: blur(120px);
-  background: linear-gradient(
-    223.55deg,
-    rgba(255, 212, 147, 0.82),
-    rgba(255, 241, 216, 0.31) 82.82%
-  );
-  width: 579px;
-  height: 637px;
-}
 .inner,
 .item {
   position: absolute;
@@ -196,6 +183,10 @@
       text-align: left !important;
     }
   }
+  .rectangleParent,
+  .b5 {
+    transform: scaleX(-1);
+  }
 
   .rectangleParent {
     // transform: scaleX(-1);
@@ -279,6 +270,12 @@
   text-align: justify;
   display: inline-block;
 
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
   @media screen and (max-width: 992px) {
     font-size: 14px;
     line-height: unset;
@@ -331,6 +328,7 @@
   overflow: hidden;
   max-height: 100%;
   object-fit: contain;
+  color: var(--main_color);
 }
 .rectangleGroup {
   position: absolute;
@@ -882,6 +880,12 @@
   }
   .b {
     text-align: center;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
@@ -1061,6 +1065,13 @@
   width: 341.8px;
   height: 442.5px;
   object-fit: cover;
+  display: block;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.1);
+  }
+
   @media screen and (max-width: 992px) {
     width: 114.46px;
     height: 149.08px;
@@ -1075,6 +1086,11 @@
   @media screen and (max-width: 992px) {
     height: unset;
   }
+}
+
+.ffef10c793a72c5f85a27fa3d17f75Parent {
+  width: fit-content;
+  overflow: hidden;
 }
 
 .frame1 {
@@ -1420,7 +1436,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  flex-direction: row-reverse;
+  flex-direction: row;
   padding: var(--padding-xs) 0 0 var(--padding-9xs);
   box-sizing: border-box;
   gap: var(--gap-5xl);

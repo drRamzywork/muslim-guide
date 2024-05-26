@@ -8,7 +8,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { useRouter } from 'next/router';
-
+import { motion } from 'framer-motion';
 
 const Sections = ({ dataAllSections, dataAllSettings }) => {
   const router = useRouter();
@@ -32,7 +32,9 @@ const Sections = ({ dataAllSections, dataAllSettings }) => {
 
       <div className="container">
 
-        <div className={styles.frameParent22}>
+        <motion.div initial={{ opacity: 0, y: -50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5, type: "tween" }} className={styles.frameParent22}>
           <div className={styles.parent14}>
             <b className={styles.b25}>{dataAllSettings.sections}</b>
             <img
@@ -45,11 +47,13 @@ const Sections = ({ dataAllSections, dataAllSettings }) => {
             يحتوي الكتاب على مجموعة مختلفة من الاقسام المختلفة لشرح الدين الاسلامي
             بطريقة سهلة ومبسطة وسريعة تصل بسهولة لجميع الاشخاص
           </div>
-        </div>
+        </motion.div >
       </div>
 
 
-      <div className={compStyles.swiper_mobile_sec}>
+      <motion.div initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.5, type: "tween" }} className={compStyles.swiper_mobile_sec}>
         <Swiper
           // spaceBetween={8}
           slidesPerView={2.1}
@@ -79,13 +83,15 @@ const Sections = ({ dataAllSections, dataAllSettings }) => {
         </Swiper>
 
 
-      </div>
+      </motion.div>
 
       <div className="container">
 
 
         <div className={styles.frameParent13}>
-          <div className={styles.frameParent14}>
+          <motion.div initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.5, type: "tween" }} className={styles.frameParent14}>
             <div className={styles.parent6}>
               <b className={styles.b}>باقي الأقسام</b>
               <div className={styles.div18}>{dataAllSections.length} قسم</div>
@@ -109,7 +115,8 @@ const Sections = ({ dataAllSections, dataAllSettings }) => {
                 )}
               </div>
             </div>
-          </div>
+          </motion.div >
+
           <div className={'mobile'}>
             <div className={styles.rectangleParent6}>
               <img
@@ -125,15 +132,24 @@ const Sections = ({ dataAllSections, dataAllSettings }) => {
                     {dataAllSections[activeSlide].description}
                   </div>
                 </div>
-                <b className={styles.b24}>اقرأ المزيد</b>
+                <b className={styles.b24}>{dataAllSettings.show_more}</b>
               </div>
 
 
             </div>
           </div>
 
-          <div className={'desktop'}>
-            <div className={styles.rectangleParent6}>
+          <motion.div initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.5, type: "tween" }} className={'desktop'}>
+
+            <motion.div
+              key={activeSection}
+              dir={router.locale === 'ar' ? 'rtl' : 'ltr'}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }} className={styles.rectangleParent6}>
               <img
                 className={styles.frameChild20}
                 alt=""
@@ -147,12 +163,14 @@ const Sections = ({ dataAllSections, dataAllSettings }) => {
                     {dataAllSections[activeSection]?.description}
                   </div>
                 </div>
-                <b className={styles.b24}>اقرأ المزيد</b>
+                <Link href={`/section/${dataAllSections[activeSection]?.slug}`} className={styles.b24}>{dataAllSettings.show_more}</Link>
               </div>
 
 
-            </div>
-          </div>
+            </motion.div>
+
+
+          </motion.div>
 
           {/* <Link href='/' className={styles.link}>استكشف المزيد</Link> */}
         </div>

@@ -1,5 +1,22 @@
 section.explore {
+  position: relative;
   padding-top: 120px;
+  z-index: 2;
+  font-family: var(--tajawal-medium-36);
+  .child {
+    position: absolute;
+    top: 0;
+    right: 0;
+    filter: blur(120px);
+    background: linear-gradient(
+      223.55deg,
+      rgba(255, 212, 147, 0.82),
+      rgba(255, 241, 216, 0.31) 82.82%
+    );
+    width: 579px;
+    height: 637px;
+    z-index: -1;
+  }
   @media screen and (max-width: 992px) {
     padding-top: 52px;
   }
@@ -28,11 +45,21 @@ section.explore {
       margin-top: 24px;
       // width: 100%;
     }
+
+    a {
+      color: var(--white) !important;
+    }
   }
   .boxes_container_mobile {
     margin-top: 24px;
     @media screen and (min-width: 992px) {
       display: none;
     }
+  }
+}
+
+section.explore[dir="ltr"] {
+  .child {
+    left: 0;
   }
 }

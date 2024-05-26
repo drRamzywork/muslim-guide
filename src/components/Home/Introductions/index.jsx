@@ -2,13 +2,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import compStyles from './index.module.scss';
 import styles from '../../../../pages/index.module.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation, Pagination, } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import Link from 'next/link';
-
-// Arrow   <img className={styles.arrowIcon1} alt="" src="/arrow@2x.png" />
+import { motion } from 'framer-motion';
 
 const Introductions = ({ dataPreliminaries, dataAllSettings }) => {
   const swiperRef = useRef();
@@ -18,7 +17,6 @@ const Introductions = ({ dataPreliminaries, dataAllSettings }) => {
   const handleSlideChange = (swiper) => {
     setActiveSlide(swiper.activeIndex);
   };
-
   useEffect(() => {
     const swiperInstance = swiperRef.current.swiper;
     if (swiperInstance) {
@@ -45,17 +43,23 @@ const Introductions = ({ dataPreliminaries, dataAllSettings }) => {
       <div className="container">
         <div className={compStyles.sec_container}>
           <b className={styles.b13}>دليل المسلم الميسر</b>
-          <div className={styles.wrapper3}>
+
+          <motion.div initial={{ opacity: 0, y: -50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.5, type: "tween" }} className={styles.wrapper3}>
             <Link href={'/preliminaries'} className={styles.b14}>
               <div>{`هيا بنا نستكشف `}</div>
-              <span className={styles.span}>المقدمات</span>
+              <span className={styles.span}>{dataAllSettings.preliminaries}</span>
             </Link>
-          </div>
-          <div className={styles.div9}>
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.5, type: "tween" }} className={styles.div9}>
             <p>
               {dataAllSettings.word_publisher}
             </p>
-          </div>
+          </motion.div>
 
           <div className={styles.child3} />
 
@@ -192,7 +196,9 @@ const Introductions = ({ dataPreliminaries, dataAllSettings }) => {
           <img className={styles.frameChild10} alt="" src="/group-3.svg" />
 
           <div className={compStyles.sec_container2}>
-            <div className={styles.frameParent9}>
+            <motion.div initial={{ opacity: 0, y: -50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.5, type: "tween" }} className={styles.frameParent9}>
               <div className={styles.parent5}>
                 <b className={styles.b16}>
                   <span>{`نحن فخورون بتقديم نسخة إلكترونيةمن كتاب `}</span>
@@ -204,18 +210,20 @@ const Introductions = ({ dataPreliminaries, dataAllSettings }) => {
                   إلى أكبر عدد ممكن من الأشخاص في مختلف أنحاء العالم
                 </div>
                 <div className={compStyles.book_container}>
-                  <div className={styles.wrapper5}>
+                  <a href='https://iiacademy.net/media/files/PDFBooks/دليل المسلم الميسر (The Simplified Muslim Guide_AR).pdf' target='_blank' className={styles.wrapper5}>
                     <b className={styles.b8}>حمل الكتاب الآن</b>
 
-                  </div>
-                  <div className={styles.ffef10c793a72c5f85a27fa3d17f75Parent}>
+                  </a>
+
+
+                  <a href='https://iiacademy.net/media/files/PDFBooks/دليل المسلم الميسر (The Simplified Muslim Guide_AR).pdf' target='_blank' className={styles.ffef10c793a72c5f85a27fa3d17f75Parent}>
                     <div className={styles.ffef10c793a72c5f85a27fa3d17f75} />
                     <img
                       className={styles.ffef10c793a72c5f85a27fa3d17f75Icon}
                       alt=""
                       src="/2ffef10c793a72c5f85a27fa3d17f758-1@2x.png"
                     />
-                  </div>
+                  </a>
                 </div>
                 <div className={compStyles.book_container_desktop}>
                   <div className={styles.wrapper5}>
@@ -226,24 +234,25 @@ const Introductions = ({ dataPreliminaries, dataAllSettings }) => {
                 </div>
               </div>
 
-            </div>
+            </motion.div >
 
-            <div className={compStyles.book_desktop}>
+            <motion.div initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.5, type: "tween" }} className={compStyles.book_desktop}>
 
-              <div className={styles.ffef10c793a72c5f85a27fa3d17f75Parent}>
+              <a href='https://iiacademy.net/media/files/PDFBooks/دليل المسلم الميسر (The Simplified Muslim Guide_AR).pdf' target='_blank' className={styles.ffef10c793a72c5f85a27fa3d17f75Parent}>
                 <div className={styles.ffef10c793a72c5f85a27fa3d17f75} />
                 <img
                   className={styles.ffef10c793a72c5f85a27fa3d17f75Icon}
                   alt=""
                   src="/2ffef10c793a72c5f85a27fa3d17f758-1@2x.png"
                 />
-              </div>
-            </div>
+              </a>
+            </motion.div>
 
           </div>
 
 
-          {/* <img className={styles.frameChild11} alt="" src="/group-4.svg" /> */}
 
         </div>
 

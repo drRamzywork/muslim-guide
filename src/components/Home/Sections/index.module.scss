@@ -1,13 +1,16 @@
 section.sections {
   position: relative;
+  a {
+    color: unset;
+  }
   ::-webkit-scrollbar {
-    width: 8px; // Width of the scrollbar
+    width: 8px;
     padding: 14px;
-    height: 100%; // Full height (useful for horizontal scrollbars)
+    height: 100%;
   }
 
   ::-webkit-scrollbar-track {
-    background-color: var(--third-color); // Color of the scrollbar track
+    background-color: var(--third-color);
     border-radius: 0 0 var(--br-xs) 0;
   }
 

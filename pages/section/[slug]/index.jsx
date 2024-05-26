@@ -3,7 +3,7 @@ import Navbar from "../../../src/components/Navbar";
 import styles from "./index.module.scss";
 import Link from "next/link";
 import Footer from "../../../src/components/Footer";
-
+import { motion } from "framer-motion";
 const Section = ({ dataSections, dataAllSections,
   dataAllLangs,
   dataPreliminaries,
@@ -20,17 +20,20 @@ const Section = ({ dataSections, dataAllSections,
 
 
         <div className="container">
-
           <div className={styles.sec_container}>
-            <div className={styles.img_container}>
+            <motion.div initial={{ opacity: 0, y: -50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.5, type: "tween" }} className={styles.img_container}>
               <img
                 className={styles.rectangleIcon}
                 alt={dataSections.name}
                 src={dataSections.cover}
               />
-            </div>
+            </motion.div>
 
-            <div className={styles.text_container}>
+            <motion.div initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.5, type: "tween" }} className={styles.text_container}>
               <div className={styles.frameParent1}>
                 <div className={styles.wrapper1}>
                   <b className={styles.b4}>{dataSections.name}</b>
@@ -40,23 +43,32 @@ const Section = ({ dataSections, dataAllSections,
                   <div dangerouslySetInnerHTML={{ __html: dataSections.description }} />
                 </div>
               </div>
-            </div>
+            </motion.div>
 
           </div>
 
           <div className={styles.frameParent5}>
             <div className={styles.instanceParent}>
               {dataSections.posts.map((post, idx) =>
-                <Link href={`/details/${post.slug}`} keyt={idx} className={styles.rectangleParent}>
-                  <img
-                    className={styles.instanceChild}
-                    alt=""
-                    src={post.icon}
-                  />
-                  <div className={styles.wrapper3}>
-                    <b className={styles.b}>{post.title}</b>
-                  </div>
-                </Link>
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 2 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1.5, type: "tween" }}
+                  className={styles.rectangleParent}
+                >
+
+                  <Link href={`/details/${post.slug}`} >
+                    <img
+                      className={styles.instanceChild}
+                      alt=""
+                      src={post.icon}
+                    />
+                    <div className={styles.wrapper3}>
+                      <b className={styles.b}>{post.title}</b>
+                    </div>
+                  </Link>
+                </motion.div>
               )}
 
 

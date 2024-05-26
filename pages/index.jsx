@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import HeroSection from "../src/components/Home/HeroSection";
 import Navbar from "../src/components/Navbar";
 import styles from "./index.module.scss";
@@ -10,16 +10,17 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import 'swiper/css/autoplay';
+
 import Link from "next/link";
 import { IoArrowBack } from "react-icons/io5";
 import { useRouter } from 'next/router';
 import { motion } from "framer-motion";
 
 
-import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay, } from 'swiper/modules';
 
-import 'swiper/css/autoplay';
-import 'swiper/css/effect-fade';
+import { FaArrowLeft } from "react-icons/fa6";
 
 
 
@@ -32,25 +33,29 @@ const Frame = ({ dataPreliminaries, dataAllSections, dataAllLangs, dataAllSettin
     setActiveSlide(swiper.activeIndex);
   };
 
-
   return (
     <div className={styles.div}>
 
 
-      <div className="desktop">
+      <div
+        className="desktop">
 
-        <div className={styles.child} />
         <div className={styles.item} />
         <div className={styles.inner} dir={router.locale === 'ar' ? 'rtl' : 'ltr'} />
         <div className={styles.child1} dir={router.locale === 'ar' ? 'rtl' : 'ltr'} />
       </div>
-      {router.pathname === '/' &&
+
+
+      {
+        router.pathname === '/' &&
         <Navbar dataAllSections={dataAllSections} dataPreliminaries={dataPreliminaries.posts} dataAllLangs={dataAllLangs} dataAllSettings={dataAllSettings} />
       }
 
 
 
-      <div className="desktop">
+      <motion.div initial={{ opacity: 0, }}
+        whileInView={{ opacity: 1, }}
+        transition={{ duration: 1.5, type: "tween" }} className="desktop">
 
 
         <div className="container position-relative" >
@@ -77,12 +82,15 @@ const Frame = ({ dataPreliminaries, dataAllSections, dataAllLangs, dataAllSettin
               <div className={styles.rectangleParent}>
                 <div className={styles.frameChild} />
                 <Link href={`/sections`}>
-                  <b className={styles.b5}>{`استكشف المزيد `}</b>
+                  <b className={styles.b5}>{dataAllSettings?.show_more}</b>
                 </Link>
 
                 <div className={styles.rectangleGroup}>
                   <div className={styles.frameItem} />
-                  <img className={styles.arrowSmIcon} alt="" src="/arrowsm@2x.png" />
+                  {/* <img className={styles.arrowSmIcon} alt="" src="/arrowsm@2x.png" /> */}
+
+                  <FaArrowLeft className={styles.arrowSmIcon} />
+
                 </div>
               </div>
             </div>
@@ -114,15 +122,11 @@ const Frame = ({ dataPreliminaries, dataAllSections, dataAllLangs, dataAllSettin
                         <b className={styles.b4}>{imageUrl.title}</b>
                       </div>
 
-                      <div className={styles.div3}>
-                        الصلاة هي عمود الدين وصلة العبد بربه ومولاه , ولذلك كانت أعظم العبادات
-                        وأجلها شأنا , وقد أمر الله المسلم بالمحافظة عليها في كل أحواله في
-                        الحضر و السفر و الصحة
-                      </div>
+
 
                       <div className={styles.rectangleParent}>
                         <div className={styles.frameChild} />
-                        <b className={styles.b5}>{`استكشف المزيد `}</b>
+                        <b className={styles.b5}>{dataAllSettings?.show_more}</b>
                         <div className={styles.rectangleGroup}>
                           <div className={styles.frameItem} />
                           <img className={styles.arrowSmIcon} alt="" src="/arrowsm@2x.png" />
@@ -130,7 +134,7 @@ const Frame = ({ dataPreliminaries, dataAllSections, dataAllLangs, dataAllSettin
                       </div>
 
                       <Link href='/' className={styles.btn_container}>
-                        <p>استكشف المزيد</p>
+                        <p>{dataAllSettings?.show_more}</p>
                         <div className={styles.icon_container}>
                           <IoArrowBack />
                         </div>
@@ -152,7 +156,7 @@ const Frame = ({ dataPreliminaries, dataAllSections, dataAllLangs, dataAllSettin
           setActiveSlide={setActiveSlide}
           dataSlider={dataSlider}
         />
-      </div>
+      </motion.div>
 
 
       <div className="mobile">
@@ -179,12 +183,11 @@ const Frame = ({ dataPreliminaries, dataAllSections, dataAllLangs, dataAllSettin
                 <div className={styles.desc}>
                   <p>
                     {dataSlider[activeSlide]?.description}
-                    الصلاة هي عمود الدين وصلة العبد بربه ومولاه , ولذلك كانت أعظم العبادات وأجلها شأنا , وقد أمر الله المسلم بالمحافظة عليها
                   </p>
                 </div>
                 <div className={styles.btn_container2}>
                   <Link href={`/sections`}>
-                    <p>استكشف المزيد </p>
+                    <p>{dataAllSettings?.show_more}</p>
                     <div className={styles.arro_container}>
                       <img src={'/arrow.png'} alt="" />
                     </div>
@@ -217,8 +220,8 @@ const Frame = ({ dataPreliminaries, dataAllSections, dataAllLangs, dataAllSettin
                     onSlideChange={handleSlideChange}
                     className={styles.theSwiper}
                     id="mobileSwiper"
-                    modules={[Navigation, Pagination, Autoplay,]}
-                    autoplay={{ delay: 3000, }}
+                    modules={[Navigation, Pagination, Autoplay]}
+                    autoplay={{ delay: 8000, }}
                   >
                     {dataSlider?.map((imageUrl, index) => (
                       <SwiperSlide key={index} >
@@ -254,7 +257,7 @@ const Frame = ({ dataPreliminaries, dataAllSections, dataAllLangs, dataAllSettin
 
       <Footer />
 
-    </div>
+    </div >
   );
 };
 

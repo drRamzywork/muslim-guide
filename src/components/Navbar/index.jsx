@@ -9,54 +9,16 @@ import { IoIosArrowBack } from "react-icons/io";
 const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs, dataAllSettings }) => {
   const router = useRouter();
   const [sections, setSections] = useState(false);
-  const [preliminaries, setPreliminaries] = useState(false);
   const [langs, setLangs] = useState(false);
 
   const variants = {
     open: { opacity: 1, y: 180 },
     closed: { opacity: 0, y: "-150%" },
   };
-  const sectionsMenuRef = useRef(null);
-  const preliminariesMenuRef = useRef(null);
   const langsMenuRef = useRef(null);
 
 
 
-  useEffect(() => {
-    function handleClickOutside(event) {
-      // Check if the click is outside of the navMenuRef and the menu is open
-      if (sectionsMenuRef.current && !sectionsMenuRef.current.contains(event.target)) {
-
-        setSections(false); // Close the nav menu
-      }
-    }
-
-    // Add the event listener to the document
-    document.addEventListener("mousedown", handleClickOutside);
-
-    // Cleanup function to remove the event listener
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [sections]);
-
-  useEffect(() => {
-    function handleClickOutside(event) {
-      // Check if the click is outside of the navMenuRef and the menu is open
-      if (preliminariesMenuRef.current && !preliminariesMenuRef.current.contains(event.target)) {
-
-        setPreliminaries(false); // Close the nav menu
-      }
-    }
-
-    // Add the event listener to the document
-    document.addEventListener("mousedown", handleClickOutside);
-
-    // Cleanup function to remove the event listener
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [preliminaries]);
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -80,31 +42,26 @@ const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs, dataAllSetti
 
   const currentLangData = dataAllLangs ? Object?.entries(dataAllLangs)?.find(([code, language]) => code === router.locale) : []
 
-
   return (
     <>
-      <nav className={styles.greenBG} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
+      <nav className={`${styles.greenBG}  `} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
 
-        <div className="container pt-4" >
+        <div className="container pt-2 pt-md-4" >
           <div className={styles.frameParent} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
             <div className={styles.frameGroup}>
 
               <div className="desktop">
                 <div className={styles.parent}>
+                  <a href='https://iiacademy.net/media/files/PDFBooks/دليل المسلم الميسر (The Simplified Muslim Guide_AR).pdf' target='_blank'>
 
-                  <img
-                    className={styles.arrowDownwardIcon}
-                    alt=""
-                    src={router.pathname === '/' ? '/arrow-downward.svg' : '/arrow-downward1.svg'}
-                  />
-
-
-
-
-
+                    <img
+                      className={styles.arrowDownwardIcon}
+                      alt=""
+                      src={router.pathname === '/' ? '/arrow-downward.svg' : '/arrow-downward1.svg'}
+                    />
+                  </a>
 
                   <div className={styles.currentLang}
-                    ref={sectionsMenuRef}
                     onClick={() => setLangs((prev) => !prev)}
                   >
 
@@ -154,7 +111,7 @@ const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs, dataAllSetti
                 <div className={styles.parent}>
 
                   <div className={styles.currentLang}
-                    ref={sectionsMenuRef}
+                    ref={langsMenuRef}
                     onClick={() => setLangs((prev) => !prev)}
                   >
 
@@ -193,19 +150,11 @@ const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs, dataAllSetti
                     </motion.div>
 
                   </div>
-
-
                   <img
                     className={styles.arrowDownwardIcon}
                     alt=""
                     src={'/arrow-downward1.svg'}
                   />
-
-
-
-
-
-
                 </div>
               </div>
 
@@ -225,25 +174,7 @@ const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs, dataAllSetti
                   <b className={styles.b}>{dataAllSettings?.sections}</b>
                 </Link>
 
-                <motion.div
-                  initial="closed"
-                  animate={sections ? "open" : "closed"}
-                  variants={variants}
-                  transition={{ duration: 0.5, type: "tween" }}
-                  className={styles.sections_menu_container}
 
-                >
-                  <ul>
-                    {dataAllSections?.map((sec, idx) =>
-                      <li key={idx}>
-                        <Link href={`/section/${sec.slug}`}>
-                          <p>{sec.name}</p>
-                          <IoIosArrowBack />
-                        </Link>
-                      </li>
-                    )}
-                  </ul>
-                </motion.div>
               </div>
 
               <div className={router.pathname.includes('preliminaries') ? styles.container : styles.wrapper}>
@@ -281,7 +212,7 @@ const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs, dataAllSetti
 
 
               <Link href={'/'} className={router.pathname === '/' ? styles.container : styles.wrapper}>
-                <b className={styles.b}>الرئيسية</b>
+                <b className={styles.b}>{dataAllSettings?.home}</b>
               </Link>
             </div>
 

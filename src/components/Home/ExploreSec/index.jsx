@@ -7,8 +7,12 @@ import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { useRouter } from 'next/router';
+import { motion } from 'framer-motion';
 
 const ExploreSec = () => {
+  const router = useRouter();
+
   const data = [
     {
       title: 'موثوقية المحتوى', icon: "/frame-1000006304.svg", desc: `يتميز كتابنا بالمصداقية والدقة، حيث يتم تقديم المعلومات بناءً على
@@ -33,12 +37,16 @@ const ExploreSec = () => {
   ];
 
   return (
-    <section id='explore' className={compStyles.explore} dir='rtl'>
+    <section id='explore' className={compStyles.explore} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
+      <div className={compStyles.child} />
+
       <div className="container">
         <div className={compStyles.sec_container}>
 
 
-          <div className={compStyles.boxes_container}>
+          <motion.div initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.5, type: "tween" }} className={compStyles.boxes_container}>
             <div className={styles.frameParent3}>
               <div className={styles.frameParent4}>
                 <div className={styles.parent1}>
@@ -102,13 +110,15 @@ const ExploreSec = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
 
 
           <div className={styles.frameParent2}>
             <div className={styles.frameWrapper1}>
-              <div className={styles.group}>
+              <motion.div initial={{ opacity: 0, y: -50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.5, type: "tween" }} className={styles.group}>
                 <b className={styles.b7}>
                   <span>{`نبذة مختصرة عن كتاب `}</span>
                   <span className={styles.span}>دليل المسلم الميسر</span>
@@ -119,11 +129,11 @@ const ExploreSec = () => {
                   بطريقة مبسطة وميسرة، مما يجعله مناسبا لجميع فئات المسلمين بغض
                   النظر عن مستوى معرفتهم الدينية.
                 </div>
-              </div>
+              </motion.div>
             </div>
-            <div className={styles.wrapper2}>
+            <a href='https://iiacademy.net/media/files/PDFBooks/دليل المسلم الميسر (The Simplified Muslim Guide_AR).pdf' target='_blank' className={styles.wrapper2}>
               <b className={styles.b8}>حمل الكتاب الآن</b>
-            </div>
+            </a>
           </div>
 
         </div>
@@ -131,7 +141,9 @@ const ExploreSec = () => {
 
       </div>
 
-      <div className={compStyles.boxes_container_mobile}>
+      <motion.div initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.5, type: "tween" }} className={compStyles.boxes_container_mobile}>
         <Swiper
           spaceBetween={8}
           slidesPerView={1.2}
@@ -167,7 +179,7 @@ const ExploreSec = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-      </div>
+      </motion.div>
 
     </section>
   )

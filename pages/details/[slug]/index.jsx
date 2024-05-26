@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import Footer from "../../../src/components/Footer";
 import styles from "./index.module.scss";
+import { useRouter } from "next/router";
+import { motion } from "framer-motion";
 
 const Details = ({ sectionData, dataAllSections, }) => {
+  const router = useRouter();
+
   const [content, setContent] = useState('');
 
   useEffect(() => {
@@ -42,18 +46,23 @@ const Details = ({ sectionData, dataAllSections, }) => {
 
 
 
-      <div className={styles.div} dir="rtl">
+      <div className={styles.div} dir={router.locale === 'ar' ? 'rtl' : 'ltr'} >
         <div className={styles.header}>
           <div className={styles.child} />
-          <div className={styles.wrapper2}>
+
+          <motion.div initial={{ opacity: 0, y: -50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.5, type: "tween" }} className={styles.wrapper2}>
             <b className={styles.b4}>{sectionData?.title}</b>
-          </div>
+          </motion.div>
 
         </div>
 
 
 
-        <div className={styles.frameParent4}>
+        <motion.div initial={{ opacity: 0, y: -50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5, type: "tween" }} className={styles.frameParent4}>
           <div className="container">
             <div className={styles.frameParent5}>
               {renderChildrenContent(sectionData.children)}
@@ -65,7 +74,7 @@ const Details = ({ sectionData, dataAllSections, }) => {
 
           </div>
 
-        </div>
+        </motion.div>
 
       </div>
 

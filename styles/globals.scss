@@ -10,16 +10,31 @@
   font-weight: 500;
   font-style: normal;
 }
+@font-face {
+  font-family: "CustomFont";
+  src: url("https://iiacademy.net/assets/fonts/Calibri.ttf") format("truetype");
+}
+
 body {
   margin: 0;
   line-height: normal;
   font-family: "Tajawal";
 }
+section {
+  a {
+    color: unset !important;
+  }
+}
 
+[dir="ltr"] {
+  font-family: "CustomFont", sans-serif !important;
+  font-size: 110%;
+  line-height: normal;
+}
 :root {
   /* fonts */
   --main_color: #013e46;
-  --h_color: #013e46;
+  --h_color: #d69b41;
 
   --tajawal-medium-36: Tajawal;
   --font-andalus: "__Andalus_4df8e8", "__Andalus_Fallback_4df8e8";
