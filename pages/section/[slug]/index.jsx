@@ -6,7 +6,8 @@ import Footer from "../../../src/components/Footer";
 
 const Section = ({ dataSections, dataAllSections,
   dataAllLangs,
-  dataPreliminaries
+  dataPreliminaries,
+  dataAllSettings
 }) => {
   const router = useRouter();
   return (
@@ -15,7 +16,7 @@ const Section = ({ dataSections, dataAllSections,
         <div className={styles.child} />
         <div className={styles.item} />
         <div className={styles.inner} />
-        <Navbar dataAllSections={dataAllSections} dataPreliminaries={dataPreliminaries} dataAllLangs={dataAllLangs} />
+        <Navbar dataAllSections={dataAllSections} dataPreliminaries={dataPreliminaries} dataAllLangs={dataAllLangs} dataAllSettings={dataAllSettings} />
 
 
         <div className="container">
@@ -33,9 +34,10 @@ const Section = ({ dataSections, dataAllSections,
               <div className={styles.frameParent1}>
                 <div className={styles.wrapper1}>
                   <b className={styles.b4}>{dataSections.name}</b>
+
                 </div>
                 <div className={styles.div3}>
-                  {dataSections.seo_description}
+                  <div dangerouslySetInnerHTML={{ __html: dataSections.description }} />
                 </div>
               </div>
             </div>
@@ -118,6 +120,13 @@ export async function getServerSideProps({ params, locale }) {
   const dataPreliminaries = await resPreliminaries.json();
 
 
+  const resAllSettings = await fetch('https://iiacademy.net/api/settings', {
+    headers: {
+      'locale': locale
+    }
+  })
+  const dataAllSettings = await resAllSettings.json();
+
 
 
   return {
@@ -126,6 +135,8 @@ export async function getServerSideProps({ params, locale }) {
       dataAllSections: dataAllSections?.data || [],
       dataAllLangs: dataAllLangs?.data,
       dataPreliminaries: dataPreliminaries?.data[0]?.posts || [],
+      dataAllSettings: dataAllSettings.data,
+
 
     },
   };

@@ -18,8 +18,8 @@ body {
 
 :root {
   /* fonts */
-  --main_color: #7591c2;
-  --h_color: #8facd7;
+  --main_color: #013e46;
+  --h_color: #013e46;
 
   --tajawal-medium-36: Tajawal;
   --font-andalus: "__Andalus_4df8e8", "__Andalus_Fallback_4df8e8";
@@ -216,6 +216,5 @@ section#sss {
   display: flex;
 }
 
-@import "all.css";
-// @import "tinymcee.css";
-// @import "tinymcee2.css";
+@import "tinymcee.css";
+@import "tinymcee2.css";

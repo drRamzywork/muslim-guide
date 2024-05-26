@@ -222,7 +222,7 @@ const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs, dataAllSetti
                 {/* router.pathname === '/sections' || router.pathname.includes('section') ? styles.container : */}
                 <Link href={'/sections'}
                   Link className={styles.fiRsAngleSmallUpParent}>
-                  <b className={styles.b}>{dataAllSettings.sections}</b>
+                  <b className={styles.b}>{dataAllSettings?.sections}</b>
                 </Link>
 
                 <motion.div
@@ -250,7 +250,7 @@ const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs, dataAllSetti
 
                 <Link href={'/preliminaries'} className={styles.fiRsAngleSmallUpParent}>
 
-                  <b className={styles.b}>{dataAllSettings.preliminaries}</b>
+                  <b className={styles.b}>{dataAllSettings?.preliminaries}</b>
                 </Link>
 
 

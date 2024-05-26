@@ -156,7 +156,7 @@
 
 .main ol.gradient-list > li::after,
 .main ol.gradient-list > li::before {
-  background: linear-gradient(135deg, var(--main_color) 0, var(--h_color) 100%);
+  background: #d69b41;
   border-radius: 1rem 1rem 1rem 0;
   content: "";
   height: 3rem;
@@ -170,7 +170,7 @@
 .main ol.gradient-list > li::before {
   align-items: flex-end;
   content: counter(gradient-counter);
-  color: #303030;
+  color: var(--white);
   display: flex;
   font: 900 1.5em/1 Montserrat;
   justify-content: center;
@@ -723,4 +723,11 @@
     height: auto !important;
     width: 100% !important;
   }
+}
+
+.custom-border-radius {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
 }

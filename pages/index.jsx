@@ -249,7 +249,7 @@ const Frame = ({ dataPreliminaries, dataAllSections, dataAllLangs, dataAllSettin
 
 
 
-      <Sections dataAllSections={dataAllSections} />
+      <Sections dataAllSections={dataAllSections} dataAllSettings={dataAllSettings} />
       <Introductions dataPreliminaries={dataPreliminaries} dataAllSettings={dataAllSettings} />
 
       <Footer />

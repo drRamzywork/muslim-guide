@@ -355,7 +355,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  padding: 4px 8px;
+  padding: 8px;
   text-decoration: none;
   border-radius: var(--br-xss);
   background-color: var(--sec-color);
@@ -1188,6 +1188,7 @@
   justify-content: center;
   padding: var(--padding-13xl) var(--padding-5xl);
   gap: var(--gap-xs);
+  width: 100%;
 }
 .div19 {
   width: 379px;

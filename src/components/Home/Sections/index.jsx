@@ -10,7 +10,7 @@ import 'swiper/css/pagination';
 import { useRouter } from 'next/router';
 
 
-const Sections = ({ dataAllSections }) => {
+const Sections = ({ dataAllSections, dataAllSettings }) => {
   const router = useRouter();
   const swiperRef = useRef(null);
   const [activeSlide, setActiveSlide] = useState(0);
@@ -34,7 +34,7 @@ const Sections = ({ dataAllSections }) => {
 
         <div className={styles.frameParent22}>
           <div className={styles.parent14}>
-            <b className={styles.b25}>الأقسام</b>
+            <b className={styles.b25}>{dataAllSettings.sections}</b>
             <img
               className={styles.frameChild21}
               alt=""

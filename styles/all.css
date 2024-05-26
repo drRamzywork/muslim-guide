@@ -646,6 +646,17 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
+
+.bg-gray-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(
+    255,
+    0,
+    0,
+    var(--tw-bg-opacity)
+  ) !important; /* Red background */
+}
+
 .bg-gray-200 {
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
@@ -968,6 +979,7 @@ video {
     padding: 2rem !important;
   }
 }
+
 @media (prefers-color-scheme: dark) {
   .dark\:border-gray-700 {
     --tw-border-opacity: 1;
@@ -979,7 +991,7 @@ video {
   }
   .dark\:\!bg-gray-800 {
     --tw-bg-opacity: 1 !important;
-    background-color: rgb(31 41 55 / var(--tw-bg-opacity)) !important;
+    background-color: red;
   }
   .dark\:bg-gray-700,
   .dark\:hover\:bg-gray-700:hover {
@@ -1034,3 +1046,11 @@ video {
     color: rgb(255 255 255 / var(--tw-text-opacity));
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .dark\:bg-gray-800 {
+    --tw-bg-opacity: 1 !important;
+    background-color: red !important; /* Change to your desired color */
+  }
+}
+@import url("https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css");
