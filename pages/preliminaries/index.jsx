@@ -5,12 +5,12 @@ import Footer from "../../src/components/Footer";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 
-const Preliminaries = ({ dataAllSections, dataAllLangs, dataPreliminaries, dataCategories }) => {
+const Preliminaries = ({ dataAllSections, dataAllSettings, dataPreliminaries, dataCategories }) => {
   const router = useRouter();
   return (
     <>
 
-      <section dir={router.locale === 'ar' ? 'rtl' : 'ltr'} className={styles.div}>
+      <section dir={dataAllSettings.dir} className={styles.div}>
 
         <div className={styles.header}>
           <div className={styles.child} />
@@ -107,13 +107,17 @@ export async function getServerSideProps({ locale }) {
   const dataAllLangs = await fetchData('languages', locale);
   const dataPreliminaries = await fetchData('preliminaries', locale);
   const dataCategories = await fetchData('categories', locale);
+  const dataAllSettings = await fetchData('settings', locale);
+
+
 
   return {
     props: {
       dataAllSections: dataAllSections?.data[0] || {},
       dataAllLangs: dataAllLangs?.data || [],
       dataPreliminaries: dataPreliminaries?.data[0]?.posts || [],
-      dataCategories: dataCategories?.data || []
+      dataCategories: dataCategories?.data || [],
+      dataAllSettings: dataAllSettings?.data || []
     },
   };
 }

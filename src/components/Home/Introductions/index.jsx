@@ -39,7 +39,7 @@ const Introductions = ({ dataPreliminaries, dataAllSettings }) => {
     }
   }, []);
   return (
-    <section id='introductions' className={compStyles.Introductions} dir={'rtl'}>
+    <section id='introductions' className={compStyles.Introductions} dir={dataAllSettings.dir}>
       <div className="container">
         <div className={compStyles.sec_container}>
           <b className={styles.b13}>دليل المسلم الميسر</b>
@@ -63,7 +63,9 @@ const Introductions = ({ dataPreliminaries, dataAllSettings }) => {
 
           <div className={styles.child3} />
 
-          <div className={compStyles.desktop_swiper}>
+          <div className={compStyles.desktop_swiper}
+            dir='rtl'
+          >
             <div className={styles.arrowParent}>
               <Swiper
                 spaceBetween={15}
@@ -88,16 +90,19 @@ const Introductions = ({ dataPreliminaries, dataAllSettings }) => {
 
                     <SwiperSlide key={index} >
                       {activeSlide === index ?
-                        <div className={styles.rectangleParent4}>
-                          <img
-                            className={styles.instanceChild}
-                            alt=""
-                            src={imageUrl.image}
-                          />
-                          <div className={styles.wrapper4}>
-                            <b className={styles.b}>{imageUrl.title}</b>
+                        <Link href={`/details/${imageUrl.slug}`}>
+
+                          <div className={styles.rectangleParent4}>
+                            <img
+                              className={styles.instanceChild}
+                              alt=""
+                              src={imageUrl.image}
+                            />
+                            <div className={styles.wrapper4}>
+                              <b className={styles.b}>{imageUrl.title}</b>
+                            </div>
                           </div>
-                        </div>
+                        </Link>
                         :
                         <img
                           className={styles.frameChild8}
@@ -190,7 +195,7 @@ const Introductions = ({ dataPreliminaries, dataAllSettings }) => {
         </div>
       </div>
 
-      <div className={styles.frame1}>
+      <div className={styles.frame1} dir={dataAllSettings.dir}>
         <div className="container">
           <img className={styles.groupIcon} alt="" src="/group-2.svg" />
           <img className={styles.frameChild10} alt="" src="/group-3.svg" />
@@ -226,10 +231,10 @@ const Introductions = ({ dataPreliminaries, dataAllSettings }) => {
                   </a>
                 </div>
                 <div className={compStyles.book_container_desktop}>
-                  <div className={styles.wrapper5}>
+                  <a href='https://iiacademy.net/media/files/PDFBooks/دليل المسلم الميسر (The Simplified Muslim Guide_AR).pdf' target='_blank' className={styles.wrapper5}>
                     <b className={styles.b8}>حمل الكتاب الآن</b>
 
-                  </div>
+                  </a>
 
                 </div>
               </div>

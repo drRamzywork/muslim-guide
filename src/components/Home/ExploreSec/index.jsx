@@ -7,11 +7,9 @@ import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 
-const ExploreSec = () => {
-  const router = useRouter();
+const ExploreSec = ({ dataAllSettings }) => {
 
   const data = [
     {
@@ -37,7 +35,7 @@ const ExploreSec = () => {
   ];
 
   return (
-    <section id='explore' className={compStyles.explore} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
+    <section id='explore' className={compStyles.explore} dir={dataAllSettings.dir}>
       <div className={compStyles.child} />
 
       <div className="container">

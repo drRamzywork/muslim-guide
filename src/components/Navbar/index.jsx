@@ -8,7 +8,6 @@ import { IoIosArrowBack } from "react-icons/io";
 
 const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs, dataAllSettings }) => {
   const router = useRouter();
-  const [sections, setSections] = useState(false);
   const [langs, setLangs] = useState(false);
 
   const variants = {
@@ -44,10 +43,10 @@ const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs, dataAllSetti
 
   return (
     <>
-      <nav className={`${styles.greenBG}  `} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
+      <nav className={`${styles.greenBG}  `} dir={dataAllSettings.dir}>
 
         <div className="container pt-2 pt-md-4" >
-          <div className={styles.frameParent} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
+          <div className={styles.frameParent} dir={dataAllSettings.dir}>
             <div className={styles.frameGroup}>
 
               <div className="desktop">
@@ -108,10 +107,12 @@ const Navbar = ({ dataAllSections, dataPreliminaries, dataAllLangs, dataAllSetti
 
 
               <div className="mobile">
-                <div className={styles.parent}>
+
+                <div
+                  className={styles.parent}
+                >
 
                   <div className={styles.currentLang}
-                    ref={langsMenuRef}
                     onClick={() => setLangs((prev) => !prev)}
                   >
 

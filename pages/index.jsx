@@ -41,8 +41,8 @@ const Frame = ({ dataPreliminaries, dataAllSections, dataAllLangs, dataAllSettin
         className="desktop">
 
         <div className={styles.item} />
-        <div className={styles.inner} dir={router.locale === 'ar' ? 'rtl' : 'ltr'} />
-        <div className={styles.child1} dir={router.locale === 'ar' ? 'rtl' : 'ltr'} />
+        <div className={styles.inner} dir={dataAllSettings.dir} />
+        <div className={styles.child1} dir={dataAllSettings.dir} />
       </div>
 
 
@@ -59,11 +59,11 @@ const Frame = ({ dataPreliminaries, dataAllSections, dataAllLangs, dataAllSettin
 
 
         <div className="container position-relative" >
-          <div className={styles.rectangleDiv} dir={router.locale === 'ar' ? 'rtl' : 'ltr'} />
+          <div className={styles.rectangleDiv} dir={dataAllSettings.dir} />
           <motion.div
             key={activeSlide}
             className={styles.hero_container}
-            dir={router.locale === 'ar' ? 'rtl' : 'ltr'}
+            dir={dataAllSettings.dir}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -247,7 +247,7 @@ const Frame = ({ dataPreliminaries, dataAllSections, dataAllLangs, dataAllSettin
         </div>
       </div>
 
-      <ExploreSec />
+      <ExploreSec dataAllSettings={dataAllSettings} />
 
 
 

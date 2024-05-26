@@ -28,7 +28,7 @@ const Sections = ({ dataAllSections, dataAllSettings }) => {
 
 
   return (
-    <section id='sections' className={compStyles.sections} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
+    <section id='sections' className={compStyles.sections} dir={dataAllSettings.dir}>
 
       <div className="container">
 
@@ -99,7 +99,7 @@ const Sections = ({ dataAllSections, dataAllSettings }) => {
             <div className={styles.frameParent15} >
               <div className={styles.frameParent16}>
                 {dataAllSections.map((sec, index) =>
-                  <div dir={router.locale === 'ar' ? 'rtl' : 'ltr'} className={`${styles.frameParent18} ${index === activeSection ? styles.active : ''}`} key={index} onClick={() => handleSectionClick(index)}>
+                  <div dir={dataAllSettings.dir} className={`${styles.frameParent18} ${index === activeSection ? styles.active : ''}`} key={index} onClick={() => handleSectionClick(index)}>
                     <div className={styles.parent9}>
                       <b className={styles.b8}>{sec.name}</b>
                       <div className={styles.div22} dir='rtl'>
@@ -145,7 +145,7 @@ const Sections = ({ dataAllSections, dataAllSettings }) => {
 
             <motion.div
               key={activeSection}
-              dir={router.locale === 'ar' ? 'rtl' : 'ltr'}
+              dir={dataAllSettings.dir}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}

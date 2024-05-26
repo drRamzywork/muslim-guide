@@ -3,12 +3,12 @@ import styles from "./index.module.scss";
 import Footer from "../../src/components/Footer";
 import { useRouter } from "next/router";
 
-const Sections = ({ dataAllSections, dataAllLangs, dataPreliminaries }) => {
+const Sections = ({ dataAllSections, dataAllSettings }) => {
   const router = useRouter();
 
   return (
     <>
-      <section dir={router.locale === 'ar' ? 'rtl' : 'ltr'} className={styles.div}>
+      <section dir={dataAllSettings.dir} className={styles.div}>
 
         <div className={styles.header}>
           <div className={styles.child} />
@@ -16,7 +16,7 @@ const Sections = ({ dataAllSections, dataAllLangs, dataPreliminaries }) => {
           <div className="container flex-column d-flex  justify-content-start align-items-center">
 
             <div className={styles.wrapper2}>
-              <b className={styles.b17}>الأقسام</b>
+              <b className={styles.b17}>{dataAllSettings.sections}</b>
             </div>
 
             <div className={styles.div23}>
@@ -66,35 +66,46 @@ export default Sections;
 
 export async function getServerSideProps({ locale }) {
 
-  const resAllSections = await fetch('https://iiacademy.net/api/categories', {
-    headers: {
-      'locale': locale
+
+
+
+
+  // 
+
+  const apiUrl = 'https://iiacademy.net/api';
+
+  const fetchData = async (url, locale) => {
+    try {
+      const response = await fetch(`${apiUrl}/${url}`, {
+        headers: { 'locale': locale }
+      });
+      if (!response.ok) {
+        console.error(`Failed to fetch ${url}: ${response.status}`);
+        return null;
+      }
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        console.error(`Invalid content type for ${url}: ${contentType}`);
+        return null;
+      }
+      return await response.json();
+    } catch (error) {
+      console.error(`Error fetching ${url}: ${error.message}`);
+      return null;
     }
-  })
-  const dataAllSections = await resAllSections.json();
+  };
 
-
-  const resAllLangs = await fetch('https://iiacademy.net/api/languages', {
-    headers: {
-      'locale': locale
-    }
-  })
-  const dataAllLangs = await resAllLangs.json();
-
-  const resPreliminaries = await fetch('https://iiacademy.net/api/preliminaries', {
-    headers: {
-      'locale': locale
-    }
-  })
-  const dataPreliminaries = await resPreliminaries.json();
-
-
+  const dataAllSections = await fetchData('categories', locale);
+  const dataAllLangs = await fetchData('languages', locale);
+  const dataPreliminaries = await fetchData('preliminaries', locale);
+  const dataAllSettings = await fetchData('settings', locale);
 
   return {
     props: {
       dataAllSections: dataAllSections?.data || [],
       dataAllLangs: dataAllLangs?.data || [],
       dataPreliminaries: dataPreliminaries?.data[0]?.posts || [],
+      dataAllSettings: dataAllSettings?.data || [],
 
     },
 
