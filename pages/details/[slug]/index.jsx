@@ -64,7 +64,7 @@ const Details = ({ sectionData, dataAllSections, }) => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.5, type: "tween" }} className={styles.frameParent4}>
           <div className="container">
-            <div className={styles.frameParent5}>
+            <div >
               {renderChildrenContent(sectionData.children)}
 
               {content && <div dangerouslySetInnerHTML={{ __html: content }} />}
