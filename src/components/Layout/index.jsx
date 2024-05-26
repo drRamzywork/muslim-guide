@@ -21,7 +21,6 @@ const Andalus = localFont({
 
 export default function Layout({ children, dataAllSections, dataAllLangs, dataPreliminaries, dataAllSettings }) {
   const router = useRouter();
-  console.log(dataAllSettings, "dataAllSettingsdataAllSettings")
   return (
     <>
       <main className={`${Andalus.className}`}>
