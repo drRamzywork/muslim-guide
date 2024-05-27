@@ -4,6 +4,7 @@ import styles from "./index.module.scss";
 import Link from "next/link";
 import Footer from "../../../src/components/Footer";
 import { motion } from "framer-motion";
+import { data } from "autoprefixer";
 
 const Section = ({ dataSections, dataAllSections,
   dataAllLangs,
@@ -84,6 +85,7 @@ const Section = ({ dataSections, dataAllSections,
 
 
       </section>
+      <Footer dataAllSettings={dataAllSettings} />
     </>
 
   );
