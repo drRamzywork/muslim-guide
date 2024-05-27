@@ -3,7 +3,7 @@ import styles from "./index.module.scss";
 import Footer from "../../src/components/Footer";
 import { useRouter } from "next/router";
 import { IoArrowBack } from "react-icons/io5";
-import Sajadah from "../../public/sajadah";
+import Sajadah from "../../public/Sajadah";
 
 const Sections = ({ dataAllSections, dataAllSettings }) => {
   const router = useRouter();
