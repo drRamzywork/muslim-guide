@@ -3,8 +3,9 @@ import Footer from "../../../src/components/Footer";
 import styles from "./index.module.scss";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
+import Navbar from "../../../src/components/Navbar";
 
-const Details = ({ sectionData, dataAllSections, dataAllSettings }) => {
+const Details = ({ sectionData, dataAllSections, dataAllSettings, dataAllLangs, dataPreliminaries }) => {
   const router = useRouter();
 
   const [content, setContent] = useState('');
@@ -42,7 +43,12 @@ const Details = ({ sectionData, dataAllSections, dataAllSettings }) => {
   return (
     <>
 
-
+      <Navbar
+        dataAllSections={dataAllSections}
+        dataAllLangs={dataAllLangs}
+        dataPreliminaries={dataPreliminaries}
+        dataAllSettings={dataAllSettings}
+      />
 
 
 
@@ -79,10 +85,10 @@ const Details = ({ sectionData, dataAllSections, dataAllSettings }) => {
       </div>
 
 
-      <Footer />
       <div className="container">
         <div dangerouslySetInnerHTML={{ __html: dataAllSections?.body }} />
       </div>
+      <Footer dataAllSettings={dataAllSettings} />
 
     </>
 

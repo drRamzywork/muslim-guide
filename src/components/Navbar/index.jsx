@@ -5,12 +5,10 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
-const Navbar = ({ dataAllLangs, dataAllSettings }) => {
+const Navbar = ({ dataAllLangs, dataAllSettings, locale }) => {
   const router = useRouter();
   const [langs, setLangs] = useState(false);
   const [menu, setMenu] = useState(false);
-  console.log(dataAllSettings, "dataAllSettingsNav")
-
   const variants = {
     open: { opacity: 1, y: 180 },
     closed: { opacity: 0, y: "-150%" },

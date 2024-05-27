@@ -1,15 +1,19 @@
 import Link from "next/link";
 import styles from "../preliminaries/index.module.scss";
 import DetailsStyles from "../section/[slug]/index.module.scss";
-import Footer from "../../src/components/Footer";
-import { useRouter } from "next/router";
 import { motion } from "framer-motion";
+import Navbar from "../../src/components/Navbar";
+import Footer from "../../src/components/Footer";
 
-const Preliminaries = ({ dataAllSections, dataAllSettings, dataPreliminaries, dataCategories }) => {
-  const router = useRouter();
+const Preliminaries = ({ dataAllSections, dataAllSettings, dataPreliminaries, dataAllLangs }) => {
   return (
     <>
-
+      <Navbar
+        dataAllSections={dataAllSections}
+        dataAllLangs={dataAllLangs}
+        dataPreliminaries={dataPreliminaries}
+        dataAllSettings={dataAllSettings}
+      />
       <section dir={dataAllSettings.dir} className={styles.div}>
 
         <div className={styles.header}>
@@ -67,6 +71,7 @@ const Preliminaries = ({ dataAllSections, dataAllSettings, dataPreliminaries, da
 
         </div>
       </section>
+      <Footer dataAllSettings={dataAllSettings} />
 
     </>
 

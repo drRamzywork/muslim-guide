@@ -11,17 +11,14 @@ function MyApp({
   dataAllLangs,
   dataPreliminaries,
   dataAllSettings,
+  locale,
 }) {
+  console.log("Locale in MyApp:", locale);
   return (
-    <Layout
-      dataAllSections={dataAllSections}
-      dataAllLangs={dataAllLangs}
-      dataPreliminaries={dataPreliminaries[0].posts}
-      dataAllSettings={dataAllSettings}
-    >
+    <Layout>
       <Component {...pageProps} />
     </Layout>
   );
 }
 
-export default siteData(MyApp);
+export default MyApp;

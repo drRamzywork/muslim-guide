@@ -4,12 +4,19 @@ import Footer from "../../src/components/Footer";
 import { useRouter } from "next/router";
 import { IoArrowBack } from "react-icons/io5";
 import Sajadah from "../../public/Sajadah";
+import Navbar from "../../src/components/Navbar";
 
-const Sections = ({ dataAllSections, dataAllSettings }) => {
-  const router = useRouter();
+const Sections = ({ dataAllSections, dataAllSettings, dataAllLangs, dataPreliminaries }) => {
 
   return (
     <>
+      <Navbar
+        dataAllSections={dataAllSections}
+        dataAllLangs={dataAllLangs}
+        dataPreliminaries={dataPreliminaries}
+        dataAllSettings={dataAllSettings}
+      />
+
       <section dir={dataAllSettings.dir} className={styles.div}>
 
         <div className={styles.header}>
@@ -71,6 +78,7 @@ const Sections = ({ dataAllSections, dataAllSettings }) => {
 
         </div>
       </section >
+      <Footer dataAllSettings={dataAllSettings} />
 
     </>
   );

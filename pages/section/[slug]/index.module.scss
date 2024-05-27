@@ -387,7 +387,7 @@
   }
 
   @media screen and (max-width: 450px) {
-    margin-top: 25px;
+    // margin-top: 25px;
   }
 }
 .div {
@@ -447,7 +447,12 @@ section.div[dir="ltr"] {
 
   .inner {
     left: unset;
-    right: 165px;
+
+    right: 465px;
+
+    @media screen and (max-width: 992px) {
+      right: 165px;
+    }
   }
 
   .sec_container {

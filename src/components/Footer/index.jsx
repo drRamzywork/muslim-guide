@@ -1,9 +1,10 @@
 import React from 'react'
 import styles from './index.module.scss';
 import DaulArrowsUp from '../../../public/DaulArrowsUp';
+import { useRouter } from 'next/router';
 
-const Footer = ({ dataAllSettings }) => {
-  console.log(dataAllSettings, "dataAllSettingsFooter")
+const Footer = ({ dataAllSettings, }) => {
+
   return (
     <footer id='footer' className={styles.footer} dir={dataAllSettings.dir}>
 
