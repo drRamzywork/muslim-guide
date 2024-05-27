@@ -16,6 +16,10 @@ section.explore {
     width: 579px;
     height: 637px;
     z-index: -1;
+
+    @media screen and (max-width: 992px) {
+      display: none;
+    }
   }
   @media screen and (max-width: 992px) {
     padding-top: 52px;

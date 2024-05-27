@@ -34,7 +34,7 @@ const Preliminaries = ({ dataAllSections, dataAllSettings, dataPreliminaries, da
 
         <div className="container mb-4 mt-4">
 
-          <div className={DetailsStyles.frameParent5}>
+          <div className={styles.frameParent5}>
             <div className={DetailsStyles.instanceParent}>
               {dataAllSections.posts.map((post, idx) =>
 

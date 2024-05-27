@@ -186,16 +186,18 @@ const Introductions = ({ dataPreliminaries, dataAllSettings }) => {
 
                 <SwiperSlide key={index} >
                   {activeSlide === index ?
-                    <div className={styles.rectangleParent4}>
-                      <img
-                        className={styles.instanceChild}
-                        alt=""
-                        src={imageUrl.image}
-                      />
-                      <div className={styles.wrapper4}>
-                        <b className={styles.b}>{imageUrl.title}</b>
+                    <Link href={`/details/${imageUrl.slug}`}>
+                      <div className={styles.rectangleParent4}>
+                        <img
+                          className={styles.instanceChild}
+                          alt=""
+                          src={imageUrl.image}
+                        />
+                        <div className={styles.wrapper4}>
+                          <b className={styles.b}>{imageUrl.title}</b>
+                        </div>
                       </div>
-                    </div>
+                    </Link>
                     :
 
                     <img

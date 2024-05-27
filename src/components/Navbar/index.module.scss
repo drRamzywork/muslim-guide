@@ -4,7 +4,18 @@
   background-color: var(--prim-color);
 }
 nav.greenBG {
+  // background: linear-gradient(0deg, #013e46, #091b1d);
+
+  // background: linear-gradient(0deg, #013e46, hsla(0, 0%, 100%, 0));
   background: linear-gradient(0deg, #013e46, #091b1d);
+
+  @media screen and (max-width: 992px) {
+    background: #013e46;
+  }
+}
+
+.darkGreenBG {
+  background: linear-gradient(0deg, #013e46 -38%, #091b1d 125.76%) !important;
 }
 
 nav.greenBG * {
@@ -153,9 +164,7 @@ nav.greenBG * {
   background-color: #fbf5ec;
   border-radius: 5px;
   z-index: 999;
-  @media screen and (max-width: 992px) {
-    left: 0;
-  }
+
   ul {
     padding: 0;
     li {
@@ -190,7 +199,6 @@ nav.greenBG * {
     }
   }
 }
-.menu_container,
 .langs_menu_container {
   a {
     align-items: center;
@@ -199,17 +207,34 @@ nav.greenBG * {
   }
 }
 
+.langs_menu_container {
+  @media screen and (max-width: 992px) {
+    left: 0;
+    top: -140px;
+    width: 151px;
+    height: 255px;
+  }
+}
 .menu_container {
   top: 0;
-  left: 16px;
+  // left: 16px;
+  right: 0;
   height: auto;
+  width: 140px;
+  overflow: hidden;
 
   ul {
+    margin: 0;
     li {
       border-bottom: 1px solid #013e46;
 
       @media screen and (max-width: 992px) {
         padding: 6px;
+      }
+
+      a {
+        align-items: center;
+        justify-content: center;
       }
 
       p {
@@ -269,6 +294,7 @@ nav.greenBG * {
   align-items: center;
   justify-content: center;
   gap: 8px;
+  position: relative;
 }
 .frameParent {
   justify-content: space-between;
@@ -473,4 +499,11 @@ nav.greenBG * {
 // LTR
 .frameParent[dir="ltr"] {
   flex-direction: row-reverse;
+
+  .langs_menu_container {
+    @media screen and (max-width: 992px) {
+      left: unset;
+      right: 0;
+    }
+  }
 }

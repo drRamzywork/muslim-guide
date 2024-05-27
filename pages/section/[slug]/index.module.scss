@@ -365,6 +365,9 @@
   justify-content: center;
   gap: var(--gap-2xl);
   flex-wrap: wrap;
+  @media screen and (max-width: 450px) {
+    gap: 9px;
+  }
 }
 .frameParent5 {
   display: flex;
@@ -381,6 +384,10 @@
   @media screen and (max-width: 992px) {
     margin-bottom: 24px;
     margin-top: 100px;
+  }
+
+  @media screen and (max-width: 450px) {
+    margin-top: 25px;
   }
 }
 .div {
@@ -440,7 +447,7 @@ section.div[dir="ltr"] {
 
   .inner {
     left: unset;
-    right: 405px;
+    right: 165px;
   }
 
   .sec_container {

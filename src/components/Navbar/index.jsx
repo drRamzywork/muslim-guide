@@ -22,43 +22,43 @@ const Navbar = ({ dataAllLangs, dataAllSettings }) => {
   const menuRef = useRef(null);
   const langsMenuRef = useRef(null);
 
+  const lineVariants = {
+    burger: {
+      rotate: 0,
+      translateY: 0,
+      opacity: 1,
+    },
+    cross: {
+      rotate: 45,
+      translateY: [0, 6, 6],
+      opacity: {
+        0: 1,
+        1: 0,
+        2: 1,
+      },
+    },
+  };
 
+  const middleLineVariants = {
+    burger: {
+      opacity: 1,
+    },
+    cross: {
+      opacity: 0,
+    },
+  };
 
+  const bottomLineVariants = {
+    burger: {
+      rotate: 0,
+      translateY: 0,
+    },
+    cross: {
+      rotate: -45,
+      translateY: -6,
+    },
+  };
 
-  // useEffect(() => {
-  //   function handleClickOutside(event) {
-  //     // Check if the click is outside of the navMenuRef and the menu is open
-  //     if (langsMenuRef.current && !langsMenuRef.current.contains(event.target)) {
-
-  //       setLangs(false); // Close the nav menu
-  //     }
-  //   }
-
-  //   // Add the event listener to the document
-  //   document.addEventListener("mousedown", handleClickOutside);
-
-  //   // Cleanup function to remove the event listener
-  //   return () => {
-  //     document.removeEventListener("mousedown", handleClickOutside);
-  //   };
-  // }, [langs]);
-
-  // useEffect(() => {
-  //   function handleClickOutside(event) {
-  //     // Check if the click is outside of the navMenuRef and the menu is open
-  //     if (menuRef.current && !menuRef.current.contains(event.target)) {
-  //       setMenu(false);
-  //     }
-  //   }
-
-  //   // Add the event listener to the document
-  //   document.addEventListener("mousedown", handleClickOutside);
-
-  //   // Cleanup function to remove the event listener
-  //   return () => {
-  //     document.removeEventListener("mousedown", handleClickOutside);
-  //   };
-  // }, [menu]);
 
 
   useEffect(() => {
@@ -84,7 +84,7 @@ const Navbar = ({ dataAllLangs, dataAllSettings }) => {
 
   return (
     <>
-      <nav className={`${styles.greenBG}  `} dir={dataAllSettings.dir}>
+      <nav className={`${styles.greenBG}  ${router.pathname !== '/' && styles.darkGreenBG}`} dir={dataAllSettings.dir}>
 
         <div className="container pt-2 pt-md-4" >
           <div className={styles.frameParent} dir={dataAllSettings.dir}>
@@ -195,6 +195,7 @@ const Navbar = ({ dataAllLangs, dataAllSettings }) => {
                     </motion.div>
 
                   </div>
+
                   <img
                     className={styles.arrowDownwardIcon}
                     alt=""
@@ -264,7 +265,35 @@ const Navbar = ({ dataAllLangs, dataAllSettings }) => {
 
             <div className={styles.frame_container} ref={menuRef}>
               <div className={styles.burger_icon} onClick={() => setMenu(prev => !prev)}>
-                <IoMenu />
+                <svg width="19" height="14" viewBox="0 0 19 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  {/* Top line */}
+                  <motion.path
+                    d="M1.39014 1H17.3901"
+                    stroke="#fff"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    variants={lineVariants}
+                    animate={menu ? "cross" : "burger"}
+                  />
+                  {/* Middle line */}
+                  <motion.path
+                    d="M1.39014 7H17.3901"
+                    stroke="#fff"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    variants={middleLineVariants}
+                    animate={menu ? "cross" : "burger"}
+                  />
+                  {/* Bottom line */}
+                  <motion.path
+                    d="M1.39014 13H17.3901"
+                    stroke="#fff"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    variants={bottomLineVariants}
+                    animate={menu ? "cross" : "burger"}
+                  />
+                </svg>
               </div>
 
 
@@ -298,7 +327,7 @@ const Navbar = ({ dataAllLangs, dataAllSettings }) => {
             </div>
           </div>
         </div>
-      </nav>
+      </nav >
 
     </>
   )
