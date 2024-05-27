@@ -1,51 +1,55 @@
 import React from 'react'
-import styles from '../../../pages/index.module.scss';
-import compStyles from './index.module.scss'
-import Link from 'next/link';
-const Footer = () => {
+import styles from './index.module.scss';
+import DaulArrowsUp from '../../../public/DaulArrowsUp';
+
+const Footer = ({ dataAllSettings }) => {
+  console.log(dataAllSettings, "dataAllSettingsFooter")
   return (
-    <footer id='footer' className={compStyles.footer}>
-      <div className="container">
+    <footer id='footer' className={styles.footer} dir={dataAllSettings.dir}>
 
-
-        <div className={styles.frameParent10}>
-          <div className={styles.wrapper6}>
-            <div className={styles.b}>{` دليل المسلم الميسر `}</div>
-          </div>
-
-          <div className={styles.frameParent11}>
-            <div className={styles.frameParent12}>
-              <div className={styles.fiRsAngleSmallUpContainer}>
-                <img
-                  className={styles.fiRsAngleSmallUpIcon3}
-                  alt=""
-                  src="/firsanglesmallup2.svg"
-                />
-                <div className={styles.div13}>اللغات</div>
-              </div>
-              <div className={styles.lineDiv} />
-              <div className={styles.div13}>من نحن</div>
-              <div className={styles.lineDiv} />
-              <div className={styles.div13}>المقدمات</div>
-              <div className={styles.lineDiv} />
-              <div className={styles.div13}>الاقسام</div>
-              <div className={styles.lineDiv} />
-              <div className={styles.div13}>الرئيسية</div>
+      <div className={styles.sec_container}>
+        <div className="container">
+          <div className={styles.text_container}>
+            <div className={styles.title}>
+              <h1>{dataAllSettings.site_name} </h1>
             </div>
-            <Link href='#'>
-              <img
-                className={styles.frameChild15}
-                alt=""
-                src="/frame-1984077254.svg"
-              />
-            </Link>
+            <div className={styles.links_list}>
+              <div className={styles.link}>
+                <a href="#">{dataAllSettings.home}</a>
+              </div>
+              <div className={styles.link}>
+                <a href="/sections">{dataAllSettings.sections}</a>
+              </div>
+              <div className={styles.link}>
+                <a href="/preliminaries">{dataAllSettings.preliminaries}</a>
+              </div>
+            </div>
           </div>
         </div>
-        <hr />
-        <div
-          className={styles.div12}
-        >{`© الحقوق محفوظة لدليل المسلم الميسر 2024@  `}</div>
+
+        <div className={styles.bottom_container}>
+
+          <div className="container">
+            <div className={styles.inner_container}>
+              <a href='#' className={styles.toTopBottom}>
+                <DaulArrowsUp />
+              </a>
+
+              <div className={styles.copy}>
+
+                <div dangerouslySetInnerHTML={{ __html: dataAllSettings?.footer_copyright }} />
+
+              </div>
+
+
+            </div>
+
+
+          </div>
+
+        </div>
       </div>
+
     </footer>
   )
 }

@@ -135,7 +135,12 @@ const Sections = ({ dataAllSections, dataAllSettings }) => {
           </motion.div >
 
           <div className={'mobile'}>
-            <div className={styles.rectangleParent6}>
+            <motion.div key={activeSlide}
+              dir={dataAllSettings.dir}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }} className={styles.rectangleParent6}>
               <img
                 className={styles.frameChild20}
                 alt=""
@@ -152,7 +157,7 @@ const Sections = ({ dataAllSections, dataAllSettings }) => {
                 <Link href={`/section/${dataAllSections[activeSection]?.slug}`} className={styles.b24}>{dataAllSettings.show_more}</Link>
               </div>
 
-            </div>
+            </motion.div>
           </div>
 
           <motion.div initial={{ opacity: 0, x: -50 }}

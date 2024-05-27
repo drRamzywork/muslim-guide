@@ -84,7 +84,6 @@ const Section = ({ dataSections, dataAllSections,
 
 
       </section>
-      <Footer />
     </>
 
   );

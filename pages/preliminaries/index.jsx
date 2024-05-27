@@ -67,7 +67,6 @@ const Preliminaries = ({ dataAllSections, dataAllSettings, dataPreliminaries, da
 
         </div>
       </section>
-      <Footer />
 
     </>
 

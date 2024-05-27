@@ -71,7 +71,6 @@ const Sections = ({ dataAllSections, dataAllSettings }) => {
 
         </div>
       </section >
-      <Footer />
 
     </>
   );

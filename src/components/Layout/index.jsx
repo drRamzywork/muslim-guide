@@ -34,6 +34,9 @@ export default function Layout({ children, dataAllSections, dataAllLangs, dataPr
         }
 
         {children}
+
+        <Footer dataAllSettings={dataAllSettings} />
+
       </main>
     </>
   )

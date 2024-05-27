@@ -9,6 +9,7 @@ const Navbar = ({ dataAllLangs, dataAllSettings }) => {
   const router = useRouter();
   const [langs, setLangs] = useState(false);
   const [menu, setMenu] = useState(false);
+  console.log(dataAllSettings, "dataAllSettingsNav")
 
   const variants = {
     open: { opacity: 1, y: 180 },

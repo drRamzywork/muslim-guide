@@ -162,11 +162,11 @@ const Introductions = ({ dataPreliminaries, dataAllSettings }) => {
             breakpoints={{
               0: {
                 slidesPerView: 3,
-                spaceBetween: 5,
+                spaceBetween: 15,
               },
               450: {
                 slidesPerView: 3,
-                spaceBetween: 5,
+                spaceBetween: 15,
               },
               640: {
                 slidesPerView: 3,

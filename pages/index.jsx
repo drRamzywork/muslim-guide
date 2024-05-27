@@ -4,7 +4,6 @@ import Navbar from "../src/components/Navbar";
 import styles from "./index.module.scss";
 import ExploreSec from "../src/components/Home/ExploreSec";
 import Sections from "../src/components/Home/Sections";
-import Footer from "../src/components/Footer";
 import Introductions from "../src/components/Home/Introductions";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -255,7 +254,6 @@ const Frame = ({ dataPreliminaries, dataAllSections, dataAllLangs, dataAllSettin
       <Sections dataAllSections={dataAllSections} dataAllSettings={dataAllSettings} />
       <Introductions dataPreliminaries={dataPreliminaries} dataAllSettings={dataAllSettings} />
 
-      <Footer />
 
     </div >
   );
