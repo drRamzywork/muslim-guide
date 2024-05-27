@@ -479,6 +479,9 @@
   text-align: right;
   color: var(--black);
   max-width: 800px;
+  @media screen and (max-width: 992px) {
+    max-width: 100%;
+  }
 }
 .div {
   width: 100%;
@@ -511,7 +514,17 @@
 }
 
 .div[dir="ltr"] {
-  * {
+  // * {
+  // }
+  .frameParent4 {
+    font-size: 16px;
+  }
+  h2 {
     text-align: left;
+    @media screen and (max-width: 992px) {
+      font-size: 18px;
+      line-height: 30px;
+      padding: 12px !important;
+    }
   }
 }
