@@ -100,7 +100,7 @@ section.sections {
           }
 
           &::after {
-            background-color: transparent;
+            background: rgb(0 0 0 / 34%);
           }
         }
       }
@@ -115,5 +115,19 @@ section.sections[dir="rtl"] {
 section.sections[dir="ltr"] {
   * {
     text-align: left !important;
+  }
+
+  .box_container {
+    .box {
+      .title {
+        p {
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
   }
 }

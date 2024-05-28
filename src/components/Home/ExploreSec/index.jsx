@@ -141,7 +141,7 @@ const ExploreSec = ({ dataAllSettings }) => {
 
       <motion.div initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.5, type: "tween" }} className={compStyles.boxes_container_mobile}>
+        transition={{ duration: 1.5, type: "tween" }} className={`${compStyles.boxes_container_mobile} ${styles.boxes_container_mobile}`}>
         <Swiper
           spaceBetween={8}
           slidesPerView={1.2}
@@ -153,7 +153,7 @@ const ExploreSec = ({ dataAllSettings }) => {
 
         >
           {data.map((box, index) => (
-            <SwiperSlide key={index} >
+            <SwiperSlide key={index} className={styles.box}>
               <div className={styles.frameParent3}>
 
                 <div className={styles.frameParent4}>
@@ -173,7 +173,6 @@ const ExploreSec = ({ dataAllSettings }) => {
                   </div>
                 </div>
               </div>
-
             </SwiperSlide>
           ))}
         </Swiper>
