@@ -83,7 +83,7 @@ const Navbar = ({ dataAllLangs, dataAllSettings, locale }) => {
 
   return (
     <>
-      <nav className={`${styles.greenBG}  ${router.pathname !== '/' && styles.darkGreenBG}`} dir={dataAllSettings.dir}>
+      <nav className={`${styles.greenBG}  `} dir={dataAllSettings.dir}>
 
         <div className="container pt-2 pt-md-4" >
           <div className={styles.frameParent} dir={dataAllSettings.dir}>

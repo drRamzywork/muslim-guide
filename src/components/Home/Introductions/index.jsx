@@ -40,7 +40,7 @@ const Introductions = ({ dataPreliminaries, dataAllSettings }) => {
   }, []);
   return (
     <section id='introductions' className={compStyles.Introductions} dir={dataAllSettings.dir}>
-      <div className="container">
+      <div className="">
         <div className={compStyles.sec_container}>
           <b className={styles.b13}>دليل المسلم الميسر</b>
 
@@ -92,7 +92,8 @@ const Introductions = ({ dataPreliminaries, dataAllSettings }) => {
                       {activeSlide === index ?
                         <Link href={`/details/${imageUrl.slug}`}>
 
-                          <div className={styles.rectangleParent4}>
+                          <motion.div initial={{ opacity: 0, }} whileInView={{ opacity: 1, }}
+                            transition={{ duration: 1.5, type: "tween" }} className={styles.rectangleParent4}>
                             <img
                               className={styles.instanceChild}
                               alt=""
@@ -101,7 +102,7 @@ const Introductions = ({ dataPreliminaries, dataAllSettings }) => {
                             <div className={styles.wrapper4}>
                               <b className={styles.b}>{imageUrl.title}</b>
                             </div>
-                          </div>
+                          </motion.div>
                         </Link>
                         :
                         <img
@@ -174,11 +175,6 @@ const Introductions = ({ dataPreliminaries, dataAllSettings }) => {
                 centeredSlides: true,
               },
             }}
-          // pagination={{ clickable: true }}
-          // className={compStyles.swiper}
-          // onSlideChange={handleSlideChange}
-          // modules={[Navigation, Pagination]}
-
           >
             <div className={styles.instanceParent}>
 
@@ -187,7 +183,8 @@ const Introductions = ({ dataPreliminaries, dataAllSettings }) => {
                 <SwiperSlide key={index} >
                   {activeSlide === index ?
                     <Link href={`/details/${imageUrl.slug}`}>
-                      <div className={styles.rectangleParent4}>
+                      <motion.div initial={{ opacity: 0, }} whileInView={{ opacity: 1, }}
+                        transition={{ duration: 1.5, type: "tween" }} className={styles.rectangleParent4}>
                         <img
                           className={styles.instanceChild}
                           alt=""
@@ -196,7 +193,7 @@ const Introductions = ({ dataPreliminaries, dataAllSettings }) => {
                         <div className={styles.wrapper4}>
                           <b className={styles.b}>{imageUrl.title}</b>
                         </div>
-                      </div>
+                      </motion.div>
                     </Link>
                     :
 
@@ -213,12 +210,7 @@ const Introductions = ({ dataPreliminaries, dataAllSettings }) => {
 
           </Swiper>
 
-          <div ref={prevButtonRef} className={'custom_arrow'}>
-            <img className={styles.arrowIcon1} alt="" src="/arrow@2x.png" />
-          </div>
-          <div ref={nextButtonRef} className={'custom_arrow1'}>
-            <img className={styles.arrowIcon1} alt="" src="/arrow@2x.png" />
-          </div>
+
         </div>
       </div>
 

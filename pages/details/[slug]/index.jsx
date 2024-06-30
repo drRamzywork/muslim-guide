@@ -1,14 +1,26 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Footer from "../../../src/components/Footer";
 import styles from "./index.module.scss";
-import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import Navbar from "../../../src/components/Navbar";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/autoplay';
+import { Navigation, } from 'swiper/modules';
+import { IoIosArrowRoundForward } from "react-icons/io";
+import { IoIosArrowRoundBack } from "react-icons/io";
 
 const Details = ({ sectionData, dataAllSections, dataAllSettings, dataAllLangs, dataPreliminaries }) => {
-  const router = useRouter();
-
   const [content, setContent] = useState('');
+
+  // Swiper
+
+  const [activeSlide, setActiveSlide] = useState(0);
+  const swiperRef = useRef();
+  const nextButtonRef = useRef(null);
+  const prevButtonRef = useRef(null);
 
   useEffect(() => {
     if (sectionData) {
@@ -40,6 +52,36 @@ const Details = ({ sectionData, dataAllSections, dataAllSettings, dataAllLangs, 
     ));
   };
 
+
+  const handleSlideChange = (index) => {
+    setActiveSlide(index);
+  };
+
+  const breakpoints = {
+    // default (for screens < 640px)
+    0: {
+      slidesPerView: 1.5,
+      spaceBetween: 14,
+    },
+    // when window width is >= 640px (mobile)
+    640: {
+      slidesPerView: 1.5,
+      spaceBetween: 14,
+    },
+    // when window width is >= 768px (md screen)
+    768: {
+      slidesPerView: 2.5,
+      spaceBetween: 20,
+    },
+    // when window width is >= 1024px (large screen)
+    1024: {
+      slidesPerView: 2.5,
+      spaceBetween: 20,
+    },
+  };
+
+
+
   return (
     <>
 
@@ -64,7 +106,45 @@ const Details = ({ sectionData, dataAllSections, dataAllSettings, dataAllLangs, 
 
         </div>
 
+        <div className="container">
+          <div className={styles.swiper_container}>
+            <Swiper
+              // spaceBetween={20}
+              // slidesPerView={2.5}
+              breakpoints={breakpoints}
+              navigation={{
+                nextEl: nextButtonRef.current,
+                prevEl: prevButtonRef.current
+              }}
+              onS dir="rtl"
+              modules={[Navigation,]}
+              onSwiper={(swiper) => swiperRef.current = swiper}
 
+            >
+              {sectionData?.children?.map((child, index) => (
+                <SwiperSlide key={index} >
+                  <a href={`#${child.slug}`} onClick={() => handleSlideChange(index)} className={`${activeSlide === index && styles.active}`}>
+                    <motion.div initial={{ opacity: 0, }} whileInView={{ opacity: 1, }}
+                      transition={{ duration: 1.5, type: "tween" }} className={styles.rectangleParent4}>
+                      <h2>{child.title}</h2>
+                    </motion.div>
+                  </a>
+                </SwiperSlide>
+              ))}
+
+            </Swiper>
+
+
+            <div ref={prevButtonRef} className={'custom_arrow'}>
+              <IoIosArrowRoundBack />
+
+            </div>
+            <div ref={nextButtonRef} className={'custom_arrow1'}>
+              <IoIosArrowRoundForward />
+
+            </div>
+          </div>
+        </div>
 
         <motion.div initial={{ opacity: 0, y: -50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -74,7 +154,6 @@ const Details = ({ sectionData, dataAllSections, dataAllSettings, dataAllLangs, 
               {renderChildrenContent(sectionData.children)}
 
               {content && <div dangerouslySetInnerHTML={{ __html: content }} />}
-
             </div>
 
 
@@ -91,7 +170,6 @@ const Details = ({ sectionData, dataAllSections, dataAllSettings, dataAllLangs, 
       <Footer dataAllSettings={dataAllSettings} />
 
     </>
-
   );
 };
 
