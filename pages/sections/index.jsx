@@ -87,11 +87,6 @@ const Sections = ({ dataAllSections, dataAllSettings, dataAllLangs, dataPrelimin
 export default Sections;
 
 export async function getServerSideProps({ locale }) {
-
-
-
-
-
   // 
 
   const apiUrl = 'https://iiacademy.net/api';

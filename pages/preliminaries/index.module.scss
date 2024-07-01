@@ -353,6 +353,8 @@
   display: inline-block;
   width: 100%;
   max-width: 992px;
+  text-align: center !important;
+
   @media screen and (max-width: 992px) {
     font-size: 16px;
     line-height: unset;

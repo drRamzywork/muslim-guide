@@ -79,7 +79,7 @@ const Details = ({ sectionData, dataAllSections, dataAllSettings, dataAllLangs, 
       spaceBetween: 20,
     },
   };
-
+  console.log(sectionData, "sectionData")
 
 
   return (

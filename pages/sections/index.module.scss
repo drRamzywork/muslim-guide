@@ -306,9 +306,10 @@
   gap: var(--gap-xl);
   flex-wrap: wrap;
   align-items: flex-start;
-  justify-content: flex-start;
+  // justify-content: flex-start;
+  justify-content: center;
+
   @media screen and (max-width: 992px) {
-    justify-content: center;
     gap: 9px;
   }
   .img_container {
